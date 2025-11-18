@@ -3931,6 +3931,727 @@ opacity: 0.3;
 
 ---
 
+### 40. Form Inputs / Text Fields
+
+#### Email / Text Input
+
+**Label:**
+```css
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+margin-bottom: 8px;
+```
+
+**Default State:**
+```css
+padding: 16px 24px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1.5px solid var(--Stroke-Stroke1);
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.15);
+outline: 1.5px solid var(--Stroke-02);
+overflow: hidden;
+```
+
+**Focus State:**
+```css
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.15);
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+overflow: hidden;
+```
+
+**Typing State:**
+```css
+/* Same as focus + cursor */
+/* Cursor */
+width: 0;
+height: 16px;
+outline: 1px solid var(--Text-Primary);
+
+/* Placeholder (faded) */
+opacity: 0.5;
+```
+
+**Filled State:**
+```css
+/* Same as default */
+/* Text */
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Clear Icon (Right) */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Error State:**
+```css
+/* Same as default */
+/* Error Message (below input) */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Colors-Red);
+margin-top: 8px;
+```
+
+#### Password Input
+
+**Label with Link:**
+```css
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 8px;
+
+/* Label */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* "Forgot password?" Link */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.7;
+cursor: pointer;
+```
+
+**Default State (Masked):**
+```css
+height: 48px;
+padding: 16px 24px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1.5px solid var(--Stroke-Stroke1);
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Password Dots */
+display: flex;
+gap: 4px;
+opacity: 0.5;
+
+/* Dot */
+width: 6px;
+height: 6px;
+background: var(--Text-Secondary);
+border-radius: 50%;
+```
+
+**Filled with Toggle:**
+```css
+height: 48px;
+padding-left: 24px;
+padding-right: 14px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.15);
+outline: 1.5px solid var(--Stroke-02);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Password Content */
+display: flex;
+align-items: center;
+gap: 1px;
+
+/* Dots (filled) */
+width: 6px;
+height: 6px;
+background: var(--Text-Primary);
+border-radius: 50%;
+
+/* Cursor */
+width: 0;
+height: 16px;
+outline: 1px solid var(--Text-Primary);
+
+/* Toggle Icon (Eye) */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Filled with Text Visible:**
+```css
+/* Same as above */
+/* Text instead of dots */
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Cursor next to text */
+width: 0;
+height: 16px;
+outline: 1px solid var(--Text-Primary);
+
+/* Toggle Icon (Eye Slash) */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+#### Numeric Input (Slider Value)
+
+**Default State:**
+```css
+padding: 6px 8px 6px 10px;
+background: var(--Surface-03);
+border-radius: 10px;
+display: flex;
+align-items: center;
+gap: 6px;
+
+/* Icon (Left) */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Value Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+text-align: right;
+```
+
+**Hover State:**
+```css
+background: var(--Surface-02);
+outline: 1px solid var(--Stroke-01);
+```
+
+**Focus/Active State:**
+```css
+background: var(--Surface-02);
+outline: 1px solid var(--Stroke-02);
+
+/* Value (highlighted) */
+background: var(--Colors-Blue-Blue-20/20);
+outline: 1px solid var(--Colors-Blue-Blue-50/50);
+padding: 2px;
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+/* Icon */
+opacity: 0.3;
+```
+
+#### Inline Username Editor
+
+**Read-only State:**
+```css
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Username Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Edit Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Disabled State:**
+```css
+opacity: 0.5;
+```
+
+**Editing State:**
+```css
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Input Container */
+display: flex;
+align-items: center;
+
+/* Cursor */
+width: 0;
+height: 12px;
+outline: 1px solid black;
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.3;
+
+/* Collapse Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Valid State:**
+```css
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Cursor */
+width: 0;
+height: 12px;
+outline: 1px solid black;
+
+/* Check Icon (Green) */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Colors-Green);
+```
+
+#### Avatar Upload
+
+**Default State:**
+```css
+width: 48px;
+height: 48px;
+border-radius: 32px;
+overflow: hidden;
+```
+
+**Hover State (with Delete Overlay):**
+```css
+width: 48px;
+height: 48px;
+background: rgba(0, 0, 0, 0.4);
+border-radius: 32px;
+overflow: hidden;
+position: relative;
+
+/* Delete Icon */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+#### Color Picker Input
+
+**Container:**
+```css
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+align-items: center;
+overflow: hidden;
+```
+
+**Color Section:**
+```css
+flex: 1;
+border-right: 1px solid rgba(39, 39, 42, 0.1); /* Shade-7-10/10 */
+display: flex;
+align-items: center;
+gap: 12px;
+padding-right: 8px;
+
+/* Color Swatch */
+width: 28px;
+height: 28px;
+background: var(--Surface-01);
+border-radius: 6px;
+border: 1px solid rgba(39, 39, 42, 0.1);
+
+/* Hex Code */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**Opacity Section:**
+```css
+padding: 0 12px;
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Opacity Value */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Percent Symbol */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**States:**
+
+1. **Default**: `background: var(--Surface-03)`
+2. **Hover**: `background: var(--Surface-02); outline: 1px solid var(--Stroke-02)`
+3. **Focus (Hex)**: `background: var(--Surface-03); outline: 1px solid var(--Shade-9-10/10);` + hex highlighted with blue background
+4. **Focus (Opacity)**: Same + opacity value highlighted
+5. **Disabled**: `opacity: 0.3`
+
+#### Share/Invite Input
+
+**Container:**
+```css
+padding: 4px 4px 4px 16px;
+background: var(--Surface-02);
+border-radius: 12px;
+box-shadow: inset 0px 1px 3px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Input Section:**
+```css
+flex: 1;
+display: flex;
+align-items: center;
+gap: 1px;
+
+/* Cursor */
+width: 0;
+height: 12px;
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.5;
+```
+
+**Permission Dropdown:**
+```css
+width: 96px;
+padding: 8px 8px 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**States:**
+
+1. **Default**: Standard outline
+2. **Hover**: `outline: 1px solid var(--Shade-7-5/5)`
+3. **Focus**: `outline: 1px solid var(--Colors-Blue-Blue-100)`
+4. **Filled**: Email text visible with active dropdown
+5. **Disabled**: `opacity: 0.5`
+
+**Dropdown Menu:**
+```css
+width: 96px;
+padding: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+
+/* Menu Item (Hover) */
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-03);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+
+/* Menu Item (Default) */
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+```
+
+#### Search Input
+
+**With Icon and Keyboard Shortcut:**
+```css
+padding: 4px 10px 4px 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+width: 32px;
+height: 32px;
+padding: 8px;
+border-radius: 8px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Keyboard Shortcut Badge */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.11),
+  inset 0px -1px 0.6px 0px rgba(0,0,0,0.20),
+  inset 0px 2px 0.8px 0px rgba(255,255,255,0.27);
+
+/* Shortcut Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**States:**
+
+1. **Default**: No outline
+2. **Hover**: `outline: 1px solid var(--Stroke-01)`
+3. **Focus**: `background: var(--Surface-02); box-shadow: inset 0px 0px 0px 2px rgba(252,252,252,1.00); outline: 1px solid rgba(115,115,115,0.5)`
+
+**With Back Button (Navigation):**
+```css
+padding: 4px 10px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 3px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+
+/* Back Icon Container */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+
+/* Back Icon */
+width: 16px;
+height: 16px;
+stroke-width: 2px;
+color: var(--Text-Secondary);
+
+/* Text + Cursor */
+display: flex;
+align-items: center;
+gap: 1px;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Cursor */
+width: 0;
+height: 12px;
+outline: 1.5px solid black;
+```
+
+**Active Search State:**
+```css
+padding: 4px 10px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 3px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+
+/* Search Icon Container (Active) */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+
+/* Cursor next to placeholder */
+width: 0;
+height: 12px;
+outline: 1.5px solid black;
+position: absolute;
+```
+
+#### Sign In / Sign Up Forms
+
+**Form Container:**
+```css
+width: 640px;
+height: 900px;
+padding: 0 160px;
+background: var(--Surface-01);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+```
+
+**Title:**
+```css
+font-size: 30px;
+font-weight: 500;
+line-height: 40px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+**Google Sign In Button:**
+```css
+width: 320px;
+height: 44px;
+padding: 8px 20px;
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Google Icon */
+width: 24px;
+height: 24px;
+
+/* Text */
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+**Divider Text:**
+```css
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Tertiary);
+text-align: center;
+```
+
+**Submit Button (Dark):**
+```css
+width: 100%;
+padding: 12px 20px;
+background: linear-gradient(to bottom, var(--Shade-7-100), var(--Shade-8-100));
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+
+/* Text */
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+color: var(--neutral-50);
+text-align: center;
+```
+
+**Footer Text:**
+```css
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**Usage Guidelines:**
+- Always include clear labels for inputs
+- Show error states with red text below the field
+- Use blue outline (1.5px) for focus states
+- Password fields should include "Forgot password?" link
+- Provide toggle visibility for password fields (eye icon)
+- Search inputs should include keyboard shortcuts (⌘ K)
+- Share/invite inputs should combine text input with permission dropdown
+- Use cursor indicator (1px vertical line) for typing states
+- Numeric inputs should highlight the value when editing
+- Avatar upload should show delete overlay on hover
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
