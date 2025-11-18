@@ -5051,6 +5051,506 @@ border-radius: 12px;
 
 ---
 
+### 42. Context Menus & Folder Navigation
+
+Контекстные меню с секциями, клавиатурными сокращениями и навигация по папкам с поиском.
+
+#### 42.1. Menu Item with Keyboard Shortcut - Default State
+
+Стандартный пункт меню с текстом и клавиатурным сокращением, без фона.
+
+```css
+/* Menu Item Container */
+width: 224px;
+height: 36px;
+padding: 6px 8px 6px 8px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text Container */
+flex: 1;
+height: 24px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Text */
+flex: 1;
+justify-content: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut Badge */
+padding: 2px 4px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Shortcut Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+color: var(--Text-Secondary);
+```
+
+#### 42.2. Menu Item with Keyboard Shortcut - Hover State
+
+```css
+/* Menu Item Container - Hover */
+width: 192px;
+height: 36px;
+padding: 6px 8px 6px 8px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Rest matches default state */
+```
+
+#### 42.3. Context Menu - Full Structure
+
+Выпадающее меню с секциями, разделителями и клавиатурными сокращениями.
+
+```css
+/* Menu Container */
+width: 208px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+
+/* Menu Section - Top (with shortcuts) */
+width: 100%;
+padding: 8px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+
+/* Menu Item in Section - Default */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 8px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Menu Item Text Container */
+flex: 1;
+height: 24px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Menu Item Text */
+flex: 1;
+justify-content: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut Badge */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Shortcut Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+color: var(--Text-Secondary);
+```
+
+#### 42.4. Context Menu - Section Divider
+
+```css
+/* Divider Section */
+width: 100%;
+padding: 8px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 42.5. Context Menu Item - Without Shortcut (Default)
+
+```css
+/* Menu Item - No Shortcut */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 8px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text Container */
+flex: 1;
+height: 24px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Text */
+flex: 1;
+justify-content: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 42.6. Context Menu Item - Without Shortcut (Hover)
+
+```css
+/* Menu Item - Hover */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 8px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+#### 42.7. Folder Navigation Menu - Container
+
+Меню навигации по папкам с поиском и цветными иконками.
+
+```css
+/* Folder Menu Container */
+width: 224px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 42.8. Folder Navigation - Search Input (Active)
+
+```css
+/* Search Section */
+width: 100%;
+padding: 8px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 8px;
+overflow: hidden;
+
+/* Search Input Container - Active */
+width: 100%;
+padding: 4px 4px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 3px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Search Content Container */
+flex: 1;
+position: relative;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Search Icon Button */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Search Icon (Magnifying Glass) */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Search Icon Circle */
+width: 10px;
+height: 10px;
+left: 2.5px;
+top: 2.5px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+border-radius: 50%;
+
+/* Search Placeholder Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Cursor (Blinking Line) */
+width: 0px;
+height: 12px;
+left: 43px;
+top: 10px;
+position: absolute;
+outline: 1.5px solid black;
+outline-offset: -0.75px;
+```
+
+#### 42.9. Folder List Section
+
+```css
+/* Folder List Section */
+width: 100%;
+padding: 0px 8px 8px 8px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+```
+
+#### 42.10. Folder Item - Default State
+
+```css
+/* Folder Item Container */
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Folder Content */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Folder Icon Container */
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Folder Icon (Generic) */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Folder Icon - Bottom Part */
+width: 16px;
+height: 6px;
+left: 2px;
+top: 10px;
+position: absolute;
+opacity: 0.2;
+background: var(--Colors-Orange); /* or Green, Blue, Red */
+
+/* Folder Icon - Top Part */
+width: 16px;
+height: 12px;
+left: 2.29px;
+top: 3.12px;
+position: absolute;
+border-radius: 2px;
+outline: 1.5px solid var(--Colors-Orange); /* or Green, Blue, Red */
+outline-offset: -0.75px;
+
+/* Folder Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 42.11. Folder Item - Hover State
+
+```css
+/* Folder Item Container - Hover */
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Rest matches default state */
+```
+
+#### 42.12. Folder Color Variants
+
+**Orange Folder:**
+```css
+/* Folder Icon - Bottom */
+background: var(--Colors-Orange);
+
+/* Folder Icon - Top */
+outline-color: var(--Colors-Orange);
+```
+
+**Green Folder:**
+```css
+/* Folder Icon - Bottom */
+background: var(--Colors-Green);
+
+/* Folder Icon - Top */
+outline-color: var(--Colors-Green);
+```
+
+**Blue Folder:**
+```css
+/* Folder Icon - Bottom */
+background: var(--Colors-Blue-Blue-100);
+
+/* Folder Icon - Top */
+outline-color: var(--Colors-Blue-Blue-100);
+```
+
+**Red Folder:**
+```css
+/* Folder Icon - Bottom */
+background: var(--Colors-Red);
+
+/* Folder Icon - Top */
+outline-color: var(--Colors-Red);
+```
+
+#### 42.13. Folder Item States Summary
+
+| Состояние | Фон | Иконка | Текст |
+|-----------|-----|--------|-------|
+| **Default** | Transparent | Colored outline + opacity 0.2 fill | Text-Primary, weight 600 |
+| **Hover** | Surface-03 | Same as default | Same as default |
+
+#### 42.14. Usage Guidelines
+
+**Context Menus:**
+- Use backdrop-filter: blur(6px) for floating menus
+- Separate sections with 1px solid Stroke-01 divider
+- Show keyboard shortcuts only for frequently used actions (data-show-shortcut="true")
+- Menu items without shortcuts should have simpler layout
+- Use 12px rounded corners for menu items, 20px for menu container
+- Hover state should use Surface-03 background
+
+**Folder Navigation:**
+- Use color-coded folder icons for visual categorization
+- Orange, Green, Blue, Red are the standard folder colors
+- Folder names should truncate with ellipsis if too long
+- Search input should have active state with outline and inset shadow
+- Show blinking cursor (1.5px solid black) in active search field
+- Folder list should be scrollable if content overflows
+
+**Search Input:**
+- Active state: Surface-03 background, Stroke-02 outline
+- Magnifying glass icon in rounded Surface-01 button
+- Placeholder text in Text-Secondary color
+- Cursor positioned after last character
+
+**Interactive States:**
+- Default: no background
+- Hover: Surface-03 background
+- Active (search): Surface-03 background + Stroke-02 outline + inset shadow
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
