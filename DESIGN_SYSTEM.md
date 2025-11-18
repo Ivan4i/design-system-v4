@@ -9044,6 +9044,355 @@ color: var(--Text-Primary);
 
 ---
 
+## 49. 3D Object Card / Report Dialog / Image Placement Variants
+
+### 49.1 3D Object Card Container
+
+Карточка для отображения 3D объектов с превью, метаданными и действиями.
+
+```css
+/* Card Container */
+width: 256px;
+padding: 8px;
+background: rgba(var(--Shade1-95), 0.95);
+border-radius: 24px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+gap: 8px;
+overflow: hidden;
+```
+
+### 49.2 3D Object Preview Area
+
+Область превью с центрированием изображения.
+
+```css
+/* Preview Container */
+width: 100%; /* self-stretch */
+height: 192px;
+background: var(--Surface-03);
+border-radius: 16px;
+position: relative;
+overflow: hidden;
+
+/* Preview Image */
+width: 192px;
+height: 192px;
+position: absolute;
+left: 32px; /* Центрирование: (256px - 16px padding) / 2 - 96px = 32px */
+top: 0;
+object-fit: cover;
+```
+
+**Примечание:** Изображение смещено на 32px влево для визуального центрирования в контейнере шириной 240px (256px - 16px padding).
+
+### 49.3 3D Object Metadata Section
+
+Блок с заголовком и категорией объекта.
+
+```css
+/* Content Container */
+padding: 8px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+
+/* Metadata Block */
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Title */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Category Label */
+width: 100%;
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+### 49.4 3D Object Action Buttons
+
+Кнопки действий: иконка-кнопка и основная кнопка "Insert Object".
+
+```css
+/* Buttons Container */
+width: 100%;
+display: inline-flex;
+justify-content: flex-end;
+align-items: center;
+gap: 8px;
+
+/* Icon Button - Default */
+width: 36px;
+height: 36px;
+padding: 8px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Button - Icon Container */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Button - Icon Shape */
+width: 16px;
+height: 16px;
+position: absolute;
+left: 2.29px;
+top: 2.29px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Primary Button - Default */
+flex: 1;
+padding: 8px 20px;
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5); /* neutral-200 */
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Primary Button - Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+### 49.5 Report Dialog Container
+
+Диалоговое окно для выбора причины репорта изображения.
+
+```css
+/* Dialog Container */
+padding: 24px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+gap: 16px;
+overflow: hidden;
+```
+
+### 49.6 Report Dialog Title
+
+Заголовок диалога репорта.
+
+```css
+/* Title */
+width: 100%;
+color: #000000;
+font-size: 16px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 24px;
+```
+
+### 49.7 Report Reason Tags
+
+Теги с причинами репорта (выбираемые опции).
+
+```css
+/* Tags Container */
+display: inline-flex;
+gap: 8px;
+
+/* Reason Tag */
+padding: 12px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+cursor: pointer;
+
+/* Tag Text */
+color: #000000;
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+white-space: nowrap;
+```
+
+**Доступные причины:**
+- "Nudity & Sexual Content"
+- "Child Exploitation"
+- (могут быть добавлены другие)
+
+### 49.8 Image Placement Variants Container
+
+Контейнер для демонстрации различных вариантов размещения изображений.
+
+```css
+/* Variants Container */
+width: 288px;
+height: 459px;
+border-radius: 5px;
+border: 1px solid #A855F7; /* purple-500 - для демонстрации */
+position: relative;
+overflow: hidden;
+```
+
+**Примечание:** Граница purple-500 используется только для визуальной демонстрации в макете.
+
+### 49.9 Image Placement Variant - Large Centered (192×192)
+
+Вариант размещения с большим изображением 192×192px.
+
+```css
+/* Variant Card - Top */
+width: 256px;
+height: 192px;
+position: absolute;
+left: 16px;
+top: 16px;
+background: var(--Surface-03);
+border-radius: 16px;
+overflow: hidden;
+
+/* Image - Large */
+width: 192px;
+height: 192px;
+position: absolute;
+left: 32px; /* Центрирование: (256px / 2) - (192px / 2) = 32px */
+top: 0;
+object-fit: cover;
+```
+
+**Центрирование:** Изображение 192×192px центрируется по горизонтали в карточке 256px.
+
+### 49.10 Image Placement Variant - Medium Centered (128×128)
+
+Вариант размещения с меньшим изображением 128×128px.
+
+```css
+/* Variant Card - Bottom */
+width: 256px;
+height: 192px;
+position: absolute;
+left: 16px;
+top: 251px; /* Позиция второй карточки */
+background: var(--Surface-03);
+border-radius: 16px;
+overflow: hidden;
+
+/* Image - Medium */
+width: 128px;
+height: 128px;
+position: absolute;
+left: 64px; /* Центрирование: (256px / 2) - (128px / 2) = 64px */
+top: 32px; /* Вертикальное центрирование: (192px / 2) - (128px / 2) = 32px */
+object-fit: cover;
+```
+
+**Центрирование:** Изображение 128×128px центрируется как по горизонтали, так и по вертикали в карточке 256×192px.
+
+### 49.11 Summary: 3D Object Card Specifications
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Card Container | 256px | 8px | 24px | Shade1-95 95% | backdrop-blur: 6px, 5 теней |
+| Preview Area | 100%×192px | - | 16px | Surface-03 | - |
+| Preview Image | 192×192px | - | - | - | left: 32px (центрирование) |
+| Content Block | 100% | 8px | - | - | gap: 16px |
+| Metadata Block | 100% | - | - | - | gap: 4px |
+| Title | 100% | - | - | Text-Primary | 14px/600, line-clamp: 1 |
+| Category | 100% | - | - | Text-Secondary | 12px/500, opacity: 0.8 |
+| Buttons Row | 100% | - | - | - | gap: 8px, justify: flex-end |
+| Icon Button | 36×36px | 8px | 10px | - | outline: 1px Stroke-02 |
+| Primary Button | flex: 1 | 8px 20px | 10px | neutral-200 gradient | 3 тени, inset highlight |
+
+### 49.12 Summary: Report Dialog Specifications
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Dialog Container | auto | 24px | 20px | Shade1-100 | backdrop-blur: 6px, outline: 1px Stroke-01 |
+| Title | 100% | - | - | #000000 | 16px/600/24px |
+| Tags Container | auto | - | - | - | inline-flex, gap: 8px |
+| Reason Tag | auto | 12px | 12px | Surface-03 | 12px/600/16px |
+
+### 49.13 Summary: Image Placement Variants
+
+| Вариант | Размер изображения | Позиция | Центрирование | Card Size |
+|---------|-------------------|---------|---------------|-----------|
+| Large (Top) | 192×192px | left: 32px, top: 0 | Горизонтальное | 256×192px |
+| Medium (Bottom) | 128×128px | left: 64px, top: 32px | Горизонтальное + вертикальное | 256×192px |
+
+**Формула центрирования:**
+- Горизонтально: `left = (container_width - image_width) / 2`
+- Вертикально: `top = (container_height - image_height) / 2`
+
+### 49.14 Usage Guidelines
+
+**3D Object Card:**
+- Используйте для отображения 3D объектов, иконок, иллюстраций в библиотеке ресурсов
+- Превью всегда 192×192px с центрированием в карточке 256px
+- Title должен обрезаться с ellipsis (line-clamp: 1)
+- Category отображается с opacity 0.8 для визуальной иерархии
+- Кнопки всегда выровнены по правому краю
+
+**Report Dialog:**
+- Используйте для модального окна репорта контента
+- Теги причин должны быть интерактивными (hover/active состояния)
+- Backdrop blur создает ощущение модального окна
+- Outline Stroke-01 обеспечивает четкие границы на светлом фоне
+
+**Image Placement Variants:**
+- Используйте для демонстрации различных размеров изображений в одном контейнере
+- Всегда центрируйте изображения математически
+- Поддерживайте aspect ratio 1:1 для 3D объектов
+- Меньшие изображения (128×128) центрируются как горизонтально, так и вертикально
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
