@@ -3348,6 +3348,589 @@ color: var(--Shade1-100);
 
 ---
 
+### 39. Dropdown / Select / Combobox
+
+#### Standard Dropdown (with Icon & Chevron)
+
+**Default State:**
+```css
+padding: 8px 10px 8px 8px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+
+/* Content Container */
+flex: 1;
+display: flex;
+align-items: center;
+gap: 6px;
+
+/* Icon (Left) */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron (Right) */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-02);
+outline: 1px solid var(--Stroke-02);
+/* Rest same as default */
+```
+
+**Focus State:**
+```css
+background: var(--Surface-01);
+box-shadow: inset 0px 0px 0px 1.5px rgba(53, 130, 255, 0.5);
+outline: 1px solid transparent;
+
+/* Icon (no opacity) */
+opacity: 1;
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+background: var(--Surface-03);
+outline: 1px solid var(--Stroke-01);
+cursor: not-allowed;
+```
+
+#### Dropdown without Left Icon
+
+**Default State:**
+```css
+padding: 10px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+
+/* Text */
+flex: 1;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron (Right) */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**States:** Same as standard dropdown (hover, focus, disabled)
+
+#### Dropdown with Additional Info (Resolution/Size)
+
+**Default State:**
+```css
+padding: 10px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+
+/* Left Content */
+flex: 1;
+display: flex;
+align-items: center;
+gap: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Right Content (Info + Chevron) */
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Info Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.5;
+text-align: right;
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+outline: 1px solid var(--Stroke-02);
+/* No background change for this variant */
+```
+
+**Focus State:**
+```css
+background: var(--Surface-01);
+box-shadow: inset 0px 0px 0px 1.5px rgba(53, 130, 255, 0.5);
+outline: 1px solid transparent;
+```
+
+#### Simple Editable Field ("can edit")
+
+**Default State:**
+```css
+padding: 8px;
+border-radius: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-03);
+/* Rest same */
+```
+
+**Focus State:**
+```css
+border-radius: 8px;
+outline: 1px solid var(--Colors-Blue-Blue-100);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+#### Elevated Dropdown ("can view")
+
+**Default State:**
+```css
+padding: 8px 8px 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18, 18, 18, 0.10);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+outline: 1px solid var(--Stroke-02);
+```
+
+**Focus State:**
+```css
+outline: 1px solid var(--Colors-Blue-Blue-100);
+
+/* Chevron */
+color: var(--Text-Primary);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+#### Dropdown Menu (Expanded)
+
+**Trigger Button (Expanded):**
+```css
+padding: 8px;
+background: var(--Surface-02);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Icon Container */
+padding: 4px;
+display: flex;
+align-items: center;
+gap: 4px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron (Right) */
+padding: 4px;
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Primary);
+```
+
+**Dropdown Panel:**
+```css
+width: 176px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+**Menu Section:**
+```css
+padding: 8px;
+display: flex;
+flex-direction: column;
+position: relative;
+
+/* Section Divider */
+border-top: 1px solid var(--Stroke-01);
+```
+
+**Menu Item (Default):**
+```css
+height: 36px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+
+/* Left Content */
+flex: 1;
+display: flex;
+align-items: center;
+gap: 4px;
+
+/* Icon Container */
+padding: 4px;
+border-radius: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+opacity: 0; /* Hidden by default */
+
+/* Shortcut Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**Menu Item (Hover):**
+```css
+background: var(--Surface-03);
+/* Rest same */
+```
+
+**Menu Item (Active/Selected):**
+```css
+/* Icon Container */
+padding: 4px;
+border-radius: 6px;
+background: transparent; /* Visible by default when active */
+
+/* Icon */
+color: var(--Text-Secondary);
+```
+
+#### Zoom/Percentage Dropdown
+
+**Default State:**
+```css
+height: 40px;
+padding: 4px 12px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Text */
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-01);
+outline: 1px solid var(--Stroke-02);
+
+/* Chevron */
+color: var(--Text-Primary);
+```
+
+**Focus State (Expanded):**
+```css
+background: var(--Surface-03);
+box-shadow: inset 0px 0px 2px 2px rgba(255, 255, 255, 1.00);
+outline: 1px solid rgba(39, 39, 42, 0.1); /* Shade-9-10/10 */
+
+/* Chevron */
+color: var(--Text-Secondary);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+#### Tag/Category Dropdown
+
+**Default State:**
+```css
+height: 40px;
+padding: 4px 10px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+align-items: center;
+gap: 12px;
+
+/* Left Content */
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Tag Icon Container */
+padding: 2px;
+
+/* Tag Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+
+/* Tag Color Square */
+width: 12px;
+height: 14px;
+border-radius: 0.5px;
+outline: 1.5px solid var(--Colors-Green);
+
+/* Text */
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Chevron Container */
+padding: 2px;
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Focus State:**
+```css
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+```
+
+**Hover State:**
+```css
+box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.25);
+outline: 1px solid var(--Stroke-02);
+```
+
+**Active State (Expanded):**
+```css
+background: var(--Surface-03);
+outline: 1px solid var(--Stroke-02);
+
+/* Chevron */
+color: var(--Text-Primary);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+
+/* Tag Icon */
+color: var(--Text-Secondary);
+```
+
+#### Text-Only Dropdown (No Icon)
+
+**Default State:**
+```css
+padding: 10px 12px;
+border-radius: 12px;
+outline: 1px solid transparent;
+display: flex;
+align-items: center;
+gap: 12px;
+
+/* Text */
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Chevron Container */
+padding: 2px;
+
+/* Chevron */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-03);
+
+/* Chevron */
+color: var(--Text-Secondary);
+```
+
+**Focus State:**
+```css
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+
+/* Chevron */
+color: var(--Text-Secondary);
+```
+
+**Active State (Expanded):**
+```css
+/* Chevron */
+color: var(--Text-Primary);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+#### Sizes
+
+**Small (Default):**
+- Height: 32px (with padding: 8px 10px)
+- Font size: 12px
+- Icon: 16px
+
+**Medium:**
+- Height: 40px (with padding: 4px 12px)
+- Font size: 14px
+- Icon: 16px
+
+**Usage Guidelines:**
+- Use standard dropdown for filter selections with icons
+- Use text-only dropdown for simple value selections
+- Use tag dropdown for color-coded categories
+- Use zoom dropdown for numeric values with units
+- Show keyboard shortcuts only on hover in menu items
+- Use blue outline for focus states
+- Use elevated dropdowns for important selections that float above content
+- Add chevron rotation animation when expanding (rotate 180deg)
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
