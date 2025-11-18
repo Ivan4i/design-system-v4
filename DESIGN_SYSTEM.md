@@ -4652,6 +4652,405 @@ text-align: center;
 
 ---
 
+### 41. Menu Items / List Items
+
+#### Standard Menu Item (with Keyboard Shortcut)
+
+**Container:**
+```css
+width: 192px; /* or self-stretch */
+height: 36px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Content Section:**
+```css
+flex: 1;
+display: flex;
+align-items: center;
+gap: 4px;
+
+/* Icon Container */
+padding: 4px;
+border-radius: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**Keyboard Shortcut Badge:**
+```css
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**States:**
+
+1. **Default**:
+```css
+/* Icon opacity: 0 (hidden) */
+opacity: 0;
+```
+
+2. **Hover**:
+```css
+background: var(--Surface-03);
+/* Icon becomes visible */
+```
+
+3. **Active/Selected**:
+```css
+/* Icon visible by default */
+padding: 4px;
+border-radius: 6px;
+opacity: 1;
+```
+
+4. **Focus**:
+```css
+outline: 1px solid var(--Colors-Blue-Blue-100);
+```
+
+#### Menu Item with Value Display (Zoom Control)
+
+**Header Item:**
+```css
+width: 192px;
+height: 36px;
+padding: 6px 8px 6px 6px;
+background: var(--Surface-02);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+align-items: center;
+gap: 4px;
+
+/* Icon Container */
+padding: 4px;
+border-radius: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Value Badge */
+background: rgba(59, 130, 246, 0.3); /* blue-500/30 */
+border-radius: 2px;
+padding: 2px;
+
+/* Value Text */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+text-align: right;
+```
+
+#### Dropdown Menu with Sections
+
+**Container:**
+```css
+width: 208px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+**Section:**
+```css
+padding: 8px;
+border-bottom: 1px solid var(--Stroke-01);
+/* or border-top for subsequent sections */
+display: flex;
+flex-direction: column;
+```
+
+**Section Divider:**
+```css
+border-top: 1px solid var(--Stroke-01);
+```
+
+#### Single-line Menu Item (Icon + Text)
+
+**Default State:**
+```css
+padding: 8px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+gap: 10px;
+
+/* Icon Container */
+padding: 2px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Text */
+flex: 1;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**Hover State:**
+```css
+background: var(--Surface-03);
+```
+
+**Focus State:**
+```css
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+```
+
+**Pressed State:**
+```css
+background: var(--Surface-02);
+box-shadow: inset 0px 0px 2.7px 0px rgba(0,0,0,0.25);
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+**Alternative Pressed State (Light):**
+```css
+border-radius: 12px;
+box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,0.50);
+outline: 1px solid var(--Stroke-02);
+overflow: hidden;
+```
+
+#### Two-line List Item (Title + Subtitle)
+
+**Default State:**
+```css
+padding: 10px 12px;
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Title */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Subtitle */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.7;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+**Hover State:**
+```css
+background: var(--Surface-03);
+```
+
+**Focus State:**
+```css
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+```
+
+**Pressed State (Dark):**
+```css
+background: var(--Surface-02);
+box-shadow: inset 0px 0px 2.7px 0px rgba(0,0,0,0.25);
+```
+
+**Pressed State (Light):**
+```css
+border-radius: 12px;
+box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,0.50);
+outline: 1px solid var(--Stroke-02);
+overflow: hidden;
+```
+
+**Disabled State:**
+```css
+opacity: 0.3;
+```
+
+#### Menu Item Variations
+
+**With Icon (Always Visible):**
+```css
+/* Icon */
+padding: 4px;
+border-radius: 6px;
+opacity: 1; /* Always visible */
+
+/* Icon on active item */
+color: var(--Text-Secondary);
+```
+
+**With Icon (Hidden by Default):**
+```css
+/* Icon */
+padding: 4px;
+border-radius: 6px;
+opacity: 0;
+
+/* Show on hover/active */
+opacity: 1;
+```
+
+**With Long Keyboard Shortcut:**
+```css
+/* Shortcut Badge */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+
+/* Examples: "⌘ +", "⌘ 0", "Shift C", "Shift" */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+#### Menu Item Sizes
+
+**Compact (Height: 32px):**
+```css
+height: 32px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+
+/* Icon: 16px */
+/* Font size: 12px */
+```
+
+**Standard (Height: 36px):**
+```css
+height: 36px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+
+/* Icon: 16px */
+/* Font size: 12px */
+```
+
+**Large (Height: 40px):**
+```css
+height: 40px;
+padding: 8px;
+border-radius: 12px;
+
+/* Icon: 20px */
+/* Font size: 12px */
+```
+
+**Two-line (Height: auto):**
+```css
+padding: 10px 12px;
+border-radius: 12px;
+
+/* Title: 12px */
+/* Subtitle: 12px */
+/* Gap: 4px */
+```
+
+#### Icon Behavior
+
+**Option 1 - Hidden until hover:**
+```css
+/* Default */
+.icon-container {
+  padding: 4px;
+  border-radius: 6px;
+  opacity: 0;
+}
+
+/* Hover/Active */
+.menu-item:hover .icon-container,
+.menu-item[data-active="true"] .icon-container {
+  opacity: 1;
+}
+```
+
+**Option 2 - Always visible on active:**
+```css
+/* Default */
+.icon-container {
+  padding: 4px;
+  border-radius: 6px;
+}
+
+/* Icon visible only on active items */
+.menu-item[data-active="true"] .icon-container {
+  opacity: 1;
+}
+```
+
+**Usage Guidelines:**
+- Use keyboard shortcuts for frequently used actions
+- Hide icons by default (opacity: 0), show on hover or when active
+- Use blue outline (1px or 1.5px) for focus states
+- Group related items in sections with dividers (1px solid Stroke-01)
+- Two-line items should truncate subtitle with ellipsis
+- Pressed states can use either dark inset shadow or light white inset shadow
+- Disabled items should have 30% opacity
+- Menu items with values (like zoom) should highlight the value
+- Use backdrop-filter: blur(6px) for floating menus
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
