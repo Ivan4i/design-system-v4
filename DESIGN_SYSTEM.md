@@ -64,16 +64,20 @@
 --color-error: #EF4444;
 --color-error-bg: #FEE2E2;
 --color-error-border: #FCA5A5;
+--Colors-Red: #EF4444;
 
 /* Warning / Hot */
 --color-warning: #F59E0B;
 --color-warning-bg: #FEF3C7;
 --color-warning-border: #FCD34D;
+--Colors-Orange: #EA580C;
 
 /* Info */
 --color-info: #3B82F6;
 --color-info-bg: #DBEAFE;
 --color-info-border: #93C5FD;
+--Colors-Blue-Blue-100: #3582FF;
+--Colors-Blue-2: rgba(53, 130, 255, 0.8);
 ```
 
 ### Neutral Colors
@@ -93,13 +97,27 @@
 --color-bg-elevated: #FFFFFF;
 --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
+/* Surface Colors (Interactive Elements) */
+--Surface-01: #FEFEFE;
+--Surface-02: #F5F5F5;
+--Surface-03: #E5E5E5;
+
 /* Stroke / Borders */
 --color-border-primary: #E5E7EB;
 --color-border-secondary: #D1D5DB;
 --color-border-focus: #3B82F6;
 --color-border-disabled: #F3F4F6;
+--Stroke-01: #E0E0E0;
+--Stroke-02: #D4D4D4;
 
-/* Shades */
+/* Shades (Light) */
+--Shade1-100: #FEFEFE;
+--Shade-5-100: #F5F5F5;
+--Shade-7-100: #3F3F3F;
+--Shade-8-100: #262626;
+--Shade-9-5: rgba(0, 0, 0, 0.05);
+
+/* Shades (Tailwind-compatible) */
 --color-gray-50: #F9FAFB;
 --color-gray-100: #F3F4F6;
 --color-gray-200: #E5E7EB;
@@ -110,6 +128,12 @@
 --color-gray-700: #374151;
 --color-gray-800: #1F2937;
 --color-gray-900: #111827;
+--color-zinc-100: #F4F4F5;
+--color-zinc-800: #27272A;
+--color-neutral-50: #FAFAFA;
+--color-neutral-200: #E5E5E5;
+--color-neutral-700: #404040;
+--color-neutral-900: #171717;
 ```
 
 ### Chart Colors
@@ -362,44 +386,641 @@
 
 ### 2. Buttons
 
-#### Primary Button
+#### 2.1 Standard Buttons (Light Theme)
 
-**Size:**
-- **Small:** Height 32px, Padding 8px 12px, Font-size 14px
-- **Medium:** Height 40px, Padding 10px 16px, Font-size 16px
-- **Large:** Height 48px, Padding 12px 24px, Font-size 18px
+##### Default Button
 
-**Radius:** `var(--radius-md)` (6px)
+**Sizes:**
+- **Large (XL):** `padding: 10px 24px` (py-2.5 px-6), `border-radius: 12px`, `font-size: 14px`, `font-weight: 600`
+- **Medium (LG):** `padding: 8px 20px` (py-2 px-5), `border-radius: 10px`, `font-size: 14px`, `font-weight: 600`
+- **Small (MD):** `padding: 8px 16px` (py-2 px-4), `border-radius: 10px`, `font-size: 14px`, `font-weight: 600`
 
-**States:**
-- **Default:** `background: var(--color-primary); color: white`
-- **Hover:** `background: var(--color-primary-hover); shadow: var(--shadow-button-hover)`
-- **Active:** `background: var(--color-primary-active); shadow: var(--shadow-button-active)`
-- **Disabled:** `opacity: 0.5; cursor: not-allowed`
-
-#### Secondary Button
-
-**Size:** Same as Primary
-**Radius:** `var(--radius-md)` (6px)
-
-**States:**
-- **Default:** `background: var(--color-secondary); color: white`
-- **Hover:** `background: var(--color-secondary-hover)`
-
-#### Outline Button
-
-- **Border:** `2px solid var(--color-primary)`
-- **Background:** `transparent`
+**Visual Style:**
+```css
+/* Default State */
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5);
+box-shadow:
+  0px 0px 0px 1px rgba(212, 212, 212, 1.00),
+  0px 3px 4px -1px rgba(0, 0, 0, 0.15),
+  inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+color: var(--color-text-primary);
+```
 
 **States:**
-- **Hover:** `background: var(--color-primary-light)`
 
-#### Ghost Button
+1. **Default (Rest)**
+   - Background: `linear-gradient(to bottom, #E5E5E5, #E5E5E5)`
+   - Shadow: Border `1px rgba(212, 212, 212, 1)`, Drop `0px 3px 4px -1px rgba(0,0,0,0.15)`, Inset highlight `0px 1px 0px rgba(255,255,255,0.33)`
 
-- **Background:** `transparent`
+2. **Hover**
+   - Background: `linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.4))`
+   - Shadow: Border `1px rgba(230, 230, 230, 1)`, Drop `0px 3px 8px -2px rgba(0,0,0,0.30)`, Inset `0px 1px 0px rgba(255,255,255,0.70)`
+
+3. **Pressed/Active**
+   - Background: `linear-gradient(to bottom, #E5E5E5, rgba(229,229,229,0.8))`
+   - Shadow: Border `1px rgba(230, 230, 230, 1)`, Drop `0px 3px 4px -2px rgba(0,0,0,0.30)`, Inset `0px 1px 0px rgba(255,255,255,0.70)`
+
+4. **Focus**
+   - All default styles +
+   - Additional shadow: `inset 0px 0px 0px 1.5px rgba(53, 130, 255, 1)` (blue focus ring inside)
+
+5. **Disabled**
+   - Opacity: `0.3`
+   - Cursor: `not-allowed`
+   - All other styles remain
+
+##### Button with Icon
+
+**Layout:**
+- Icon + Text: `gap: 8px`, Icon size: `20px × 20px` (w-5 h-5)
+- Icon-only: `padding: 8px` (square), Icon size: `20px × 20px`
+
+**Example:**
+```html
+<!-- Medium with icon -->
+<button class="px-4 py-2">
+  <icon class="w-5 h-5" />
+  <span>Button</span>
+</button>
+```
+
+---
+
+#### 2.2 Destructive Buttons (Delete/Remove)
+
+**Color Scheme:** Orange/Red
+
+##### States:
+
+1. **Default**
+   ```css
+   background: linear-gradient(to bottom, #EA580C, #EA580C);
+   box-shadow:
+     0px 3px 4px -1px rgba(252, 96, 16, 0.95),
+     0px 0px 0px 1px rgba(191, 74, 15, 1.00),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+   color: #FEFEFE;
+   ```
+
+2. **Hover**
+   ```css
+   background: linear-gradient(to bottom, #F97316, #EA580C);
+   box-shadow:
+     0px 3px 4px -1px rgba(226, 79, 5, 0.95),
+     0px 0px 0px 1px rgba(191, 74, 15, 1.00),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+   ```
+
+3. **Pressed/Active**
+   ```css
+   background: linear-gradient(to bottom, #EA580C, #F97316);
+   /* Same shadows as hover */
+   ```
+
+4. **Focus**
+   ```css
+   /* All default styles + */
+   outline: 1px solid #FC6010;
+   box-shadow:
+     0px 3px 4px -1px rgba(252, 96, 16, 0.95),
+     0px 0px 0px 0px rgba(191, 74, 15, 1.00),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33),
+     inset 0px 0px 0px 2.5px rgba(252, 252, 252, 1.00);
+   ```
+
+5. **Disabled**
+   - Opacity: `0.4`
+   - Same visual style as default
+
+---
+
+#### 2.3 Dark Theme Buttons
+
+**Color Scheme:** Charcoal/Black
+
+##### States:
+
+1. **Default**
+   ```css
+   background: linear-gradient(to bottom, #3F3F3F, #262626);
+   box-shadow:
+     0px 0px 0px 1px rgba(51, 51, 51, 1.00),
+     0px 2px 4px -1px rgba(13, 13, 13, 0.50),
+     inset 0px -1px 1.2px 0.35px rgba(18, 18, 18, 1.00),
+     inset 0px 0.5px 1px 0px rgba(255, 255, 255, 0.15);
+   color: #FAFAFA;
+   border-radius: 10px;
+   ```
+
+2. **Hover**
+   ```css
+   background: linear-gradient(to bottom, #3F3F3F, #262626);
+   /* Same shadows */
+   ```
+
+3. **Pressed/Active**
+   ```css
+   background: linear-gradient(to bottom, #262626, #3F3F3F);
+   /* Reversed gradient */
+   ```
+
+4. **Focus**
+   ```css
+   /* All default styles + */
+   box-shadow:
+     /* all default shadows +*/
+     inset 0px 0px 0px 1px rgba(252, 252, 252, 1.00);
+   ```
+
+5. **Disabled**
+   - Opacity: `0.3`
+
+**Border Radius:**
+- Large buttons (xl): `12px`
+- Medium/Small buttons: `10px`
+
+---
+
+#### 2.4 Icon-Only Buttons
+
+**Sizes:**
+
+| Size | Button Size | Icon Size | Padding | Border Radius |
+|------|-------------|-----------|---------|---------------|
+| **XS** | 24px × 24px | 16px | 4px | 8px |
+| **SM** | 32px × 32px | 20px | 6px | 10px |
+| **MD** | 36px × 36px | 20px | 8px | 10px |
+| **LG** | 40px × 40px | 20px | 10px | 12px |
+
+##### Small Icon Button (16px)
+
+```css
+/* Default */
+padding: 4px;
+border-radius: 6px;
+background: transparent;
+
+/* Hover */
+background: var(--Surface-03);
+
+/* Focus/Selected */
+background: var(--Surface-01);
+outline: 1px solid var(--Colors-Blue-100);
+
+/* Active/Pressed */
+background: var(--Surface-03);
+box-shadow: inset 0px 0px 2.1px 0px rgba(0, 0, 0, 0.15);
+
+/* Disabled */
+opacity: 0.3;
+```
+
+##### Medium Icon Button (20px)
+
+```css
+/* Default */
+padding: 8px;
+border-radius: 10px;
+background: transparent;
+
+/* Hover */
+background: var(--Surface-03);
+
+/* Focus/Selected */
+outline: 1px solid var(--Colors-Blue-100);
+
+/* Active/Pressed */
+background: var(--Surface-03);
+box-shadow: inset 0px 0px 2.1px 0px rgba(0, 0, 0, 0.15);
+
+/* Disabled */
+opacity: 0.3;
+```
+
+##### Large Icon Button (with border)
+
+```css
+/* Default */
+padding: 12px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+
+/* Hover */
+outline: 1px solid var(--Stroke-02);
+/* No background change */
+
+/* Focus/Selected */
+outline: 1px solid var(--Colors-Blue-100);
+
+/* Active/Pressed */
+background: var(--Surface-03);
+outline: 1px solid var(--Stroke-02);
+box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+
+/* Disabled */
+opacity: 0.5;
+outline: 1px solid var(--Stroke-01);
+```
+
+---
+
+#### 2.5 Toggle/Radio Button Groups
+
+**Visual Style:** Horizontal or vertical group of icon buttons
+
+##### States:
+
+1. **Default (Unselected)**
+   ```css
+   padding: 4px; /* XS: p-1 */
+   padding: 8px; /* MD: p-2 */
+   border-radius: 8px;
+   background: transparent;
+   ```
+
+2. **Hover**
+   ```css
+   background: var(--Surface-03);
+   border-radius: 8px;
+   ```
+
+3. **Selected/Active**
+   ```css
+   background: var(--Surface-01);
+   outline: 1px solid var(--Colors-Blue-100);
+   border-radius: 8px;
+   ```
+
+4. **Pressed (when selected)**
+   ```css
+   background: var(--Surface-03);
+   box-shadow: inset 0px 0px 2.1px 0px rgba(0, 0, 0, 0.15);
+   outline: 1px solid var(--Stroke-02);
+   ```
+
+5. **Disabled**
+   - Opacity: `0.3`
+
+**Spacing:** Gap between buttons: `0` (touching) or `4px`
+
+---
+
+#### 2.6 Social Login Buttons
+
+**Example:** "Sign in with Google"
+
+##### States:
+
+1. **Default**
+   ```css
+   width: 320px;
+   height: 44px;
+   padding: 8px 20px;
+   border-radius: 10px;
+   background: linear-gradient(to bottom, #E5E5E5, #E5E5E5);
+   box-shadow:
+     0px 0px 0px 1px rgba(212, 212, 212, 1.00),
+     0px 3px 4px -1px rgba(0, 0, 0, 0.15),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   ```
+
+2. **Hover**
+   ```css
+   background: linear-gradient(to bottom, rgba(244,244,245,0.5), rgba(244,244,245,0.5));
+   box-shadow:
+     0px 0px 0px 1px rgba(212, 212, 212, 1.00),
+     0px 3px 4px -1px rgba(0, 0, 0, 0.15),
+     0px 1px 4px 0px rgba(0, 0, 0, 0.25),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+   ```
+
+3. **Focus**
+   ```css
+   background: #FEFEFE;
+   outline: 1.5px solid rgba(53, 130, 255, 0.8);
+   box-shadow:
+     0px 0px 0px 1px rgba(212, 212, 212, 1.00),
+     0px 3px 4px -1px rgba(0, 0, 0, 0.15),
+     0px 1px 4px 0px rgba(0, 0, 0, 0.25),
+     inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+   ```
+
+4. **Active/Pressed**
+   ```css
+   background: linear-gradient(to bottom, #E5E5E5, #E4E4E7);
+   /* Same shadows as default */
+   ```
+
+5. **Disabled**
+   - Opacity: `0.3`
+
+**Icon:** Brand icon (24px × 24px) positioned left
+
+---
+
+#### 2.7 Checkbox/Radio Styled Buttons
+
+**Small Checkboxes (12px)**
+
+```css
+/* Default */
+width: 12px;
+height: 12px;
+/* Icon stroke color: var(--Text-Secondary) */
+
+/* Checked */
+/* Icon stroke color: var(--Text-Primary) */
+background: fill or checkmark visible
+```
+
+**Medium Checkboxes (16px)**
+
+```css
+/* Default */
+width: 16px;
+height: 16px;
+padding: 2px;
+border-radius: 4px;
+
+/* Hover */
+background: transparent;
+
+/* Checked */
+background: var(--Surface-01);
+/* or rounded background */
+```
+
+---
+
+#### 2.8 Segmented Controls / Button Groups
+
+**Visual:** Group of related buttons
+
+##### Elevated Style
+
+```css
+/* Container */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow:
+  0px 1px 3.2px -2px rgba(0, 0, 0, 0.99),
+  inset 0px 2px 0px 0px rgba(255, 255, 255, 0.80);
+outline: 1px solid var(--Stroke-02);
+```
+
+**Selected Item:**
+```css
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 1px 3.2px -1px rgba(0, 0, 0, 0.39),
+  inset 0px 2px 0px 0px rgba(255, 255, 255, 0.80);
+outline: 1px solid var(--Stroke-02);
+```
+
+**Pressed Selected Item:**
+```css
+background: var(--Surface-01);
+box-shadow:
+  0px 1px 3.2px -2px rgba(0, 0, 0, 0.99),
+  inset 0px 2px 0px 0px rgba(255, 255, 255, 0.80),
+  inset 0px 0px 3.3px 0px rgba(0, 0, 0, 0.25);
+outline: 1px solid var(--Stroke-02);
+```
+
+**Focus State:**
+```css
+/* Elevated + Focus Ring */
+outline: 1px solid var(--Colors-Blue-100);
+box-shadow:
+  0px 1px 3.2px -2px rgba(0, 0, 0, 0.99),
+  inset 0px 0px 0px 3px rgba(225, 225, 225, 1.00),
+  inset 0px 0px 0px 2px rgba(243, 243, 243, 1.00);
+border-radius: 10px;
+```
+
+**Disabled:**
+- Opacity: `0.5`
+
+---
+
+#### 2.9 Tab-Style Buttons
+
+**Flat Tabs:**
+
+```css
+/* Default */
+padding: 10px 20px;
+border-radius: 12px;
+background: transparent;
+
+/* Hover */
+background: var(--Surface-03);
+
+/* Selected */
+background: var(--Surface-01);
+box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.25);
+outline: 1px solid var(--Stroke-02);
+
+/* Disabled */
+opacity: 0.5;
+```
+
+**Dark Theme Tabs:**
+
+```css
+/* Selected */
+background: linear-gradient(to bottom, #27272A, #18181B);
+box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.25);
+color: #FEFEFE;
+```
+
+---
+
+#### 2.10 Specialized Buttons
+
+##### Keyboard Shortcut Button
+
+```css
+/* Container for shortcut display (e.g., ⌘K) */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0, 0, 0, 0.25),
+  0px 0px 0px 1px rgba(0, 0, 0, 0.11),
+  inset 0px -1px 0.6px 0px rgba(0, 0, 0, 0.20),
+  inset 0px 2px 0.8px 0px rgba(255, 255, 255, 0.27);
+font-size: 12px;
+font-weight: 500;
+color: var(--Text-Secondary);
+```
+
+**Nested Shortcut (darker):**
+```css
+min-width: 20px;
+padding: 2px 4px;
+background: #27272A;
+border-radius: 4px;
+box-shadow:
+  0px 2px 2px 0px rgba(0, 0, 0, 0.74);
+outline: 1px solid rgba(250, 250, 250, 0.05);
+color: #FAFAFA;
+```
+
+##### Command Palette Button
+
+```css
+/* "Copy prompt" or "Undo" style */
+padding-left: 4px;
+padding-right: 2px;
+padding-top: 2px;
+padding-bottom: 2px;
+background: var(--Text-Primary);
+border-radius: 6px;
+box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.40);
+color: var(--Shade-5-100);
+font-size: 12px;
+font-weight: 500;
+```
+
+##### Badge/Counter Button
+
+```css
+/* Small button with icon + number */
+padding: 14px 8px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+gap: 8px;
+
+/* Icon: 16px, Text: 12px semibold */
+```
 
 **States:**
-- **Hover:** `background: var(--color-bg-secondary)`
+- **Hover:** `background: var(--Surface-02)`
+- **Focus:** `outline: 1px solid var(--Colors-Orange)`
+- **Active:** `box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,0.15)`
+
+##### Reaction Button (Emoji)
+
+```css
+/* Default: emoji + count */
+padding: 6px 8px;
+border-radius: 8px;
+outline: 1px solid var(--Stroke-02);
+gap: 8px;
+font-size: 12px;
+
+/* Hover */
+background: var(--Surface-03);
+
+/* Selected/Active */
+background: var(--Surface-02);
+
+/* Focus */
+outline: 1px solid var(--Colors-Blue-100);
+```
+
+##### Floating Action Button (FAB)
+
+```css
+/* Small floating icon button */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18, 18, 18, 0.10);
+```
+
+**Size variants:**
+- **Small:** 32px × 32px (icon 16px)
+- **Medium:** 40px × 40px (icon 20px)
+- **Large:** 56px × 56px (icon 24px)
+
+---
+
+#### 2.11 Toggle Switch Buttons
+
+##### Icon Toggle (Single)
+
+```css
+/* Default */
+height: 40px;
+padding: 4px 10px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+background: transparent;
+
+/* Hover */
+box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.25);
+outline: 1px solid rgba(0,0,0,0.05);
+
+/* Active/Pressed */
+background: var(--Surface-01);
+box-shadow:
+  0px 1px 8px -4px rgba(0, 0, 0, 0.15),
+  inset 0px 0.5px 2px 0px rgba(0, 0, 0, 0.25);
+outline: 1px solid rgba(0,0,0,0.05);
+
+/* Focus */
+outline: 1.5px solid var(--Colors-Blue-100);
+
+/* Disabled */
+opacity: 0.5;
+```
+
+##### Multi-Icon Toggle Group
+
+```css
+/* Container - no background */
+display: flex;
+gap: 0;
+
+/* Item - default */
+height: 40px;
+padding: 4px 10px;
+border-radius: 12px;
+background: transparent;
+
+/* Item - hover */
+background: var(--Surface-03);
+
+/* Item - selected */
+background: var(--Surface-03);
+box-shadow: inset 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
+
+/* Item - focus */
+outline: 1.5px solid var(--Colors-Blue-100);
+```
+
+---
+
+#### 2.12 Link-Style Buttons
+
+**Text-only, no background:**
+
+```css
+/* Default */
+background: transparent;
+color: var(--color-primary);
+text-decoration: underline;
+text-decoration-style: dotted;
+
+/* Hover */
+color: var(--color-primary-hover);
+text-decoration-style: solid;
+
+/* Active */
+color: var(--color-primary-active);
+
+/* Disabled */
+opacity: 0.4;
+cursor: not-allowed;
+```
 
 ---
 
@@ -719,6 +1340,383 @@
 
 ---
 
+### 17. Indicator Badges
+
+#### Notification Count Badge
+
+**Small Badge (with number):**
+
+```css
+/* Container */
+padding: 14px 8px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+
+/* Text */
+font-size: 12px;
+font-weight: 600;
+color: var(--Text-Primary);
+```
+
+**States:**
+- **Default:** Outlined with stroke-02
+- **Hover:** `background: var(--Surface-02)`
+- **Focus:** `outline: 1px solid var(--Colors-Orange)`
+- **Active/Pressed:** `box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,0.15)`
+- **Disabled:** `opacity: 0.3`
+
+#### Status Indicator Badge
+
+**Color-coded status:**
+
+```css
+/* Container */
+padding: 12px 12px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Icon (colored) */
+width: 16px;
+height: 16px;
+fill: var(--Colors-Red); /* or stroke */
+
+/* Text */
+font-size: 12px;
+font-weight: 600;
+```
+
+**Icon Colors by State:**
+- Error/Alert: `var(--Colors-Red)` (#EF4444)
+- Warning: `var(--Colors-Orange)` (#EA580C)
+- Success: `var(--color-success)` (#10B981)
+- Info: `var(--Colors-Blue-Blue-100)` (#3582FF)
+
+---
+
+### 18. Notification Dot
+
+**Small circular indicator:**
+
+```css
+/* Red notification dot */
+width: 48px;
+height: 48px;
+background: var(--Colors-Red);
+border-radius: 8px 0 0 8px; /* Left rounded */
+display: flex;
+align-items: center;
+justify-content: center;
+
+/* Icon inside */
+width: 12px;
+height: 12px;
+fill: var(--Shade1-100); /* White */
+```
+
+**Usage:** Positioned on tabs, sidebar items, or buttons to indicate new notifications
+
+---
+
+### 19. Keyboard Shortcuts
+
+#### Shortcut Display Badge
+
+**Light background style:**
+
+```css
+/* Container */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0, 0, 0, 0.25),
+  0px 0px 0px 1px rgba(0, 0, 0, 0.11),
+  inset 0px -1px 0.6px 0px rgba(0, 0, 0, 0.20),
+  inset 0px 2px 0.8px 0px rgba(255, 255, 255, 0.27);
+font-size: 12px;
+font-weight: 500;
+color: var(--Text-Secondary);
+```
+
+**Example:** `⌘K`, `⌘Z`, `Esc`
+
+#### Nested Shortcut (Dark)
+
+```css
+/* Dark nested shortcut */
+min-width: 20px;
+padding: 2px 4px;
+background: #27272A;
+border-radius: 4px;
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.74);
+outline: 1px solid rgba(250, 250, 250, 0.05);
+font-size: 12px;
+font-weight: 500;
+color: #FAFAFA;
+```
+
+**Usage in Command Palette:**
+
+```html
+<div class="command-item">
+  <span>Copy prompt</span>
+</div>
+
+<div class="command-item">
+  <span>Undo</span>
+  <kbd class="shortcut-dark">⌘Z</kbd>
+</div>
+```
+
+---
+
+### 20. Reaction Components
+
+#### Emoji Reaction Button
+
+**Visual Style:**
+
+```css
+/* Container */
+padding: 6px 8px;
+border-radius: 8px;
+outline: 1px solid var(--Stroke-02);
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+/* Emoji */
+font-size: 12px;
+font-weight: 600;
+
+/* Count */
+font-size: 12px;
+font-weight: 600;
+color: var(--Text-Primary);
+```
+
+**States:**
+- **Default:** `outline: 1px solid var(--Stroke-02)`
+- **Hover:** `background: var(--Surface-03)`
+- **Active/Selected:** `background: var(--Surface-02)`
+- **Focus:** `outline: 1px solid var(--Colors-Blue-100)`
+- **Disabled:** `opacity: 0.3`
+
+**Example:** 👍 2, ❤️ 5, 🎉 1
+
+---
+
+### 21. Command Palette / Quick Action Buttons
+
+#### Dark Command Button
+
+```css
+/* Container */
+padding: 2px 4px 2px 4px;
+background: var(--Text-Primary);
+border-radius: 6px;
+box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.40);
+display: inline-flex;
+align-items: center;
+gap: 4px;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+color: var(--Shade-5-100);
+padding: 2px 4px;
+```
+
+**Nested Shortcut Inside:**
+```css
+/* Shortcut badge */
+min-width: 20px;
+padding: 2px 4px;
+background: #27272A;
+border-radius: 4px;
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.74);
+outline: 1px solid rgba(250, 250, 250, 0.05);
+```
+
+**Example:**
+```html
+<button class="command-button">
+  <span>Copy prompt</span>
+</button>
+
+<button class="command-button">
+  <span>Undo</span>
+  <kbd>⌘Z</kbd>
+</button>
+```
+
+---
+
+### 22. Checkbox & Radio Controls
+
+#### Standard Checkbox
+
+**Sizes:**
+
+| Size | Dimensions | Icon Size | Border Radius |
+|------|------------|-----------|---------------|
+| **XS** | 12px × 12px | 8px | 2px |
+| **SM** | 16px × 16px | 12px | 3px |
+| **MD** | 20px × 20px | 14px | 4px |
+
+**Visual States:**
+
+```css
+/* Unchecked */
+width: 20px;
+height: 20px;
+border: 1.5px solid var(--Stroke-02);
+border-radius: 4px;
+background: transparent;
+
+/* Unchecked Hover */
+background: var(--Surface-03);
+
+/* Checked */
+background: var(--Colors-Blue-Blue-100);
+border: none;
+/* Checkmark icon visible */
+
+/* Checked Hover */
+background: var(--Colors-Blue-2);
+
+/* Focus */
+outline: 2px solid var(--Colors-Blue-2);
+outline-offset: 2px;
+
+/* Disabled */
+opacity: 0.3;
+cursor: not-allowed;
+```
+
+#### Radio Button
+
+**Visual States:**
+
+```css
+/* Unchecked */
+width: 20px;
+height: 20px;
+border: 1.5px solid var(--Stroke-02);
+border-radius: 50%; /* Full circle */
+background: transparent;
+
+/* Checked */
+background: var(--Surface-01);
+border: 1.5px solid var(--Colors-Blue-Blue-100);
+/* Inner dot */
+position: relative;
+&::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--Colors-Blue-Blue-100);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+---
+
+### 23. Loading Spinners & Overlays
+
+#### Button Loading State
+
+**Small Spinner (inside button):**
+
+```css
+/* Spinner container */
+width: 40px;
+height: 40px;
+padding: 8px;
+border-radius: 10px;
+background: var(--Surface-03);
+display: flex;
+align-items: center;
+justify-content: center;
+
+/* Animated spinner icon */
+width: 20px;
+height: 20px;
+animation: spin 1s linear infinite;
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+```
+
+**With Text:**
+```css
+/* Button in loading state */
+opacity: 0.6;
+cursor: wait;
+pointer-events: none;
+
+/* Replace icon with spinner */
+```
+
+---
+
+### 24. Glass/Frosted UI Elements
+
+#### Glass Button
+
+```css
+/* Semi-transparent with blur */
+background: rgba(255, 255, 255, 0.4);
+backdrop-filter: blur(8px);
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(230, 230, 230, 1.00),
+  0px 3px 8px -2px rgba(0, 0, 0, 0.30),
+  inset 0px 1px 0px 0px rgba(255, 255, 255, 0.70);
+
+/* Hover */
+background: rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(12px);
+```
+
+**Usage:** Overlays, floating panels, modals
+
+---
+
+### 25. Icon Sizes Reference
+
+| Context | Icon Size | Stroke Width |
+|---------|-----------|--------------|
+| Small checkbox/radio | 12px | 1.5px |
+| Medium checkbox/radio | 16px | 1.5px |
+| Small button icon | 16px | 1.5px |
+| Standard button icon | 20px | 1.5px |
+| Large button icon | 24px | 1.5px |
+| Social login icon | 24px | N/A (filled) |
+| Badge/chip icon | 16px | 1.5px |
+| Empty state icon | 64px | 2px |
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
@@ -884,6 +1882,36 @@
 
 ---
 
-**Версия:** 1.0.0
+**Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
+
+---
+
+## Changelog
+
+### Version 2.0.0 (2025-11-18)
+
+**Добавлено:**
+- Детальная спецификация кнопок (12+ вариантов)
+- Состояния для всех interactive элементов
+- Destructive buttons (Delete/Remove)
+- Dark theme компоненты
+- Icon-only buttons (4 размера)
+- Toggle/Radio button groups
+- Social login buttons
+- Segmented controls
+- Tab-style buttons
+- Keyboard shortcut badges
+- Command palette components
+- Reaction buttons (emoji)
+- Indicator badges
+- Notification dots
+- Checkbox & Radio controls
+- Loading states
+- Glass/Frosted UI effects
+- Surface colors (--Surface-01, 02, 03)
+- Stroke colors (--Stroke-01, 02)
+- Accent colors (--Colors-Blue, Orange, Red)
+- Icon sizes reference table
+- 25 компонентов с детальными спецификациями
