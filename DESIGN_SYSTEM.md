@@ -7671,6 +7671,424 @@ background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 25
 
 ---
 
+### 47. Image Variations Panel / Image Detail Card
+
+Панель вариаций изображений с grid layout и карточка детальной информации об изображении.
+
+#### 47.1. Variations Panel Container
+
+```css
+/* Panel Container */
+width: 208px;
+background: rgba(var(--Shade1-95), 0.95);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 47.2. Variations Panel Header
+
+```css
+/* Header Container */
+width: 100%;
+padding: 12px 16px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Title */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Right Side Container */
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Counter Text */
+text-align: right;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Close/More Icon Button */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (X or dots) */
+width: 6px;
+height: 6px;
+left: 5.17px;
+top: 5.17px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 47.3. Variations Grid Container
+
+```css
+/* Grid Container */
+width: 100%;
+padding: 0px 16px 16px 16px;
+display: inline-flex;
+justify-content: start;
+align-items: start;
+gap: 8px;
+flex-wrap: wrap;
+align-content: start;
+```
+
+#### 47.4. Variation Thumbnail - Default State
+
+```css
+/* Thumbnail - Default */
+flex: 1;
+height: 80px;
+min-width: 64px;
+padding: 4px;
+border-radius: 12px;
+```
+
+#### 47.5. Variation Thumbnail - Hover State
+
+```css
+/* Thumbnail - Hover */
+flex: 1;
+height: 80px;
+min-width: 64px;
+padding: 4px;
+border-radius: 12px;
+box-shadow: inset 0px 0px 0px 3px rgba(252,252,252,1.00);
+border: 1.5px solid var(--Shade-6-100);
+```
+
+#### 47.6. Image Detail Card Container
+
+```css
+/* Card Container */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 32px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+overflow: hidden;
+```
+
+#### 47.7. Image Preview Container
+
+```css
+/* Preview Container */
+width: 384px;
+height: 384px;
+min-width: 256px;
+min-height: 256px;
+padding: 24px;
+background: var(--Surface-02);
+border-radius: 24px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Image Wrapper */
+width: 100%;
+height: 320px;
+position: relative;
+overflow: hidden;
+
+/* Image */
+width: 332px;
+height: 332px;
+left: 0;
+top: 0;
+position: absolute;
+```
+
+#### 47.8. Card Content Section
+
+```css
+/* Content Container */
+width: 100%;
+padding: 16px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 24px;
+```
+
+#### 47.9. Card Info Section
+
+```css
+/* Info Container */
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 12px;
+
+/* Title */
+width: 100%;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 18px;
+font-weight: 400;
+line-height: 28px;
+color: var(--Text-Primary);
+```
+
+#### 47.10. Metadata Row
+
+```css
+/* Metadata Container */
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 16px;
+
+/* Author Section */
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Avatar */
+width: 20px;
+height: 20px;
+position: relative;
+border-radius: 32px;
+
+/* Username */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Date Section */
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Calendar Icon Container */
+width: 20px;
+height: 20px;
+position: relative;
+border-radius: 32px;
+overflow: hidden;
+
+/* Calendar Icon */
+width: 16px;
+height: 16px;
+left: 2px;
+top: 2px;
+position: absolute;
+opacity: 0.7;
+overflow: hidden;
+
+/* Icon Shape */
+width: 12px;
+height: 12px;
+left: 1.83px;
+top: 1.83px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Date Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+#### 47.11. Action Buttons Row
+
+```css
+/* Actions Container */
+width: 100%;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Icon Button */
+width: 40px;
+height: 40px;
+padding: 8px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies by action) */
+width: 16px;
+height: 16px;
+left: 2.47px;
+top: 1.25px;
+position: absolute;
+background: black;
+
+/* Primary Button (Copy link) */
+flex: 1;
+padding: 10px 24px;
+background: linear-gradient(180deg, rgb(229, 229, 229) 0%, rgb(229, 229, 229) 100%);
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+text-align: center;
+color: var(--Text-Primary);
+```
+
+#### 47.12. Component Dimensions Summary
+
+| Component | Width | Height | Border Radius | Padding |
+|-----------|-------|--------|---------------|---------|
+| **Variations Panel** | 208px | auto | 20px | 16px (sides), 12px (top) |
+| **Variation Thumbnail** | flex: 1, min 64px | 80px | 12px | 4px |
+| **Image Card** | auto (384px image) | auto | 32px | 8px |
+| **Image Preview** | 384×384px (min 256×256) | - | 24px | 24px |
+| **Icon Button** | 40×40px | - | 10px | 8px |
+| **Copy Button** | flex: 1 | 40px | 12px | 10px 24px |
+
+#### 47.13. Variations Grid Layout
+
+| Breakpoint | Columns | Gap | Thumbnail Width |
+|------------|---------|-----|-----------------|
+| **Default (208px)** | 2 columns | 8px | ~84px (flex: 1) |
+| **Wrap** | 2×2 grid | 8px | min-width: 64px |
+
+#### 47.14. Usage Guidelines
+
+**Variations Panel:**
+- Use Shade1-95 with 95% opacity for semi-transparent background
+- Backdrop blur: 6px for glassmorphism effect
+- Panel width: 208px (fixed)
+- Grid: 2 columns with 8px gap
+- Thumbnails: flex: 1, min-width 64px, height 80px
+- Default thumbnail: 4px padding, 12px border-radius
+- Hover thumbnail: inset white border 3px + Shade-6-100 border 1.5px
+- Counter format: "2 of 4" in Text-Secondary
+
+**Image Detail Card:**
+- Container padding: 8px
+- Border-radius: 32px for outer card
+- Image preview: 384×384px (responsive min 256×256)
+- Preview background: Surface-02
+- Preview border-radius: 24px
+- Preview outline: 1px solid Stroke-01
+
+**Card Content:**
+- Padding: 16px
+- Gap between sections: 24px
+- Title: 18px normal weight, line-height 28px
+- Author section: 20×20px avatar + username (semibold)
+- Date section: calendar icon + date text (medium)
+
+**Action Buttons:**
+- Icon buttons: 40×40px, 8px padding, Stroke-02 outline
+- Primary button: flex: 1, 10px 24px padding
+- Gap between buttons: 8px
+- Button text: 14px semibold
+
+**Thumbnail States:**
+- Default: no border, 4px padding
+- Hover: inset 3px white shadow + 1.5px Shade-6-100 border
+- Selected: similar to hover (can add additional styling)
+
+**Metadata:**
+- Avatar: 20×20px circle
+- Calendar icon: 16×16px in 20×20px container, 70% opacity
+- Username: 12px semibold, Text-Primary
+- Date: 12px medium, Text-Secondary
+- Gap between author and date: 16px
+
+**Interactive States:**
+- Thumbnails scale/highlight on hover
+- Icon buttons have hover/active states
+- Copy button has hover/pressed states
+- Close button in panel header dismisses panel
+
+**Image Preview:**
+- Centered within container
+- Surface-02 background for contrast
+- 1px outline for definition
+- Image scales to fit container
+- Maintains aspect ratio
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
