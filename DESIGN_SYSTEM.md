@@ -8089,6 +8089,796 @@ color: var(--Text-Primary);
 
 ---
 
+### 48. Settings Panel / Preferences
+
+Панель настроек с sidebar navigation, toggle switches, dropdowns и subscription card.
+
+#### 48.1. Settings Panel Container
+
+```css
+/* Panel Container */
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 48.2. Sidebar Navigation
+
+```css
+/* Sidebar Container */
+width: 176px;
+align-self: stretch;
+padding: 12px;
+background: var(--Surface-01);
+border-right: 1px solid var(--Stroke-01);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 2px;
+```
+
+#### 48.3. Sidebar Item - Active State
+
+```css
+/* Item Container - Active */
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container - Active */
+padding: 6px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape - Active */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.39px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Label */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 48.4. Sidebar Item - Default State
+
+```css
+/* Item Container - Default */
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container - Default */
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon Shape - Default */
+outline-color: var(--Text-Secondary);
+
+/* Label */
+/* Same as active */
+```
+
+#### 48.5. Content Area
+
+```css
+/* Content Container */
+width: 384px;
+padding-bottom: 80px;
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+```
+
+#### 48.6. Content Header
+
+```css
+/* Header Container */
+width: 100%;
+padding: 16px 24px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 5px;
+
+/* Title */
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 18px;
+font-weight: 500;
+line-height: 24px;
+color: var(--Text-Primary);
+```
+
+#### 48.7. Settings Row - Simple (Label + Value + Edit)
+
+```css
+/* Row Container */
+width: 100%;
+padding: 16px 24px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+width: 56px;
+height: 24px;
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Value Container */
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Value Text */
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Edit Icon */
+width: 16px;
+height: 16px;
+position: relative;
+
+/* Icon Shape */
+width: 12px;
+height: 12px;
+left: 2px;
+top: 2px;
+position: absolute;
+overflow: hidden;
+
+/* Icon Detail */
+width: 10px;
+height: 10px;
+left: 1.38px;
+top: 1.41px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 48.8. Settings Row - Disabled (Grayed Value)
+
+```css
+/* Value Text - Disabled */
+opacity: 0.3;
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* No edit icon */
+```
+
+#### 48.9. Settings Row - Toggle Switch
+
+```css
+/* Row Container */
+width: 100%;
+padding: 16px 24px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 48.10. Toggle Switch - ON State
+
+```css
+/* Toggle Container - ON */
+width: 40px;
+padding: 2px;
+background: rgba(var(--Shade-9-70), 0.7);
+border-radius: 24px;
+box-shadow: inset 0px 1px 0.6px 0px rgba(18,18,18,0.30);
+display: flex;
+justify-content: flex-end;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Toggle Knob */
+width: 16px;
+height: 16px;
+position: relative;
+background: var(--Surface-02);
+border-radius: 24px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px 0px rgba(0,0,0,0.25),
+  inset 0px 1px 0.5px 0px rgba(255,255,255,0.82);
+```
+
+#### 48.11. Toggle Switch - OFF State
+
+```css
+/* Toggle Container - OFF */
+width: 40px;
+padding: 2px;
+background: var(--Shade-4-100);
+border-radius: 24px;
+box-shadow: inset 0px 0px 1px 0.5px rgba(18,18,18,0.10);
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Toggle Knob - Same as ON */
+```
+
+#### 48.12. Settings Row - Dropdown
+
+```css
+/* Row Container */
+width: 100%;
+padding: 16px 24px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Dropdown */
+width: 128px;
+padding: 10px 12px 10px 12px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Dropdown Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 6px;
+
+/* Dropdown Text */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+left: 5.33px;
+top: 6.67px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 48.13. Settings Row - With Description (Avatar Upload)
+
+```css
+/* Row Container */
+width: 100%;
+padding: 16px 24px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 48px;
+
+/* Description Container */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+gap: 8px;
+
+/* Label */
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Description Text */
+width: 100%;
+opacity: 0.8;
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Avatar */
+width: 48px;
+height: 48px;
+position: relative;
+border-radius: 32px;
+```
+
+#### 48.14. Settings Row - With Button
+
+```css
+/* Row Container */
+width: 100%;
+padding: 16px 24px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 48px;
+
+/* Description Container */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+gap: 8px;
+
+/* Button */
+padding: 10px 24px;
+background: linear-gradient(180deg, rgb(229, 229, 229) 0%, rgb(229, 229, 229) 100%);
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+text-align: center;
+color: var(--Text-Primary);
+```
+
+#### 48.15. Subscription Card Container
+
+```css
+/* Card Section */
+width: 100%;
+padding: 12px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+
+/* Header Row */
+width: 100%;
+padding: 16px 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Header Text */
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Info Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 12px;
+height: 14px;
+left: 4.07px;
+top: 2.29px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 48.16. Pricing Card
+
+```css
+/* Card Container */
+width: 100%;
+border-radius: 20px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+
+/* Pricing Section */
+width: 100%;
+padding: 12px;
+background: var(--Surface-02);
+border-radius: 20px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00),
+  inset 0px 2px 2px 0px rgba(255,255,255,0.80);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 8px;
+overflow: hidden;
+```
+
+#### 48.17. Price Display
+
+```css
+/* Price Container */
+width: 384px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Amount Container */
+display: flex;
+justify-content: start;
+align-items: center;
+
+/* Currency Symbol */
+width: 20px;
+height: 48px;
+position: relative;
+
+/* Symbol */
+left: 2px;
+top: 4px;
+position: absolute;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 24px;
+font-weight: 500;
+line-height: 32px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+
+/* Amount */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 36px;
+font-weight: 400;
+line-height: 48px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+
+/* Period Text */
+justify-center: center;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+#### 48.18. Action Buttons Row (Cancel/Upgrade)
+
+```css
+/* Buttons Container */
+width: 100%;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Cancel Button */
+flex: 1;
+padding: 10px 24px;
+background: linear-gradient(180deg, rgb(229, 229, 229) 0%, rgb(229, 229, 229) 100%);
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Upgrade Button */
+flex: 1;
+height: 40px;
+padding: 8px 20px;
+background: linear-gradient(180deg, var(--Shade-7-100) 0%, var(--Shade-8-100) 100%);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+text-align: center;
+color: rgb(250, 250, 250); /* neutral-50 */
+```
+
+#### 48.19. Feature List
+
+```css
+/* Features Container */
+width: 100%;
+padding: 12px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 8px;
+
+/* Feature Item */
+width: 100%;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Checkmark Icon Container */
+padding: 2px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Checkmark Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Checkmark Shape */
+width: 10px;
+height: 8px;
+left: 3px;
+top: 4px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Feature Text */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 48.20. Settings Row Types Summary
+
+| Type | Left Side | Right Side | Border |
+|------|-----------|------------|--------|
+| **Simple** | Label (12px medium) | Value + Edit icon | Top 1px |
+| **Disabled** | Label | Grayed value (30% opacity) | Top 1px |
+| **Toggle** | Label | Toggle switch (40px) | Top 1px |
+| **Dropdown** | Label | Dropdown (128px) | Top 1px |
+| **Avatar** | Label + description | 48×48px avatar | Top 1px |
+| **Button** | Label + description | Action button | Top 1px |
+
+#### 48.21. Toggle Switch States
+
+| State | Background | Knob Position | Shadow |
+|-------|-----------|---------------|--------|
+| **ON** | Shade-9-70 70% opacity | Right (justify-end) | Inset dark |
+| **OFF** | Shade-4-100 | Left (justify-start) | Inset light |
+
+#### 48.22. Usage Guidelines
+
+**Settings Panel Layout:**
+- Sidebar: 176px width, 12px padding, border-right
+- Content: 384px width, 80px bottom padding
+- Container border-radius: 24px
+- Sidebar items gap: 2px
+
+**Sidebar Navigation:**
+- Active state: Surface-03 background + Stroke-01 outline + elevated icon
+- Default state: transparent background + no icon elevation
+- Icon container (active): Surface-01 + 4px shadow + 8px border-radius
+- Icon size: 20×20px
+- Label: 12px semibold, truncate with ellipsis
+- Item height: 40px
+
+**Content Header:**
+- Padding: 16px 24px
+- Title: 18px medium weight, line-height 24px
+- Gap: 5px
+
+**Settings Rows:**
+- Padding: 16px 24px
+- Border-top: 1px solid Stroke-01 for all rows
+- Label: 12px medium weight
+- Value: 12px medium weight
+- Gap between description rows: 48px
+
+**Toggle Switch:**
+- Width: 40px
+- Knob: 16×16px circle
+- Container padding: 2px
+- Border-radius: 24px (full circle)
+- ON: dark background (Shade-9-70 70%), knob on right
+- OFF: light background (Shade-4-100), knob on left
+- Knob shadows: multi-layer for elevation
+
+**Dropdown:**
+- Width: 128px
+- Padding: 10px 12px
+- Background: Surface-03
+- Outline: 1px solid Stroke-01
+- Chevron: 6×2.39px
+- Border-radius: 10px
+
+**Subscription Card:**
+- Container: 20px border-radius, Stroke-02 outline
+- Pricing section: Surface-02 background, inset white shadow
+- Price display: $20 (36px amount) + USD/month (12px)
+- Currency symbol: 24px, Text-Secondary
+- Buttons: Cancel (light) + Upgrade (dark), flex: 1 each
+- Features: checkmark icon (10×8px) + text (12px medium)
+- Feature items gap: 8px
+
+**Edit Icon:**
+- Size: 12×12px in 16×16px container
+- Color: Text-Secondary
+- Outline: 1.5px
+
+**Disabled State:**
+- Opacity: 0.3
+- No edit icon
+- Same text styling
+
+**Avatar Upload:**
+- Avatar: 48×48px circle
+- Description: 80% opacity, Text-Secondary
+- Label + description vertical gap: 8px
+
+**Action Buttons:**
+- Medium size: 10px 24px padding
+- Border-radius: 12px
+- Text: 14px semibold
+- Light button: neutral-200 gradient
+- Dark button: Shade-7 → Shade-8 gradient
+
+**Pricing Card Features:**
+- Checkmark icon: 16×16px container, 10×8px shape
+- Feature text: 12px medium, Text-Primary
+- Vertical gap: 8px between features
+- Padding: 12px for features section
+
+**Interactive States:**
+- Sidebar items change icon color/elevation on active
+- Toggle switches animate knob position
+- Dropdowns expand on click
+- Edit icons trigger inline editing
+- Buttons have hover/pressed states
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
