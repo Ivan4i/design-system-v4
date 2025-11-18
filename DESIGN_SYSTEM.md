@@ -1717,6 +1717,1032 @@ backdrop-filter: blur(12px);
 
 ---
 
+### 26. Pricing / Plan Cards
+
+#### Card Structure
+
+**Container:**
+```css
+width: 320px;
+background: var(--Surface-03);
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+**Header:**
+```css
+padding: 12px 24px;
+border-radius: 20px;
+
+/* Title */
+font-size: 20px;
+font-weight: 500;
+line-height: 28px;
+color: var(--Text-Primary);
+```
+
+**Content Container:**
+```css
+padding: 12px;
+background: var(--Surface-01);
+border-radius: 20px;
+outline: 1px solid var(--Stroke-02);
+display: flex;
+flex-direction: column;
+gap: 12px;
+```
+
+**Description:**
+```css
+padding: 12px;
+font-size: 16px;
+line-height: 24px;
+color: var(--Text-Primary);
+```
+
+**Pricing Section:**
+```css
+padding: 12px;
+background: var(--Surface-02);
+border-radius: 20px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00),
+  inset 0px 2px 2px 0px rgba(255,255,255,0.80);
+outline: 1px solid var(--Stroke-02);
+gap: 8px;
+```
+
+**Price Display:**
+```css
+/* Dollar sign */
+font-size: 24px;
+font-weight: 500;
+line-height: 32px;
+color: var(--Text-Secondary);
+
+/* Amount */
+font-size: 36px;
+font-weight: 400;
+line-height: 48px;
+color: var(--Text-Primary);
+
+/* Period */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**CTA Button:**
+- Standard button (default state or disabled)
+- Dark theme button for premium plans
+
+**Feature List:**
+```css
+padding: 8px 12px 12px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+
+/* Feature Item */
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Checkmark Icon */
+width: 16px;
+height: 16px;
+padding: 2px;
+stroke-width: 1.5px;
+color: var(--Text-Primary);
+
+/* Feature Text */
+font-size: 12px;
+line-height: 20px;
+color: var(--Text-Primary);
+```
+
+#### Premium Plan Variant (with gradient)
+
+```css
+background: linear-gradient(to left, rgba(2, 6, 23, 0.2), rgba(0, 0, 0, 0));
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+
+/* Header Text Color */
+color: var(--Shade1-100); /* White */
+```
+
+#### Shortened Plan Variant (Compact)
+
+```css
+/* Same structure but reduced height */
+padding: 12px; /* header reduced */
+/* No description section */
+height: 478px; /* instead of full height */
+```
+
+---
+
+### 27. Image Thumbnail Grid
+
+#### Horizontal Scrollable Thumbnails
+
+**Container:**
+```css
+display: inline-flex;
+gap: 10px;
+overflow-x: auto;
+
+/* Gradient Fade Edges */
+position: relative;
+
+/* Left fade */
+&::before {
+  width: 56px;
+  height: 48px;
+  position: absolute;
+  left: 52px;
+  transform: rotate(90deg);
+  background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Right fade */
+&::after {
+  width: 56px;
+  height: 48px;
+  position: absolute;
+  right: 0;
+  transform: rotate(90deg);
+  background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+```
+
+**Thumbnail Item:**
+```css
+/* Default */
+width: 52px;
+height: 52px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+overflow: hidden;
+
+/* Hover */
+outline: 1px solid var(--Stroke-02);
+
+/* Active/Selected */
+padding: 4px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+```
+
+#### Vertical Scrollable Thumbnails
+
+```css
+display: inline-flex;
+flex-direction: column;
+gap: 10px;
+overflow-y: auto;
+
+/* Top fade */
+&::before {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
+  backdrop-filter: blur(6px);
+}
+
+/* Bottom fade */
+&::after {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
+  backdrop-filter: blur(6px);
+}
+```
+
+---
+
+### 28. Product / Asset Cards
+
+#### Compact Product Card
+
+**Structure:**
+```css
+min-width: 256px;
+width: 288px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 24px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+gap: 8px;
+```
+
+**Image:**
+```css
+height: 210px;
+border-radius: 16px;
+object-fit: cover;
+```
+
+**Content:**
+```css
+padding: 12px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Title */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Subtitle */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.8;
+```
+
+**States:**
+
+1. **Default**
+   - Outline: `1px solid var(--Stroke-01)`
+
+2. **Hover**
+   - Shadow: Multi-layer elevation
+   - Outline: `1px solid var(--color-gray-200)`
+   - Backdrop-filter: `blur(6px)`
+
+3. **Loading (Skeleton)**
+   - Image: `background: var(--Surface-02); border-radius: 16px`
+   - Title: `width: 128px; height: 8px; background: var(--Surface-03); border-radius: 2px`
+   - Subtitle: `width: 64px; height: 8px; background: var(--Surface-03); border-radius: 2px`
+
+---
+
+### 29. Media Preview Cards
+
+#### Large Image Card (256px)
+
+**Container:**
+```css
+min-width: 256px;
+width: 256px;
+height: 256px;
+padding: 24px;
+background: var(--Surface-03);
+border-radius: 20px;
+position: relative;
+overflow: hidden;
+```
+
+**Image:**
+```css
+width: 208px;
+height: 208px;
+object-fit: cover;
+```
+
+**Bookmark Icon (Top-Right):**
+```css
+position: absolute;
+top: 8px;
+right: 8px;
+padding: 12px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--color-zinc-300);
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Primary);
+```
+
+**Bottom Gradient Overlay:**
+```css
+position: absolute;
+bottom: 0;
+left: 0;
+width: 256px;
+padding: 48px 8px 8px;
+background: linear-gradient(to bottom, rgba(23,23,23,0), rgba(23,23,23,0), rgba(23,23,23,0.3));
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+```
+
+**Action Buttons (in overlay):**
+```css
+/* Download Button */
+padding: 12px;
+border-radius: 12px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+color: var(--Shade1-100); /* White */
+
+/* Share Button */
+padding: 12px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+gap: 6px;
+
+/* Icon + Text */
+width: 16px;
+height: 16px;
+color: var(--Shade1-100);
+
+/* Text */
+font-size: 14px;
+font-weight: 600;
+color: var(--Shade1-100);
+```
+
+**Hover State:**
+```css
+/* Add checkmark icon overlay */
+position: absolute;
+top: 8px;
+right: 8px;
+background: var(--Shade1-15/20); /* Semi-transparent white */
+border-radius: 10px;
+outline: 1px solid rgba(250, 250, 250, 0.25);
+```
+
+#### Default State (No Overlay)
+
+```css
+background: var(--Surface-02);
+outline: 1px solid var(--Stroke-01);
+/* No gradient overlay */
+/* No action buttons visible */
+```
+
+---
+
+### 30. Category / Tag Cards
+
+#### Horizontal Card with Icon
+
+**Structure:**
+```css
+padding: 4px 12px 4px 4px;
+background: var(--Surface-02);
+border-radius: 20px;
+outline: 1px solid var(--Stroke-01);
+display: inline-flex;
+align-items: center;
+gap: 12px;
+```
+
+**Icon Container:**
+```css
+width: 64px;
+height: 64px;
+padding: 8px;
+border-radius: 12px;
+box-shadow:
+  0px 12px 12px -5px rgba(0,0,0,0.25),
+  0px 0px 2px 0px rgba(0,0,0,0.08),
+  0px 0px 0px 1px rgba(236,236,236,1.00),
+  inset 0px 0px 1px 1px rgba(255,255,255,0.35);
+overflow: hidden;
+```
+
+**Text Content:**
+```css
+width: 128px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Title */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Subtitle */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+opacity: 0.8;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+**Hover State:**
+```css
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-02);
+backdrop-filter: blur(6px);
+
+/* Checkmark icon appears */
+position: absolute;
+top: 17px;
+right: 0;
+width: 32px;
+height: 32px;
+```
+
+---
+
+### 31. Aspect Ratio Selector
+
+#### Ratio Buttons
+
+**Default Ratio (Text Label):**
+```css
+min-width: 56px;
+width: 56px;
+height: 56px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 5px;
+
+/* Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Image Preview:**
+```css
+min-width: 56px;
+width: 56px;
+height: 56px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+
+/* Image inside */
+width: 44px;
+height: 44px;
+object-fit: cover;
+```
+
+**Just Image (No Border):**
+```css
+width: 60px;
+height: 60px;
+border-radius: 10px;
+object-fit: cover;
+/* No outline */
+```
+
+**Selected State:**
+```css
+background: var(--Surface-01);
+box-shadow: inset 0px 0px 0px 2px rgba(252, 252, 252, 1.00);
+outline: 1px solid rgba(39, 39, 42, 0.5); /* zinc-800/50 */
+
+/* Dark theme badge */
+position: absolute;
+top: 1px;
+right: 1px;
+width: 20px;
+height: 20px;
+background: linear-gradient(to bottom, #27272A, #18181B);
+border-radius: 50%;
+```
+
+---
+
+### 32. Media Overlay Controls
+
+#### Bottom Overlay Bar
+
+**Container:**
+```css
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+padding: 12px;
+background: linear-gradient(to bottom,
+  rgba(23,23,23,0),
+  rgba(23,23,23,0),
+  rgba(23,23,23,0.25));
+backdrop-filter: blur(6.65px);
+display: flex;
+justify-content: space-between;
+align-items: center;
+```
+
+**Author Info:**
+```css
+padding: 10px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Text */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Shade1-100); /* White */
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+**Action Icons:**
+```css
+display: flex;
+gap: 4px;
+
+/* Icon Button */
+padding: 10px;
+border-radius: 10px;
+
+/* Hover/Active */
+background: rgba(254, 254, 254, 0.2); /* Shade1-15/20 */
+outline: 1px solid rgba(250, 250, 250, 0.25);
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+---
+
+### 33. Asset Library Panel
+
+#### Panel Container
+
+**Structure:**
+```css
+width: 240px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+#### Tab Switcher (Segmented Control)
+
+**Container:**
+```css
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+
+/* Inner Container */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 1.9px 0px rgba(50,50,50,0.10);
+outline: 1px solid var(--Stroke-02);
+display: flex;
+```
+
+**Tab Item (Inactive):**
+```css
+flex: 1;
+padding: 8px 12px;
+border-radius: 8px;
+
+/* Text */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Tab Item (Active):**
+```css
+flex: 1;
+padding: 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+
+/* Text */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### Section Header (Collapsible)
+
+**Container:**
+```css
+width: 240px;
+height: 48px;
+padding: 12px 16px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Title */
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron Icon */
+padding: 4px;
+border-radius: 6px;
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+```
+
+#### Asset Grid
+
+**Container:**
+```css
+width: 240px;
+padding: 0 16px 16px;
+display: inline-flex;
+flex-wrap: wrap;
+gap: 8px;
+```
+
+**Asset Item (3D Object):**
+```css
+flex: 1;
+height: 96px;
+min-width: 96px;
+background: var(--Surface-03);
+border-radius: 16px;
+position: relative;
+overflow: hidden;
+
+/* Image */
+width: 88px;
+height: 88px;
+position: absolute;
+top: 6px;
+left: 6px;
+```
+
+**Asset Item (Material):**
+```css
+flex: 1;
+height: 96px;
+min-width: 96px;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 16px;
+position: relative;
+
+/* Image */
+width: 64px;
+height: 64px;
+position: absolute;
+top: 18px;
+left: 18px;
+```
+
+**Blur Effect (for collapsed sections):**
+```css
+filter: blur(8px);
+height: 320px;
+overflow: hidden;
+```
+
+#### Search Bar (Bottom)
+
+**Container:**
+```css
+padding: 12px;
+background: var(--Surface-01);
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+gap: 4px;
+```
+
+**Search Input:**
+```css
+width: 208px;
+height: 40px;
+padding: 4px 10px 4px 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Icon */
+width: 32px;
+height: 32px;
+padding: 8px;
+border-radius: 8px;
+
+/* Icon inside */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Placeholder Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Keyboard Shortcut Badge */
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.11),
+  inset 0px -1px 0.6px 0px rgba(0,0,0,0.20),
+  inset 0px 2px 0.8px 0px rgba(255,255,255,0.27);
+font-size: 12px;
+font-weight: 500;
+color: var(--Text-Secondary);
+```
+
+---
+
+### 34. Article / Blog Layout
+
+#### Header Section
+
+**Container:**
+```css
+display: inline-flex;
+flex-direction: column;
+gap: 6px;
+```
+
+**Title:**
+```css
+font-size: 20px;
+font-weight: 500;
+line-height: 28px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
+**Date/Metadata:**
+```css
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
+#### Content Section
+
+**Container:**
+```css
+display: flex;
+flex-direction: column;
+gap: 32px;
+```
+
+**Featured Image/Screenshot:**
+```css
+width: 692px;
+height: 470px;
+background: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+border-radius: 32px;
+position: relative;
+overflow: hidden;
+```
+
+**Body Text:**
+```css
+/* Bold Text */
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+color: var(--Text-Primary);
+
+/* Normal Text */
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+color: var(--Text-Primary);
+
+/* List items with line breaks */
+display: block;
+```
+
+**Layout Grid:**
+```css
+display: inline-flex;
+gap: 128px;
+
+/* Sidebar (left) */
+width: 224px;
+
+/* Content (right) */
+flex: 1;
+```
+
+---
+
+### 35. Gradient Overlays & Effects
+
+#### Dark Gradient Overlay (Bottom)
+
+```css
+background: linear-gradient(to bottom,
+  rgba(23, 23, 23, 0),
+  rgba(23, 23, 23, 0),
+  rgba(23, 23, 23, 0.3));
+```
+
+#### Light Gradient Overlay (Premium Card)
+
+```css
+background: linear-gradient(to left,
+  rgba(2, 6, 23, 0.2),
+  rgba(0, 0, 0, 0));
+backdrop-filter: blur(6px);
+```
+
+#### Fade Edge Gradients (Scrollable)
+
+**Horizontal:**
+```css
+/* Left */
+background: linear-gradient(to bottom,
+  rgba(250, 250, 250, 0),
+  rgba(250, 250, 250, 1));
+backdrop-filter: blur(6px);
+
+/* Right */
+background: linear-gradient(to bottom,
+  rgba(250, 250, 250, 0),
+  rgba(250, 250, 250, 1));
+backdrop-filter: blur(6px);
+```
+
+**Vertical:**
+```css
+/* Top */
+background: linear-gradient(to bottom,
+  rgba(250, 250, 250, 0),
+  rgba(250, 250, 250, 1));
+backdrop-filter: blur(6px);
+
+/* Bottom */
+background: linear-gradient(to bottom,
+  rgba(250, 250, 250, 0),
+  rgba(250, 250, 250, 1));
+backdrop-filter: blur(6px);
+```
+
+---
+
+### 36. Multi-Layer Shadows (Elevation System)
+
+#### Level 1 (Subtle)
+
+```css
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+```
+
+#### Level 2 (Medium)
+
+```css
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+```
+
+#### Level 3 (High)
+
+```css
+box-shadow:
+  0px 16px 32px -24px rgba(0,0,0,0.62),
+  0px 80px 64px -64px rgba(0,0,0,0.20),
+  0px 12px 11.1px -12px rgba(0,0,0,0.15);
+```
+
+**Usage:**
+- Level 1: Thumbnails, subtle cards
+- Level 2: Hover states, modals, panels
+- Level 3: Premium cards, floating elements
+
+---
+
+### 37. Text Truncation & Line Clamping
+
+#### Single Line Truncation
+
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### Multi-Line Truncation (WebKit)
+
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2; /* Number of lines */
+-webkit-box-orient: vertical;
+```
+
+**Common use cases:**
+- 1 line: Titles in compact cards
+- 2 lines: Headers, section titles
+- 3 lines: Descriptions
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
