@@ -6123,6 +6123,470 @@ color: var(--Text-Primary);
 
 ---
 
+### 44. Dropdown Menus with Sections / List Menus
+
+Выпадающие меню с секциями, иконками, клавиатурными сокращениями и различные типы popup меню.
+
+#### 44.1. Dropdown Menu Container (with backdrop blur)
+
+```css
+/* Menu Container */
+width: 176px;
+background: var(--Shade1-100);
+border-radius: 16px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 44.2. Menu Section
+
+```css
+/* Section Container */
+width: 100%;
+padding: 8px;
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+```
+
+#### 44.3. Menu Item - Active State (with hidden icon & shortcut)
+
+```css
+/* Menu Item - Active */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Icon Container (visible on active) */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Folder) */
+width: 10px;
+height: 8px;
+left: 3px;
+top: 4px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut Badge (hidden by default - opacity: 0) */
+width: 32px;
+padding: 2px 6px;
+opacity: 0;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Shortcut Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+color: var(--Text-Secondary);
+```
+
+#### 44.4. Menu Item - Hover State
+
+```css
+/* Menu Item - Hover */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 6px;
+background: var(--Surface-03);
+border-radius: 10px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Icon Container (hidden - opacity: 0) */
+padding: 4px;
+opacity: 0;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 10px;
+height: 8px;
+left: 3px;
+top: 4px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut Badge (hidden - opacity: 0) */
+width: 32px;
+padding: 2px 6px;
+opacity: 0;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+#### 44.5. Menu Item - Default State
+
+```css
+/* Menu Item - Default */
+width: 100%;
+height: 36px;
+padding: 6px 8px 6px 6px;
+border-radius: 10px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Icon Container (hidden - opacity: 0) */
+padding: 4px;
+opacity: 0;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut Badge (hidden - opacity: 0) */
+opacity: 0;
+```
+
+#### 44.6. Section Divider
+
+```css
+/* Divider Section */
+width: 100%;
+padding: 8px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+```
+
+#### 44.7. Popup Menu Container (elevated style with inset border)
+
+```css
+/* Popup Container */
+width: 208px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 4px 10px 0px rgba(0,0,0,0.06),
+  0px 18px 18px 0px rgba(0,0,0,0.05),
+  0px 39px 24px 0px rgba(0,0,0,0.03),
+  0px 70px 28px 0px rgba(0,0,0,0.01),
+  0px 110px 31px 0px rgba(0,0,0,0.00),
+  inset 0px 0px 0px 2px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 44.8. Single-line Menu Item with Icon - Default
+
+```css
+/* Item Container */
+width: 192px;
+height: 40px;
+padding: 8px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 10px;
+
+/* Icon Container */
+padding: 2px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Image) */
+width: 14px;
+height: 14px;
+left: 3.12px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape (Document) */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape (File) */
+width: 12px;
+height: 16px;
+left: 3.96px;
+top: 2.29px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Text */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 44.9. Two-line Menu Item - Default
+
+```css
+/* Item Container */
+width: 100%;
+padding: 12px;
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+gap: 4px;
+
+/* Title */
+width: 100%;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Subtitle */
+width: 100%;
+opacity: 0.7;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 44.10. Two-line Menu Item - Hover
+
+```css
+/* Item Container - Hover */
+width: 100%;
+padding: 12px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+gap: 4px;
+
+/* Rest matches default state */
+```
+
+#### 44.11. Menu Item States Summary
+
+| Состояние | Фон | Icon Opacity | Shortcut Opacity | Padding |
+|-----------|-----|--------------|------------------|---------|
+| **Default** | Transparent | 0 (hidden) | 0 (hidden) | 6px 8px 6px 6px |
+| **Hover** | Surface-03 | 0 (hidden) | 0 (hidden) | 6px 8px 6px 6px |
+| **Active** | Transparent | 1 (visible) | 0 (hidden) | 6px 8px 6px 6px |
+
+#### 44.12. Icon Types in Menus
+
+**Folder Icon:**
+- Width: 10px, Height: 8px
+- Position: left 3px, top 4px
+- Outline: 1.5px solid Text-Secondary
+
+**Image Icon (Square):**
+- Width: 14px, Height: 14px
+- Position: left 3.12px, top 3.12px
+- Outline: 1.5px solid Text-Secondary
+
+**Document Icon:**
+- Width: 14px, Height: 16px
+- Position: left 3.12px, top 2.51px
+- Outline: 1.5px solid Text-Secondary
+
+**File Icon (Narrow):**
+- Width: 12px, Height: 16px
+- Position: left 3.96px, top 2.29px
+- Outline: 1.5px solid Text-Secondary
+
+#### 44.13. Usage Guidelines
+
+**Dropdown Menus with Sections:**
+- Use backdrop-filter: blur(6px) for floating menus
+- Divide sections with border-top: 1px solid Stroke-01
+- Icons are hidden by default (opacity: 0), visible only on active state
+- Keyboard shortcuts hidden by default (opacity: 0)
+- Show icons only for visual feedback on active state, not on hover
+- 16px border-radius for menu container
+- 10px border-radius for menu items
+
+**Popup Menus (Elevated Style):**
+- Use Surface-01 background (not Shade1-100)
+- Add inset 2px white border for elevation effect
+- Use Stroke-02 for outline (stronger than Stroke-01)
+- 20px border-radius for container
+- 12px border-radius for items
+- Multi-layer shadows for elevation
+
+**Single-line Items:**
+- Use with icons for different file types
+- Icon padding: 2px
+- Item padding: 8px
+- Height: 40px
+- Gap between icon and text: 10px
+
+**Two-line Items:**
+- Padding: 12px
+- Title in Text-Primary, weight 500
+- Subtitle in Text-Secondary with 70% opacity
+- Subtitle truncates with ellipsis
+- Gap between lines: 4px
+- Hover state adds Surface-03 background
+
+**Interactive Behavior:**
+- Icons appear only when item becomes active
+- Shortcuts remain hidden (can be shown on hover if needed)
+- Hover adds background but keeps icon hidden
+- Use overflow: hidden and text-overflow: ellipsis for long text
+
+**Menu Container Variations:**
+- **Backdrop blur style**: Shade1-100 + blur(6px) + lighter shadows
+- **Elevated style**: Surface-01 + inset white border + stronger shadows + no blur
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
