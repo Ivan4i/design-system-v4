@@ -6587,6 +6587,588 @@ gap: 4px;
 
 ---
 
+### 45. Navigation Menu with Icons / Tree List / Prompt Suggestions
+
+Навигационные меню с иконками, древовидные списки с chevron индикаторами и prompt suggestions.
+
+#### 45.1. Folder/File List Item - Collapsed (with chevron)
+
+```css
+/* List Item Container */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container (Thumbnail) */
+width: 32px;
+height: 32px;
+position: relative;
+
+/* Folder Thumbnail - Collapsed */
+width: 16px;
+height: 20px;
+left: 16px;
+top: -6px;
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+
+/* Folder Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 45.2. Folder/File List Item - Expanded (with chevron)
+
+```css
+/* List Item Container */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container (Thumbnail) */
+width: 32px;
+height: 32px;
+position: relative;
+
+/* Folder Thumbnail - Expanded */
+width: 16px;
+height: 48px;
+left: 16px;
+top: -35px;
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+
+/* Folder Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 45.3. Folder List Item - Collapsed with Chevron Icon
+
+```css
+/* List Item Container */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Thumbnail Container */
+width: 32px;
+height: 32px;
+position: relative;
+
+/* Folder Thumbnail */
+width: 16px;
+height: 20px;
+left: 16px;
+top: -6px;
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+
+/* Folder Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Chevron Icon (Right) */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 4px;
+height: 8px;
+left: 5.71px;
+top: 4.04px;
+position: absolute;
+background: var(--Text-Secondary);
+```
+
+#### 45.4. Folder List Item - Expanded with Chevron Icon
+
+```css
+/* List Item Container */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Thumbnail Container */
+width: 32px;
+height: 32px;
+position: relative;
+
+/* Folder Thumbnail - Expanded */
+width: 16px;
+height: 48px;
+left: 16px;
+top: -35px;
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+
+/* Folder Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Chevron Icon (Down) */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 4px;
+height: 8px;
+left: 5.71px;
+top: 4.04px;
+position: absolute;
+background: var(--Text-Secondary);
+```
+
+#### 45.5. Navigation Menu Container
+
+```css
+/* Menu Container */
+width: 224px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid rgb(229, 229, 229); /* neutral-200 */
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+```
+
+#### 45.6. Navigation Section
+
+```css
+/* Section Container */
+width: 100%;
+padding: 8px;
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+```
+
+#### 45.7. Navigation Menu Item - Default State
+
+```css
+/* Menu Item Container */
+width: 208px;
+height: 40px;
+padding: 8px;
+border-radius: 12px;
+outline: 1px solid transparent;
+outline-offset: -1px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+width: 24px;
+height: 24px;
+position: relative;
+
+/* Icon (20x20) */
+width: 20px;
+height: 20px;
+left: 2px;
+top: 2px;
+position: absolute;
+overflow: hidden;
+
+/* Icon Shape - User */
+width: 12px;
+height: 14px;
+left: 4.07px;
+top: 2.29px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape - Inbox */
+width: 20px;
+height: 14px;
+left: 0.83px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape - Lightbulb */
+width: 14px;
+height: 12px;
+left: 3.12px;
+top: 4.79px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape - Settings */
+width: 16px;
+height: 10px;
+left: 1.46px;
+top: 4.79px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape - Info Circle */
+width: 16px;
+height: 16px;
+left: 2.29px;
+top: 2.29px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Icon Shape - Logout */
+width: 16px;
+height: 12px;
+left: 2.29px;
+top: 3.96px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Menu Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 45.8. Navigation Menu Item - Active State
+
+```css
+/* Menu Item Container - Active */
+width: 208px;
+height: 40px;
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid transparent;
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+width: 24px;
+height: 24px;
+position: relative;
+
+/* Icon (20x20) */
+width: 20px;
+height: 20px;
+left: 2px;
+top: 2px;
+position: absolute;
+overflow: hidden;
+
+/* Icon Shape - Active */
+width: 14px;
+height: 12px;
+left: 3.12px;
+top: 4.79px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Menu Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 45.9. Navigation Section Divider
+
+```css
+/* Section Divider */
+width: 100%;
+padding: 8px;
+border-top: 1px solid rgb(244, 244, 245); /* zinc-100 */
+display: flex;
+flex-direction: column;
+justify-start: start;
+align-items: start;
+gap: 8px;
+```
+
+#### 45.10. Menu Item - Active with Background
+
+```css
+/* Menu Item - Active */
+width: 208px;
+height: 40px;
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid transparent;
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Shape */
+outline-color: var(--Text-Primary);
+```
+
+#### 45.11. Menu Item - Focus State (with Stroke-02 outline)
+
+```css
+/* Menu Item - Focus */
+width: 208px;
+height: 40px;
+padding: 8px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Shape */
+outline-color: var(--Text-Secondary);
+```
+
+#### 45.12. Menu Item - Default with Outline
+
+```css
+/* Menu Item - Default (with visible outline) */
+width: 208px;
+height: 40px;
+padding: 8px;
+border-radius: 12px;
+outline: 1px solid transparent;
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+```
+
+#### 45.13. Prompt Suggestion - Default State
+
+```css
+/* Suggestion Container */
+width: 518px;
+height: auto;
+padding: 12px;
+border-radius: 10px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Suggestion Text */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 45.14. Prompt Suggestion - Active/Focus State
+
+```css
+/* Suggestion Container - Active */
+width: 518px;
+height: auto;
+padding: 12px;
+background: var(--Surface-02);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Suggestion Text */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 45.15. Navigation Menu States Summary
+
+| Состояние | Фон | Outline | Icon Color | Text Weight |
+|-----------|-----|---------|------------|-------------|
+| **Default** | Transparent | 1px transparent | Text-Secondary | 600 |
+| **Active** | Surface-03 | 1px transparent | Text-Primary | 600 |
+| **Focus** | Transparent | 1px Stroke-02 | Text-Secondary | 600 |
+
+#### 45.16. Folder Thumbnail States
+
+| Состояние | Thumbnail Height | Text Color | Chevron |
+|-----------|------------------|------------|---------|
+| **Collapsed** | 20px (top: -6px) | Text-Secondary | Right (4×8px) |
+| **Expanded** | 48px (top: -35px) | Text-Primary | Down (4×8px) |
+| **With Chevron (Collapsed)** | 20px | Text-Primary | Right (visible) |
+| **With Chevron (Expanded)** | 48px | Text-Primary | Down (visible) |
+
+#### 45.17. Icon Types in Navigation
+
+**User Icon:**
+- Width: 12px, Height: 14px
+- Position: left 4.07px, top 2.29px
+
+**Inbox Icon:**
+- Width: 20px, Height: 14px
+- Position: left 0.83px, top 3.12px
+
+**Lightbulb Icon:**
+- Width: 14px, Height: 12px
+- Position: left 3.12px, top 4.79px
+
+**Settings Icon:**
+- Width: 16px, Height: 10px
+- Position: left 1.46px, top 4.79px
+
+**Info Circle Icon:**
+- Width: 16px, Height: 16px
+- Position: left 2.29px, top 2.29px
+
+**Logout Icon:**
+- Width: 16px, Height: 12px
+- Position: left 2.29px, top 3.96px
+
+#### 45.18. Usage Guidelines
+
+**Navigation Menu:**
+- Use Surface-01 background for menu container
+- Icon size: 20×20px in 24×24px container (2px offset)
+- Default state: transparent outline, icon in Text-Secondary
+- Active state: Surface-03 background, icon in Text-Primary
+- Focus state: Stroke-02 outline, icon in Text-Secondary
+- Text weight: 600 (semibold) for all states
+- Section divider: 1px solid zinc-100
+- Menu item height: 40px, padding: 8px, gap: 12px
+
+**Folder Tree List:**
+- Collapsed: thumbnail 20px height, positioned at top: -6px
+- Expanded: thumbnail 48px height, positioned at top: -35px
+- Chevron indicates expand/collapse state
+- Chevron size: 4×8px in 16×16px container
+- Text color changes: Text-Secondary (collapsed) → Text-Primary (expanded/with chevron)
+- Thumbnail outline: 1.5px solid Shade-4-100
+
+**Prompt Suggestions:**
+- Default: transparent background, no outline
+- Active/Focus: Surface-02 background + Stroke-01 outline
+- Text: font-weight 400 (normal), not semibold
+- Truncate with ellipsis for long prompts
+- Padding: 12px, border-radius: 10px
+- Full width of container
+
+**Interactive States:**
+- Navigation items change icon color on active
+- Folder items expand/collapse on click
+- Chevron rotates to indicate state
+- Prompt suggestions highlight on hover/focus
+- All text truncates with ellipsis
+
+**Visual Hierarchy:**
+- Navigation uses semibold text (600)
+- Prompts use normal text (400)
+- Active states use colored icons (Text-Primary vs Text-Secondary)
+- Focus states use stronger outline (Stroke-02)
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
