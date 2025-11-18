@@ -2743,6 +2743,611 @@ display: -webkit-box;
 
 ---
 
+### 38. Commenting & Collaboration System
+
+#### Comment Indicators
+
+**Point Indicator (Default):**
+```css
+width: 36px;
+height: 36px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Icon Container */
+width: 24px;
+height: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+
+/* Comment Bubble */
+width: 20px;
+height: 16px;
+background: var(--Surface-01);
+border-radius: 3px;
+box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.15);
+border: 1.5px solid var(--Text-Primary);
+
+/* Dot (inside) */
+width: 6px;
+height: 6px;
+outline: 1.5px solid var(--Text-Secondary);
+opacity: 0.5;
+```
+
+**Pinned Indicator:**
+```css
+width: 36px;
+height: 36px;
+
+/* Dark Theme Badge */
+width: 28px;
+height: 28px;
+background: linear-gradient(to bottom, #27272A, #18181B);
+border-radius: 4.5px;
+box-shadow: 0px 4px 4px 0px rgba(18,18,18,0.15);
+border: 1px solid white;
+
+/* Pin Icon */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Text-Secondary);
+```
+
+**Typing Indicator:**
+```css
+width: 36px;
+height: 36px;
+
+/* Blue Theme Badge */
+width: 28px;
+height: 28px;
+background: linear-gradient(to bottom, #38BDF8, #2563EB);
+border-radius: 4.5px;
+box-shadow: 0px 2px 4px 0px rgba(18,18,18,0.15);
+border: 1px solid white;
+
+/* Three Dots */
+width: 1.5px;
+height: 1.5px;
+background: var(--Shade1-100);
+border-radius: 50%;
+/* Repeated 3 times with gap */
+```
+
+**Uploading Indicator:**
+```css
+width: 36px;
+height: 36px;
+
+/* Blue Theme Badge */
+width: 28px;
+height: 28px;
+background: linear-gradient(to bottom, #38BDF8, #2563EB);
+border-radius: 4.5px;
+box-shadow: 0px 2px 4px 0px rgba(18,18,18,0.15);
+border: 1px solid white;
+
+/* Upload Progress Circle */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Surface-01);
+```
+
+**Single Comment Indicator:**
+```css
+width: 36px;
+height: 36px;
+
+/* Avatar Badge */
+padding: 4px;
+background: var(--Shade1-100);
+border-radius: 20px 20px 1px 20px; /* Rounded top-left, top-right, bottom-right, sharp bottom-left */
+box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+
+/* Avatar Image */
+width: 24px;
+height: 24px;
+border-radius: 20px;
+```
+
+**Conversation Indicator (Avatar Stack):**
+```css
+width: 48px;
+padding: 2px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+
+/* Stack Container */
+padding: 4px;
+background: var(--Shade1-100);
+border-radius: 20px 20px 1px 20px;
+box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+outline: 1.5px solid var(--Stroke-01);
+
+/* Avatars (overlapping) */
+width: 24px;
+height: 24px;
+border-radius: 20px;
+outline: 1.5px solid var(--Surface-01);
+/* Stack with negative margin for overlap */
+```
+
+#### User List (Dropdown)
+
+**Container:**
+```css
+width: 208px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+**User Item (Default):**
+```css
+padding: 12px 10px;
+display: flex;
+align-items: center;
+gap: 12px;
+
+/* Avatar */
+width: 32px;
+height: 32px;
+border-radius: 32px;
+
+/* Text Container */
+flex: 1;
+display: flex;
+flex-direction: column;
+
+/* Name */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Username */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+**User Item (Hover):**
+```css
+background: var(--Surface-03);
+/* Rest same as default */
+```
+
+#### Comment Card
+
+**Container:**
+```css
+width: 288px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+**Comment Content:**
+```css
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+gap: 16px;
+
+/* Avatar */
+width: 32px;
+height: 32px;
+border-radius: 32px;
+
+/* Content Container */
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Header (Name + Time) */
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* Author Name */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Timestamp */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Comment Text */
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 8;
+-webkit-box-orient: vertical;
+```
+
+**Close Button (Top Right):**
+```css
+position: absolute;
+top: 8px;
+right: 8px;
+width: 20px;
+height: 20px;
+padding: 2px;
+background: linear-gradient(to bottom, #27272A, #18181B);
+border-radius: 32px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+**Active Comment Card (with blue outline):**
+```css
+outline: 3px solid var(--Colors-Blue-Blue-100);
+```
+
+#### Comment Input Field
+
+**Simple Input:**
+```css
+width: 288px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+
+/* Input Field */
+padding: 8px;
+position: relative;
+display: flex;
+gap: 8px;
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Cursor */
+width: 0;
+height: 16px;
+outline: 1px solid black;
+```
+
+**Expanded Input with Tools:**
+```css
+/* Container */
+width: 288px;
+padding: 16px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+
+/* Text Area */
+padding: 16px;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Toolbar (Bottom) */
+padding: 8px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Tool Icons Group */
+display: flex;
+gap: 4px;
+
+/* Tool Icon Button */
+width: 32px;
+height: 32px;
+padding: 32px;
+border-radius: 10px;
+/* Hover: add background */
+
+/* Icon */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Secondary);
+
+/* Send Button */
+width: 32px;
+height: 32px;
+padding: 32px 12px;
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+
+/* Send Icon */
+width: 20px;
+height: 20px;
+stroke-width: 1.5px;
+color: var(--Text-Primary);
+```
+
+#### Reply Input (Inline)
+
+**Container:**
+```css
+width: 288px;
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+gap: 16px;
+
+/* Avatar */
+width: 32px;
+height: 32px;
+border-radius: 32px;
+
+/* Input Container */
+flex: 1;
+padding: 6px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: flex;
+gap: 24px;
+
+/* Text Input */
+flex: 1;
+padding: 8px;
+position: relative;
+display: flex;
+gap: 8px;
+
+/* Placeholder */
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Send Button (Small) */
+width: 32px;
+height: 32px;
+padding: 32px 12px;
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+```
+
+#### Conversation Thread
+
+**Thread Card:**
+```css
+width: 288px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+
+/* Multiple Comment Items */
+/* Each separated by border-top: 1px solid var(--Stroke-01) */
+```
+
+#### Comment with Attachments
+
+**Container:**
+```css
+padding: 16px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+
+/* Text */
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Image Thumbnails */
+display: flex;
+gap: 8px;
+
+/* Thumbnail (Regular) */
+width: 60px;
+height: 60px;
+padding: 4px;
+border-radius: 12px;
+object-fit: cover;
+
+/* Thumbnail with Badge (More Images) */
+width: 60px;
+height: 60px;
+position: relative;
+
+/* Overlay */
+padding: 4px;
+background: rgba(254, 254, 254, 0.20);
+border-radius: 10px;
+backdrop-filter: blur(6px);
+
+/* Badge (Top Right) */
+position: absolute;
+top: -6px;
+right: -6px;
+width: 20px;
+height: 20px;
+padding: 2px;
+background: linear-gradient(to bottom, #27272A, #18181B);
+border-radius: 32px;
+outline: 2px solid var(--Surface-01);
+
+/* Count Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+#### File Upload State
+
+**Upload Card:**
+```css
+width: 288px;
+padding: 16px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 3px solid var(--Colors-Blue-Blue-100);
+backdrop-filter: blur(6px);
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+
+/* File Info */
+display: flex;
+align-items: center;
+gap: 8px;
+
+/* File Icon */
+width: 20px;
+height: 20px;
+padding: 4px;
+border-radius: 6px;
+
+/* File Name */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Upload Progress Indicator (Top Right) */
+position: absolute;
+top: 9px;
+right: 9px;
+width: 32px;
+height: 32px;
+
+/* Progress Circle */
+width: 16px;
+height: 16px;
+background: linear-gradient(to bottom, #84CC16, #15803D);
+border-radius: 30px;
+```
+
+#### Status Badges (Small)
+
+**Pinned Badge (Small):**
+```css
+width: 20px;
+height: 20px;
+padding: 2px;
+background: linear-gradient(to bottom, #27272A, #18181B);
+border-radius: 32px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+**Active/Selected Badge (Small):**
+```css
+width: 20px;
+height: 20px;
+padding: 2px;
+background: rgba(254, 254, 254, 0.10);
+border-radius: 32px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+stroke-width: 1.5px;
+color: var(--Shade1-100);
+```
+
+**Usage Guidelines:**
+- Use point indicators for new/unread comments
+- Use pinned indicators for important comments
+- Use typing indicators for real-time collaboration
+- Use avatar stacks for conversations with multiple participants
+- Show upload state with progress indicator
+- Use blue outline for active/focused comment cards
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
