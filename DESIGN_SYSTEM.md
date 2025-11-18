@@ -5551,6 +5551,578 @@ outline-color: var(--Colors-Red);
 
 ---
 
+### 43. File & Folder Icons / List Items / Permission Selector
+
+Иконки файлов и папок, list items с различными состояниями, селектор прав доступа.
+
+#### 43.1. File Icon - Active State (Standalone)
+
+Активная иконка файла с фоном и тенью.
+
+```css
+/* Icon Container - Active */
+padding: 6px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Document) */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+#### 43.2. File Icon - Default State (Standalone)
+
+Неактивная иконка файла без фона.
+
+```css
+/* Icon Container - Default */
+padding: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Document) */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 43.3. Folder Icon - Active State (Standalone)
+
+```css
+/* Icon Container - Active */
+padding: 6px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Folder) */
+width: 14px;
+height: 12px;
+left: 2.50px;
+top: 3.96px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+#### 43.4. Folder Icon - Default State (Standalone)
+
+```css
+/* Icon Container - Default */
+padding: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (Folder) */
+width: 14px;
+height: 12px;
+left: 2.50px;
+top: 3.96px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+#### 43.5. File List Item - Default State
+
+```css
+/* List Item Container */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* File Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 43.6. File List Item - Active State
+
+```css
+/* List Item Container - Active */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Content Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container - Active */
+padding: 6px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape - Active */
+width: 14px;
+height: 16px;
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* File Name */
+flex: 1;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 43.7. File List Item - Hover State
+
+```css
+/* List Item Container - Hover */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 12px;
+
+/* Rest matches default state (icon stays Text-Secondary) */
+```
+
+#### 43.8. Folder List Item - Editing State (with Cursor)
+
+```css
+/* List Item Container - Editing */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Folder Icon - Bottom Part */
+width: 16px;
+height: 6px;
+left: 2px;
+top: 10px;
+position: absolute;
+opacity: 0.2;
+background: #8B5CF6; /* violet-600 */
+
+/* Folder Icon - Top Part */
+width: 16px;
+height: 12px;
+left: 2.29px;
+top: 3.12px;
+position: absolute;
+border-radius: 2px;
+outline: 1.5px solid #8B5CF6; /* violet-600 */
+outline-offset: -0.75px;
+
+/* Text Container */
+flex: 1;
+height: 16px;
+padding: 2px 0px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 1px;
+
+/* Folder Name */
+opacity: 0.5;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Cursor (Blinking Line) */
+width: 0px;
+height: 12px;
+left: 48px;
+top: 14px;
+position: absolute;
+outline: 1.5px solid black;
+outline-offset: -0.75px;
+```
+
+#### 43.9. Folder List Item - Pressed/Editing State (with Inset Shadow)
+
+```css
+/* List Item Container - Pressed */
+width: 176px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 0px 3px 0px rgba(18,18,18,0.08);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 12px;
+
+/* Icon Container */
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Folder Icon - Bottom Part */
+width: 16px;
+height: 6px;
+left: 2px;
+top: 10px;
+position: absolute;
+opacity: 0.2;
+background: #8B5CF6; /* violet-600 */
+
+/* Folder Icon - Top Part */
+width: 16px;
+height: 12px;
+left: 2.29px;
+top: 3.12px;
+position: absolute;
+border-radius: 2px;
+outline: 1.5px solid #8B5CF6; /* violet-600 */
+outline-offset: -0.75px;
+
+/* Text Container with Cursor */
+flex: 1;
+height: 16px;
+padding: 2px 0px;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 0px;
+
+/* Edited Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Cursor (Inline) */
+width: 0px;
+height: 12px;
+outline: 1.5px solid black;
+outline-offset: -0.75px;
+```
+
+#### 43.10. Permission Selector Button - Default State
+
+```css
+/* Permission Button - Default */
+width: 96px;
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 43.11. Permission Selector Button - Hover State
+
+```css
+/* Permission Button - Hover */
+width: 96px;
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-03);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 43.12. Permission Dropdown Menu
+
+```css
+/* Dropdown Container */
+width: 96px;
+padding: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: center;
+
+/* Permission Item - Hover */
+width: 96px;
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-03);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Permission Item - Default */
+width: 96px;
+height: 32px;
+padding: 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Item Text */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+#### 43.13. List Item States Summary
+
+| Состояние | Фон | Outline | Icon Container | Icon Color | Text Color | Inset Shadow |
+|-----------|-----|---------|----------------|------------|------------|--------------|
+| **Default** | Transparent | None | Transparent | Text-Secondary | Text-Primary | None |
+| **Hover** | Surface-03 | None | Transparent | Text-Secondary | Text-Primary | None |
+| **Active** | Surface-03 | 1px Stroke-01 | Surface-01 + shadow | Text-Primary | Text-Primary | None |
+| **Editing** | Surface-03 | 1px Stroke-01 | Transparent | Colored (violet) | Text-Secondary 50% opacity | None |
+| **Pressed** | Surface-03 | 1px Stroke-01 | Transparent | Colored (violet) | Text-Primary | inset 0px 0px 3px rgba(18,18,18,0.08) |
+
+#### 43.14. Icon Variants
+
+**File Icon (Document):**
+- Width: 14px, Height: 16px
+- Outline: 1.5px solid
+- Position: left 3.12px, top 2.51px
+
+**Folder Icon (Square variant):**
+- Width: 14px, Height: 12px
+- Outline: 1.5px solid
+- Position: left 2.50px, top 3.96px
+
+**Folder Icon (Colored variant with fill):**
+- Top Part: 16px × 12px with colored outline
+- Bottom Part: 16px × 6px with 20% opacity fill
+- Colors: violet-600 (#8B5CF6), or any folder color
+
+#### 43.15. Usage Guidelines
+
+**File/Folder List Items:**
+- Default state: no background, icon in Text-Secondary
+- Hover state: Surface-03 background, icon stays Text-Secondary
+- Active state: Surface-03 background + Stroke-01 outline + icon in elevated container with Text-Primary color
+- Editing state: outline appears, cursor visible, text has reduced opacity
+- Pressed/typing state: inset shadow appears, text returns to full opacity
+
+**Icon Containers:**
+- Default/Hover: no background or shadow
+- Active: Surface-01 background + 4px shadow + 8px border-radius
+- Always 6px padding for icon containers
+
+**Permission Selector:**
+- Two states: can view, can edit (or custom permissions)
+- Default: Surface-01 background
+- Hover: Surface-03 background
+- Always has 4px shadow and 8px border-radius
+- Dropdown uses same styling as context menus (backdrop blur, multi-layer shadows)
+
+**Text Editing:**
+- Show cursor (1.5px solid black) when editing
+- Reduce text opacity to 50% in initial editing state
+- Full opacity when typing (pressed state)
+- Add inset shadow to indicate active typing
+
+**Interactive States:**
+- Cursor should blink at insertion point
+- Text should truncate with ellipsis if too long
+- Folder names can be inline-edited with click
+- File icons change from Secondary to Primary when active
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
