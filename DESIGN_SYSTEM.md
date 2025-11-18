@@ -7169,6 +7169,508 @@ white-space: nowrap;
 
 ---
 
+### 46. Notification Panel / Activity Feed
+
+Панель уведомлений с аватарами, badge иконками, различными типами уведомлений и action buttons.
+
+#### 46.1. Notification Panel Container
+
+```css
+/* Panel Container */
+width: 384px;
+height: 800px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: center;
+overflow: hidden;
+```
+
+#### 46.2. Panel Header
+
+```css
+/* Header Container */
+width: 100%;
+padding: 16px 20px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Title */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+color: black;
+
+/* Tab Container */
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+```
+
+#### 46.3. Tab Button - Active State
+
+```css
+/* Tab - Active */
+padding: 4px 8px;
+background: var(--Surface-03);
+border-radius: 10px;
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Tab Text */
+width: 100%;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+color: var(--Text-Primary);
+```
+
+#### 46.4. Tab Button - Default State
+
+```css
+/* Tab - Default */
+padding: 4px 8px;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Tab Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+color: var(--Text-Secondary);
+```
+
+#### 46.5. Notification Item - Unread with Comment
+
+```css
+/* Item Container - Unread */
+width: 384px;
+padding: 20px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: start;
+align-items: start;
+gap: 16px;
+
+/* Avatar Container */
+width: 48px;
+height: 48px;
+position: relative;
+
+/* Avatar Image */
+width: 48px;
+height: 48px;
+left: 0;
+top: 0;
+position: absolute;
+border-radius: 32px;
+
+/* Badge Icon Container (Comment) */
+width: 16px;
+height: 16px;
+left: 32px;
+top: 32px;
+position: absolute;
+background: #8B5CF6; /* violet-500 */
+border-radius: 16px;
+outline: 2px solid var(--Surface-01);
+outline-offset: 0px;
+overflow: hidden;
+
+/* Badge Icon */
+width: 12px;
+height: 12px;
+left: 3px;
+top: 3px;
+position: absolute;
+overflow: hidden;
+
+/* Icon Shape (Comment Bubble) */
+width: 8px;
+height: 10px;
+left: 1.50px;
+top: 1.50px;
+position: absolute;
+background: var(--Surface-01);
+```
+
+#### 46.6. Content Area
+
+```css
+/* Content Container */
+width: 288px;
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 8px;
+
+/* Header Section */
+width: 100%;
+height: 40px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 8px;
+```
+
+#### 46.7. Content Header Row
+
+```css
+/* Header Row */
+width: 100%;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Left Side Container */
+flex: 1;
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 4px;
+
+/* Username/Title */
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Timestamp */
+opacity: 0.5;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+
+/* Unread Indicator Dot */
+width: 8px;
+height: 8px;
+background: var(--Colors-Green);
+border-radius: 50%;
+```
+
+#### 46.8. Content Description Row
+
+```css
+/* Description Row */
+width: 100%;
+justify-start: start;
+
+/* Mixed Text (Normal + Secondary + Semibold) */
+/* Example: "Commented on Classic Car in Studio" */
+
+/* Action Text (Normal) */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Connector Text (Secondary) */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Target Text (Semibold) */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+#### 46.9. Comment Text / Prompt Text
+
+```css
+/* Comment/Prompt Container */
+width: 100%;
+opacity: 0.8;
+justify-start: start;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+color: var(--Text-Secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
+#### 46.10. Notification Item - Read (without unread dot)
+
+```css
+/* Item Container - Read */
+width: 384px;
+padding: 20px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-start: start;
+align-items: center;
+gap: 16px;
+
+/* No unread indicator dot */
+/* Rest matches unread state */
+```
+
+#### 46.11. Notification with Invite Actions
+
+```css
+/* Content Container with Actions */
+width: 288px;
+display: inline-flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
+gap: 16px;
+
+/* Header Section (same as above) */
+/* ... */
+
+/* Action Buttons Container */
+display: inline-flex;
+justify-content: start;
+align-items: center;
+gap: 8px;
+
+/* Decline Button */
+padding: 8px 20px;
+background: linear-gradient(180deg, rgb(229, 229, 229) 0%, rgb(229, 229, 229) 100%);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Decline Text */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+text-align: center;
+color: var(--Text-Primary);
+
+/* Accept Button */
+padding: 8px 20px;
+background: linear-gradient(180deg, var(--Shade-7-100) 0%, var(--Shade-8-100) 100%);
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Accept Text */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+text-align: center;
+color: rgb(250, 250, 250); /* neutral-50 */
+```
+
+#### 46.12. Badge Icon Types
+
+**Comment Badge (violet-500):**
+```css
+background: #8B5CF6;
+/* Icon: Comment bubble 8×10px */
+```
+
+**3D Badge (yellow-600):**
+```css
+background: #CA8A04;
+/* Icon: 3D cube 8×10px */
+```
+
+**Invite Badge (Colors-Green):**
+```css
+background: var(--Colors-Green);
+/* Icon: User add 8×8px circle outline */
+```
+
+**Like Badge (Colors-Red):**
+```css
+background: var(--Colors-Red);
+/* Icon: Heart 10×10px */
+```
+
+**Video Badge (sky-500):**
+```css
+background: #0EA5E9;
+/* Icon: Play triangle 10×12px */
+```
+
+#### 46.13. Fade Gradient Overlay
+
+```css
+/* Bottom Fade Gradient */
+width: 384px;
+height: 96px;
+left: 0;
+top: 696px;
+position: absolute;
+background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%);
+```
+
+#### 46.14. Notification Types Summary
+
+| Type | Badge Color | Icon | Unread Dot | Actions |
+|------|-------------|------|------------|---------|
+| **Comment** | violet-500 | Comment bubble | Green dot | None |
+| **3D Generated** | yellow-600 | 3D cube | Green dot | None |
+| **Invite** | Colors-Green | User add | Green dot | Decline/Accept |
+| **Like** | Colors-Red | Heart | Optional | None |
+| **Video** | sky-500 | Play | Optional | None |
+
+#### 46.15. Content Layout Variations
+
+**With Comment/Prompt (3 lines):**
+- Header row: username + timestamp + unread dot
+- Description row: action text + connector + target
+- Comment text: 2-line clamp, 80% opacity
+
+**Simple Notification (2 lines):**
+- Header row: title + timestamp + unread dot
+- Description row: single line info
+
+**With Actions (4 lines):**
+- Header row: title + timestamp + unread dot
+- Description row: action text + connector + target
+- Action buttons: Decline (light) + Accept (dark)
+- Gap: 16px between content and actions
+
+#### 46.16. Usage Guidelines
+
+**Notification Panel:**
+- Use Shade1-100 background for glassmorphism effect
+- Backdrop blur: 6px for floating panel effect
+- Panel width: 384px (fixed)
+- Panel max height: 800px (scrollable)
+- Border-radius: 20px for container
+- Outline: 1px solid Stroke-01
+
+**Header:**
+- Title: 14px semibold, black color
+- Tabs: "All" (active) and "Unread"
+- Active tab: Surface-03 background
+- Default tab: transparent, Text-Secondary
+
+**Notification Items:**
+- Padding: 20px
+- Border-top: 1px solid Stroke-01 for all items
+- Avatar: 48×48px, rounded-32px
+- Badge: 16×16px, positioned at (32px, 32px)
+- Badge outline: 2px solid Surface-01
+- Content width: 288px (384px - 48px avatar - 20px padding × 2 - 16px gap)
+
+**Avatar Badge:**
+- Size: 16×16px circle
+- Position: bottom-right corner (left: 32px, top: 32px)
+- Outline: 2px solid Surface-01
+- Icon: 12×12px container with 8-10px shapes
+- Border-radius: 16px (full circle)
+
+**Unread Indicator:**
+- Size: 8×8px circle
+- Color: Colors-Green
+- Position: top-right of header row
+- Only show for unread notifications
+
+**Text Styles:**
+- Username/Title: 12px semibold, Text-Primary
+- Timestamp: 12px medium, Text-Secondary, 50% opacity
+- Action text: 12px normal, Text-Primary
+- Connector text: 12px normal, Text-Secondary
+- Target text: 12px semibold, Text-Primary
+- Comment/Prompt: 12px normal, Text-Secondary, 80% opacity, line-clamp: 2
+
+**Action Buttons:**
+- Decline: light gray gradient, Text-Primary
+- Accept: dark gradient, neutral-50 text
+- Padding: 8px 20px (small variant: 6px 20px)
+- Font: 14px semibold
+- Border-radius: 10px
+- Gap between buttons: 8px
+
+**Badge Colors by Type:**
+- Comment: violet-500 (#8B5CF6)
+- 3D: yellow-600 (#CA8A04)
+- Invite: Colors-Green
+- Like: Colors-Red
+- Video: sky-500 (#0EA5E9)
+
+**Fade Overlay:**
+- Position: absolute at bottom
+- Height: 96px
+- Gradient: transparent → neutral-50
+- Indicates more content below
+
+**Interactive States:**
+- Tabs toggle between All/Unread
+- Action buttons have hover/pressed states
+- Items can be clicked to view details
+- Unread items can be marked as read
+- Scrollable content with fade indicator
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
