@@ -10209,6 +10209,606 @@ outline-offset: -0.75px;
 
 ---
 
+## Section 59: Header Navbars / Search Bars / Asset Gallery / View Toggles
+
+### 59.1. Header Navigation Bar (With Back/Forward + Search + Create)
+
+**Header Container:**
+```css
+padding: 20px;
+background: var(--Surface-01);
+border-bottom: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+```
+
+**Left Section (Navigation + Search):**
+```css
+display: flex;
+gap: 16px;
+align-items: center;
+```
+
+**Navigation Arrows Group:**
+```css
+display: flex;
+gap: 8px;
+```
+
+**Back Arrow - Disabled:**
+```css
+width: 40px;
+height: 40px;
+padding: 10px;
+opacity: 0.4;
+border-radius: 10px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+/* Arrow shape (14px height) */
+transform: rotate(-90deg);
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Forward Arrow - Default:**
+```css
+width: 40px;
+height: 40px;
+padding: 10px;
+border-radius: 10px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+/* Arrow shape (14px height) */
+transform: rotate(90deg);
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Forward Arrow - Hover:**
+```css
+background: var(--Surface-03);
+border-radius: 10px;
+/* Other properties same */
+```
+
+**Search Input:**
+```css
+width: 256px;
+height: 40px;
+padding: 4px 10px 4px 4px; /* pl-1 pr-2.5 py-1 */
+background: var(--Surface-02);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+```
+
+**Search Input Content:**
+```css
+flex: 1;
+display: flex;
+gap: 12px;
+align-items: center;
+```
+
+**Search Icon Button:**
+```css
+width: 32px;
+height: 32px;
+padding: 8px;
+border-radius: 8px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Magnifier shape 10×10px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Placeholder Text:**
+```css
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Keyboard Shortcut Badge:**
+```css
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.11),
+  inset 0px -1px 0.6px 0px rgba(0,0,0,0.20),
+  inset 0px 2px 0.8px 0px rgba(255,255,255,0.27);
+
+/* Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Right Section (Notification + Create + Avatar):**
+```css
+display: flex;
+gap: 16px;
+align-items: center;
+```
+
+**Notification Icon (With Badge):**
+```css
+width: 40px;
+height: 40px;
+position: relative;
+border-radius: 10px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+padding: 10px;
+/* Bell shape 14×20px */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Notification Badge:**
+```css
+width: 4px;
+height: 4px;
+position: absolute;
+left: 32px; /* Right edge */
+top: 4px;
+background: var(--Colors-Red);
+border-radius: 50%;
+```
+
+**Create Button:**
+```css
+padding: 8px 24px; /* px-6 py-2 */
+background: linear-gradient(to bottom, #D4D4D4, #D4D4D4); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600; /* semibold */
+line-height: 20px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+**Avatar:**
+```css
+width: 40px;
+height: 40px;
+position: relative;
+
+/* Image */
+width: 32px;
+height: 32px;
+position: absolute;
+left: 4px;
+top: 4px;
+border-radius: 32px;
+```
+
+---
+
+### 59.2. Header Navigation Bar (Logo Symbol Only)
+
+**Logo Container (Symbol Only):**
+```css
+height: 40px;
+padding: 4px;
+display: flex;
+gap: 12px;
+align-items: center;
+```
+
+**Logo Icon:**
+```css
+width: 32px;
+height: 32px;
+
+/* Icon Shape */
+width: 28px;
+height: 28px;
+left: 1px;
+top: 1px;
+background: var(--Text-Primary);
+outline: 0.25px solid var(--Text-Primary);
+```
+
+**Search Input (Hidden):**
+```css
+opacity: 0;
+/* Same structure as previous search input */
+/* Takes up space but invisible */
+```
+
+**Right Section:**
+```css
+/* Grid icon + Notification + Avatar */
+/* Same structure as previous variant */
+```
+
+**Grid Icon Button:**
+```css
+width: 40px;
+height: 40px;
+padding: 10px;
+border-radius: 10px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+/* Grid shape 14×14px */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+---
+
+### 59.3. Header Navigation Bar (Full Logo + Brand Name)
+
+**Logo Container (Full):**
+```css
+width: 176px;
+height: 40px;
+padding: 4px;
+display: flex;
+gap: 12px;
+align-items: center;
+```
+
+**Logo Icon:**
+```css
+width: 32px;
+height: 32px;
+
+/* Icon Shape */
+width: 28px;
+height: 28px;
+left: 1px;
+top: 1px;
+background: var(--Text-Primary);
+outline: 0.25px solid var(--Text-Primary);
+```
+
+**Brand Name:**
+```css
+font-family: 'Sora', sans-serif;
+font-size: 20px;
+font-weight: 800; /* extrabold */
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**Search Input:**
+```css
+/* Visible search with "Search" placeholder */
+/* Same structure as variant 1 */
+```
+
+**Right Section:**
+```css
+/* Notification + Avatar only (no grid icon, no Create button) */
+```
+
+---
+
+### 59.4. Header Navigation Bar (With Grid Toggle)
+
+**Left Section:**
+```css
+/* Navigation arrows + Search "Search designs..." */
+/* Same structure as variant 1 */
+```
+
+**Right Section:**
+```css
+display: flex;
+gap: 16px;
+align-items: center;
+
+/* Grid icon + Notification + Avatar */
+```
+
+---
+
+### 59.5. Asset Gallery Bar
+
+**Gallery Container:**
+```css
+height: 80px;
+position: relative;
+padding: 20px;
+background: var(--Surface-01);
+border-bottom: 1px solid var(--Stroke-01);
+```
+
+**Grid Icon (Left):**
+```css
+padding: 12px;
+position: absolute;
+left: 20px;
+top: 20px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Grid shape 10×10px */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Thumbnails Gallery (Center):**
+```css
+position: absolute;
+left: 438px; /* Centered horizontally */
+top: 10px;
+display: inline-flex;
+gap: 10px;
+align-items: center;
+```
+
+**Thumbnail - Hover:**
+```css
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+
+/* Image Container */
+width: 48px;
+height: 48px;
+overflow: hidden;
+
+/* Image */
+width: 48px;
+height: 48px;
+```
+
+**Thumbnail - Active:**
+```css
+padding: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+
+/* Image Container */
+width: 48px;
+height: 48px;
+```
+
+**Fade Gradient (Left):**
+```css
+width: 56px;
+height: 48px;
+position: absolute;
+left: 52px; /* After first thumbnail */
+top: 0;
+transform: rotate(90deg);
+transform-origin: top-left;
+background: linear-gradient(to bottom, rgba(245,245,245,0), #F5F5F5); /* neutral-50 */
+backdrop-filter: blur(6px);
+```
+
+**Fade Gradient (Right):**
+```css
+width: 56px;
+height: 48px;
+position: absolute;
+left: 564px; /* Before last thumbnail */
+top: 0;
+transform: rotate(90deg);
+transform-origin: top-left;
+background: linear-gradient(to bottom, rgba(245,245,245,0), #F5F5F5);
+backdrop-filter: blur(6px);
+```
+
+**View Toggle Buttons (Right):**
+```css
+position: absolute;
+left: 1183px;
+top: 20px;
+display: inline-flex;
+gap: 12px;
+```
+
+**View Toggle Button:**
+```css
+padding: 12px;
+background: var(--Surface-01);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* List or Grid icon 10-12px */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Add to Asset Button:**
+```css
+padding: 10px 24px; /* px-6 py-2.5 */
+background: linear-gradient(to bottom, #D4D4D4, #D4D4D4);
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+---
+
+### 59.6. Summary Tables
+
+#### Header Navigation Components
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Header Container** | full width | Surface-01 | border-bottom Stroke-01 | none | padding 20px |
+| **Navigation Arrow - Disabled** | 40×40px | transparent | none | none | opacity 40% |
+| **Navigation Arrow - Default** | 40×40px | transparent | none | none | rounded-10px |
+| **Navigation Arrow - Hover** | 40×40px | Surface-03 | none | none | rounded-10px |
+| **Search Input** | 256×40px | Surface-02 | 1px Stroke-02 | none | rounded-12px |
+| **Search Icon Button** | 32×32px | transparent | none | none | rounded-8px |
+| **Keyboard Shortcut** | auto | Surface-03 | none | 4 layers | "⌘ K", padding 2px 6px |
+| **Notification Icon** | 40×40px | transparent | none | none | with badge |
+| **Notification Badge** | 4×4px | Colors-Red | none | none | circle, absolute position |
+| **Create Button** | auto | neutral-200 gradient | none | 3 layers | px-6 py-2 |
+| **Avatar** | 40×40px container | transparent | none | none | 32×32px image inside |
+| **Logo Icon** | 32×32px | transparent | none | none | 28×28px shape |
+| **Brand Name** | auto | transparent | none | none | Sora extrabold 20px |
+| **Grid Toggle Button** | 40×40px | Surface-01 | 1px Stroke-02 | none | padding 12px |
+
+#### Asset Gallery Components
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Gallery Container** | height 80px | Surface-01 | border-bottom Stroke-01 | none | padding 20px |
+| **Grid Icon** | 40×40px | Surface-01 | 1px Stroke-02 | none | padding 12px |
+| **Thumbnail - Hover** | 48×48px | Surface-01 | 1px Stroke-02 | none | rounded-12px |
+| **Thumbnail - Active** | 56×56px total | Surface-01 | 1px Stroke-01 | 5 layers | padding 4px, image 48×48px |
+| **Fade Gradient** | 56×48px | neutral-50 gradient | none | none | backdrop-blur 6px, rotated 90deg |
+| **View Toggle** | 40×40px | Surface-01 | 1px Stroke-02 | none | padding 12px |
+| **Add to Asset Button** | auto | neutral-200 gradient | none | 3 layers | px-6 py-2.5 |
+
+---
+
+### 59.7. Usage Guidelines
+
+**Header Navigation Patterns:**
+- Use **Back/Forward arrows** for file/page navigation contexts
+- Use **Logo Symbol Only** for compact header with minimal branding
+- Use **Full Logo** for landing pages or primary navigation areas
+- Search input always 256px width for consistency
+- Keyboard shortcut badge (⌘ K) indicates command palette trigger
+- Notification badge (4×4px red dot) positioned at top-right of icon
+- Avatar always 32×32px image in 40×40px container
+
+**Search Input:**
+- Background: Surface-02 for subtle differentiation from header
+- Outline: Stroke-02 for focused appearance
+- Icon button: 32×32px with 8px padding, no background
+- Placeholder variations:
+  - "Search files..." - file browser
+  - "Search designs..." - design gallery
+  - "Search" - generic search
+- Keyboard shortcut: always visible, 4-layer shadow styling
+- Gap: 12px between icon and placeholder
+
+**Navigation Arrows:**
+- Back arrow: disabled (opacity 40%) when no history
+- Forward arrow: default or hover state
+- Hover: Surface-03 background
+- Icon size: 20×20px in 40×40px button
+- Gap: 8px between arrows
+
+**Logo Display:**
+- **Symbol Only**: 28×28px icon, outline 0.25px
+- **Full**: 28×28px icon + "Brainwave" text
+- Font: Sora extrabold 20px, line-height 16px
+- Gap: 12px between icon and text
+- Container padding: 4px
+
+**Asset Gallery:**
+- Height: 80px fixed for consistent toolbar
+- Thumbnails: 48×48px images
+- Hover state: outline Stroke-02 only
+- Active state: padding 4px (total 56×56px), 5-layer shadows, outline Stroke-01
+- Gap: 10px between thumbnails
+- Horizontal scrollable with fade gradients
+- Fade gradients: 56px width, rotated 90deg, backdrop-blur 6px
+- Left fade: after first item (position 52px)
+- Right fade: before last section (position 564px)
+
+**View Toggles:**
+- Two buttons: List view + Grid view
+- Size: 40×40px, padding 12px
+- Icons: 16×16px container, ~10-12px shapes
+- Background: Surface-01, outline Stroke-02
+- Gap: 12px between buttons
+
+**Action Buttons:**
+- "Create" button: primary header action
+- "Add to Asset" button: gallery-specific action
+- Style: neutral-200 gradient, 3 shadows
+- Padding: px-6 py-2 (Create) or px-6 py-2.5 (Add to Asset)
+- Text: 14px semibold, Text-Primary
+
+**Notification Badge:**
+- Size: 4×4px circle
+- Color: Colors-Red
+- Position: absolute, right 8px, top 4px from icon container
+- Always visible when there are notifications
+- No animation or pulse effects
+
+**Layout Spacing:**
+- Header padding: 20px all sides
+- Left section gap: 16px between arrow group and search
+- Right section gap: 16px between all items
+- Navigation arrows gap: 8px
+- Gallery thumbnails gap: 10px
+
+**Interactive States:**
+- Navigation arrows: default → hover → disabled
+- Search input: default (shows keyboard shortcut)
+- Thumbnails: hover (outline Stroke-02) → active (padding + 5 shadows)
+- View toggles: clickable buttons with consistent styling
+- All icon buttons: 40×40px minimum touch target
+
+**Accessibility:**
+- Keyboard shortcut (⌘ K) visible for discoverability
+- Icon buttons minimum 40×40px for touch targets
+- Notification badge 4×4px minimum visible size
+- Search placeholder text clearly indicates purpose
+- Disabled state uses 40% opacity (not color change)
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
