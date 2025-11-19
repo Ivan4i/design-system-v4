@@ -12938,6 +12938,1725 @@ object-fit: cover;
 
 ---
 
+## Section 55: 3D Editor Panels / Scene & Design Controls / Animation Settings
+
+**Описание:**
+Комплексная панельная система для 3D редактора включает следующие компоненты: панель Scene с иерархией объектов, панель Assets с 3D объектами и материалами, панели Design и Animation с настройками камеры, фона, эффектов и анимации, а также специализированные контролы для артборда и Tilt navigation. Все панели имеют единую ширину 240px с закругленными углами 20px и поддерживают различные состояния элементов (default, hover, active). Включены toggle switches для включения/выключения функций, segmented controls для переключения режимов, slider для distortion, timeline preview для loop анимации, и многоуровневые dropdown списки для lens и artboard настроек.
+
+### 55.1. Panel Container
+
+**Panel Container:**
+```css
+width: 240px;
+height: 876px;
+background: var(--Surface-01);
+border-radius: 20px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start; /* Или space-between для Scene panel */
+align-items: center;
+overflow: hidden;
+```
+
+**Usage:**
+- Контейнер для всех панелей редактора
+- Высота 876px фиксированная для consistency
+- Закругление 20px для modern look
+- Outline внутри границ (offset -1px)
+
+### 55.2. Panel Header
+
+**Panel Header Container:**
+```css
+width: 100%; /* 240px */
+padding: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+```
+
+**Overlapping Avatars Group:**
+```css
+/* Container */
+padding-left: 4px;
+padding-right: 4px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+
+/* Avatar Image */
+width: 32px;
+height: 32px;
+border-radius: 32px;
+border: 2px solid var(--Surface-01);
+position: relative;
+margin-left: -8px; /* Для overlap, кроме первого */
+```
+
+**Share Button:**
+```css
+padding: 10px 24px; /* 2.5 × 6 */
+background: linear-gradient(to bottom, #D4D4D4, #D4D4D4); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600; /* semibold */
+line-height: 20px;
+text-align: center;
+```
+
+**Usage:**
+- Avatars overlap на 8px для компактности
+- Border Surface-01 создает separation между avatars
+- Share button с gradient и multiple shadows для elevation
+
+### 55.3. Segmented Tab Control (Design/Animation, Scene/Assets)
+
+**Tab Container:**
+```css
+width: 100%; /* 240px */
+padding: 12px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Segmented Control Wrapper:**
+```css
+flex: 1;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 1.9px 0px rgba(50,50,50,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+```
+
+**Tab Item - Active:**
+```css
+flex: 1;
+padding: 8px 12px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+```
+
+**Tab Item - Inactive:**
+```css
+flex: 1;
+padding: 8px 12px;
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+```
+
+**Usage:**
+- Active tab имеет Surface-01 background + 2 shadows
+- Inactive tab transparent с Text-Secondary
+- Одинаковый font-weight (600) для обоих состояний
+
+### 55.4. Section Header
+
+**Section Header - Default:**
+```css
+width: 100%; /* 240px */
+height: 48px;
+padding: 12px 16px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Section Title */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+```
+
+**Collapse Icon Button:**
+```css
+padding: 4px;
+border-radius: 6px; /* md */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Plus Icon (collapsed) */
+width: 8px;
+height: 8px;
+left: 4px;
+top: 4px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Collapse Icon Button - Hover:**
+```css
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Usage:**
+- Иконка появляется справа от section title
+- Hover state добавляет Surface-03 background
+- Opacity 0 можно использовать для скрытия иконки
+
+### 55.5. Toggle Switch ON/OFF
+
+**Toggle Container - ON:**
+```css
+width: 40px;
+padding: 2px; /* 0.5 */
+background: rgba(var(--Shade-9-70), 0.7);
+border-radius: 24px; /* 3xl */
+box-shadow: inset 0px 1px 0.6px 0px rgba(18,18,18,0.30);
+display: flex;
+justify-content: flex-end; /* Knob справа */
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Toggle Knob - ON:**
+```css
+width: 16px;
+height: 16px;
+background: var(--Surface-02);
+border-radius: 24px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px 0px rgba(0,0,0,0.25),
+  inset 0px 1px 0.5px 0px rgba(255,255,255,0.82);
+```
+
+**Toggle Container - OFF:**
+```css
+width: 40px;
+padding: 2px;
+background: var(--Shade-4-100);
+border-radius: 24px;
+box-shadow: inset 0px 1px 0.6px 0px rgba(18,18,18,0.30);
+display: flex;
+justify-content: flex-start; /* Knob слева */
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Usage:**
+- ON: Shade-9-70/70 background, justify-end
+- OFF: Shade-4-100 background, justify-start
+- Knob одинаковый для обоих состояний
+
+### 55.6. Project Header (Scene Panel)
+
+**Project Header Container:**
+```css
+width: 100%; /* 240px */
+padding: 12px 10px; /* 3 × 2.5 */
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 8px;
+```
+
+**Top Row (Logo + Settings):**
+```css
+width: 100%;
+padding: 4px 6px; /* 1 × 1.5 */
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Logo Container */
+width: 32px;
+height: 32px;
+position: relative;
+overflow: hidden;
+
+/* Logo Fill (Square) */
+width: 28px;
+height: 28px;
+left: 1px;
+top: 1px;
+position: absolute;
+background: var(--Text-Primary);
+outline: 0.25px solid var(--Text-Primary);
+```
+
+**Settings Icon Button:**
+```css
+padding: 6px; /* 1.5 */
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 14px;
+height: 14px;
+left: 3.12px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Project Info Section:**
+```css
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+```
+
+**Project Title Row:**
+```css
+width: 100%;
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+
+/* Title Container */
+padding-left: 6px;
+padding-right: 6px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+
+/* Title Text */
+max-width: 176px; /* 44 × 4 */
+color: var(--Text-Primary);
+font-size: 16px;
+font-weight: 600; /* semibold */
+line-height: 24px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Chevron Icon (Title):**
+```css
+padding: 4px; /* 1 */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+left: 5.33px;
+top: 6.67px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Project Subtitle Row:**
+```css
+width: 100%;
+padding: 2px 6px; /* 0.5 × 1.5 */
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Subtitle Text */
+max-width: 208px; /* 52 × 4 */
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Usage:**
+- Logo 32×32px с fill 28×28px
+- Title max-width 176px с line-clamp 1
+- Subtitle opacity 80%, max-width 208px
+- Settings icon справа вверху
+
+### 55.7. Scene Item List
+
+**Scene Item - Default:**
+```css
+width: 208px; /* 52 × 4 */
+height: 40px;
+padding: 4px 12px 4px 4px; /* 1 × 3 × 1 */
+background: var(--Surface-01);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Scene Item - Hover:**
+```css
+width: 208px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Scene Item - Active:**
+```css
+width: 208px;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Icon Container - Default:**
+```css
+padding: 8px; /* 2 */
+background: var(--Surface-03);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+```
+
+**Icon Container - Hover:**
+```css
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Icon Container - Active:**
+```css
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Item Label:**
+```css
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Action Icons Group (только на hover/active):**
+```css
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px; /* 3 */
+
+/* Lock Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Lock Icon Shape */
+width: 10px;
+height: 12px;
+left: 3.17px;
+top: 1.83px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Eye Icon Shape */
+width: 14px;
+height: 10px;
+left: 1.49px;
+top: 3.17px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Variation Icon Shape */
+width: 12px;
+height: 12px;
+left: 1.83px;
+top: 1.83px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- **Default:** Surface-01, icon bg Surface-03
+- **Hover:** Surface-03, icon bg Surface-01, NO outline
+- **Active:** Surface-03, icon bg Surface-01 + shadow, WITH outline Stroke-02
+- Action icons (lock/eye/variation) появляются только на hover/active
+
+### 55.8. Search Bar with Keyboard Shortcut
+
+**Search Bar Container:**
+```css
+width: 208px;
+height: 40px;
+padding: 4px 10px 4px 4px; /* 1 × 2.5 × 1 */
+background: var(--Surface-01);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+```
+
+**Search Input Area:**
+```css
+flex: 1;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px; /* 3 */
+
+/* Icon Container */
+width: 32px;
+height: 32px;
+border-radius: 8px;
+overflow: hidden;
+
+/* Search Icon */
+width: 16px;
+height: 16px;
+left: 8px;
+top: 8px;
+position: absolute;
+overflow: hidden;
+
+/* Icon Shape */
+width: 10px;
+height: 10px;
+left: 2.5px;
+top: 2.5px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Placeholder Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Keyboard Shortcut Badge:**
+```css
+padding: 2px 6px; /* 0.5 × 1.5 */
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.11),
+  inset 0px -1px 0.6px 0px rgba(0,0,0,0.20),
+  inset 0px 2px 0.8px 0px rgba(255,255,255,0.27);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Shortcut Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Usage:**
+- Keyboard shortcut badge с 4 layers shadows для depth
+- "⌘ K" или другие shortcuts
+- Icon opacity через Text-Secondary color
+
+### 55.9. Camera Control (Isometric/Perspective)
+
+**Camera Segmented Control Container:**
+```css
+width: 100%; /* full width of panel content */
+height: 36px;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+```
+
+**Camera Option - Active:**
+```css
+flex: 1;
+padding: 6px 12px; /* 1.5 × 3 */
+background: var(--Surface-01);
+border-radius: 6px; /* md */
+box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.14);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+```
+
+**Camera Option - Inactive:**
+```css
+flex: 1;
+padding: 6px 12px;
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Usage:**
+- Отличается от Design/Animation tabs outline цветом (Stroke-01 вместо Stroke-02)
+- Active border-radius 6px вместо 8px
+- Inactive font-weight 500 вместо 600
+
+### 55.10. Distortion Slider
+
+**Slider Group Container:**
+```css
+width: 100%;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px; /* 1.5 */
+```
+
+**Slider Container:**
+```css
+width: 112px;
+height: 36px;
+position: relative;
+```
+
+**Slider Track:**
+```css
+width: 112px;
+height: 36px;
+left: 0;
+top: 0;
+position: absolute;
+background: var(--Surface-03);
+border-radius: 8px;
+```
+
+**Slider Fill + Thumb Group:**
+```css
+width: 56px; /* 50% fill */
+height: 36px;
+left: 0;
+top: 0;
+position: absolute;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+```
+
+**Slider Fill:**
+```css
+flex: 1;
+height: 36px;
+background: rgba(var(--Shade-6-30), 0.3);
+border-radius: 8px;
+```
+
+**Slider Thumb:**
+```css
+width: 24px;
+height: 36px;
+background: var(--Surface-02);
+border-radius: 6px; /* md */
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px -1px rgba(0,0,0,0.17),
+  inset 0px -1px 4px -2px rgba(0,0,0,0.20);
+```
+
+**Value Display:**
+```css
+padding: 10px 12px 10px 10px; /* 2.5 × 3 × 2.5 × 2.5 */
+background: var(--Surface-03);
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 6px;
+overflow: hidden;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (minus) */
+width: 14px;
+height: 6px;
+left: 1.28px;
+top: 5.33px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Value Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+text-align: right;
+```
+
+**Usage:**
+- Slider width 112px, height 36px
+- Fill width динамический (например 56px = 50%)
+- Thumb 24px wide, 3 shadows для depth
+- Icon opacity 70%
+
+### 55.11. Background Color Picker
+
+**Color Picker Container:**
+```css
+flex: 1;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+```
+
+**Color Section (Left):**
+```css
+flex: 1;
+border-right: 1px solid rgba(var(--Shade-7-10), 0.1);
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px; /* 3 */
+
+/* Color Swatch */
+width: 28px;
+height: 28px;
+background: #F4F4F4; /* zinc-100 или другой цвет */
+border-radius: 6px;
+border: 1px solid rgba(var(--Shade-7-10), 0.1);
+
+/* Hex Value Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Opacity Section (Right):**
+```css
+padding-left: 12px;
+padding-right: 12px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Opacity Number */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+
+/* Percent Symbol */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+```
+
+**Usage:**
+- Color swatch 28×28px с border
+- Hex value слева от opacity
+- Border-right разделяет секции
+
+### 55.12. Artboard Preset Dropdown
+
+**Artboard Preset Container:**
+```css
+width: 176px; /* 44 × 4 */
+padding: 10px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Preset Content Area:**
+```css
+flex: 1;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (artboard) */
+width: 12px;
+height: 10px;
+left: 1.83px;
+top: 2.5px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Dot (small circle in artboard icon) */
+width: 0.67px;
+height: 0.67px;
+left: 11.33px;
+top: 4.67px;
+position: absolute;
+background: var(--Text-Secondary);
+border-radius: 24px;
+outline: 0.5px solid var(--Text-Secondary);
+
+/* Preset Name */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Dimensions Display:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+
+/* Dimensions Text (800x600) */
+opacity: 0.5;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: right;
+```
+
+**Chevron Icon:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+left: 5.33px;
+top: 6.67px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Lock Icon Button:**
+```css
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Lock Icon */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Lock Shape */
+width: 10px;
+height: 12px;
+left: 3.17px;
+top: 2px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Preset dropdown 176px wide
+- Dimensions opacity 50%
+- Icon opacity 70%
+- Chevron справа
+
+### 55.13. Artboard Dimensions Input
+
+**Dimensions Group:**
+```css
+width: 176px;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 6px;
+```
+
+**Dimension Input (W/H):**
+```css
+flex: 1;
+padding: 10px 12px 10px 10px;
+background: var(--Surface-03);
+border-radius: 10px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px;
+overflow: hidden;
+
+/* Label Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Label Text (W or H) */
+left: 2px; /* или 3px для H */
+top: 0;
+position: absolute;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: right;
+
+/* Value Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: right;
+```
+
+**Unit Icon Button:**
+```css
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Unit Text (px) */
+left: 1px;
+top: 0;
+position: absolute;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: right;
+```
+
+**Usage:**
+- W и H inputs равной ширины (flex: 1)
+- Label icon opacity 70%
+- Unit button справа
+
+### 55.14. Loop Timeline Preview
+
+**Timeline Container:**
+```css
+width: 100%; /* full width of section */
+height: 56px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+```
+
+**Timeline Frame:**
+```css
+flex: 1;
+height: 56px;
+position: relative;
+
+/* Frame Image */
+flex: 1;
+height: 56px;
+object-fit: cover;
+```
+
+**Playhead Container (positioned over frames):**
+```css
+width: 48px;
+height: 56px;
+left: 156px; /* Позиция playhead, например 156px */
+top: 0;
+position: absolute;
+```
+
+**Playhead Background Blur:**
+```css
+width: 48px;
+height: 56px;
+left: 4px;
+top: 0;
+position: absolute;
+background: rgba(23,23,23,0.3); /* neutral-900/30 */
+backdrop-filter: blur(2px);
+```
+
+**Playhead Vertical Line:**
+```css
+width: 0;
+height: 56px;
+left: 4px;
+top: 3px;
+position: absolute;
+outline: 1.5px solid var(--Shade1-100);
+outline-offset: -0.75px;
+```
+
+**Playhead Top Marker:**
+```css
+width: 8px;
+height: 5px;
+left: 0;
+top: 1px;
+position: absolute;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+```
+
+**Playhead Bottom Marker:**
+```css
+width: 8px;
+height: 5px;
+left: 0;
+top: 54px;
+position: absolute;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+```
+
+**Timeline Start/End Markers (left: 0):**
+```css
+width: 48px;
+height: 56px;
+left: 0;
+top: 0;
+position: absolute;
+
+/* Blur Background */
+width: 48px;
+height: 56px;
+left: 0;
+top: 0;
+position: absolute;
+background: rgba(23,23,23,0.3);
+backdrop-filter: blur(2px);
+
+/* Vertical Line */
+width: 0;
+height: 56px;
+left: 48px; /* Справа для start, слева для end */
+top: 3px;
+position: absolute;
+outline: 1.5px solid var(--Shade1-100);
+outline-offset: -0.75px;
+
+/* Top Marker */
+width: 8px;
+height: 5px;
+left: 44px;
+top: 1px;
+position: absolute;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+
+/* Bottom Marker */
+width: 8px;
+height: 5px;
+left: 44px;
+top: 54px;
+position: absolute;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+```
+
+**Play Icon (на playhead):**
+```css
+width: 32px;
+height: 32px;
+left: -13px; /* Смещение для центрирования */
+top: 13px;
+position: absolute;
+
+/* Icon Background (white) */
+width: 16px;
+height: 12px;
+left: 9px;
+top: 11px;
+position: absolute;
+background: white;
+
+/* Icon Shape (black triangle) */
+width: 14px;
+height: 8px;
+left: 10.41px;
+top: 13.41px;
+position: absolute;
+background: black;
+```
+
+**Usage:**
+- 6 frames (flex: 1 each) для равномерного распределения
+- Playhead с backdrop-blur 2px
+- Markers 8×5px сверху и снизу
+- Vertical line Shade1-100
+
+### 55.15. Loop Duration Control
+
+**Duration Control Group:**
+```css
+width: 100%;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px;
+```
+
+**Segmented Control (Short/Long):**
+```css
+flex: 1;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+
+/* Active Item */
+flex: 1;
+padding: 6px 12px;
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.14);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Active Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+
+/* Inactive Item */
+flex: 1;
+padding: 6px 12px;
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Inactive Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Duration Value Display:**
+```css
+padding: 10px 12px 10px 10px;
+background: var(--Surface-03);
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 6px;
+overflow: hidden;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (clock) */
+width: 12px;
+height: 12px;
+left: 1.83px;
+top: 1.83px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Duration Text (8s) */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+text-align: right;
+```
+
+**Usage:**
+- Segmented control flex: 1 для заполнения пространства
+- Value display справа с иконкой часов
+
+### 55.16. Effects Grid (Small Thumbnails)
+
+**Effects Grid Container:**
+```css
+width: 100%; /* full width of section */
+padding: 16px;
+padding-bottom: 16px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 8px;
+flex-wrap: wrap;
+align-content: flex-start;
+```
+
+**Effect Thumbnail - Small:**
+```css
+flex: 1;
+height: 64px;
+min-width: 64px;
+padding: 4px;
+border-radius: 12px;
+object-fit: cover;
+```
+
+**Usage:**
+- Small size: 64×64px (h-16, min-w-16)
+- Padding 4px для внутреннего spacing
+- Gap 8px между thumbnails
+- Flex-wrap для grid layout
+
+### 55.17. Lens Dropdown Options
+
+**Lens Option - Default (Surface-01):**
+```css
+width: 176px;
+padding: 10px;
+background: var(--Surface-01);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Lens Option - Selected (Surface-03):**
+```css
+width: 176px;
+padding: 10px 8px 10px 10px; /* Разные отступы для иконок */
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Option Content Area:**
+```css
+flex: 1;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px;
+
+/* Inner Flex для текста */
+flex: 1;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Option Label */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Chevron Icon (Right):**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+left: 5.33px;
+top: 6.67px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Action Button (Eye Icon):**
+```css
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Eye Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Eye Shape */
+width: 14px;
+height: 10px;
+left: 1.49px;
+top: 3.17px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Action Button (Minus Icon):**
+```css
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Minus Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Minus Shape */
+width: 8px;
+height: 0;
+left: 4px;
+top: 8px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Default: Surface-01 background, outline Stroke-01
+- Selected: Surface-03 background, outline Stroke-01
+- Icon opacity 70%
+- Action buttons справа
+
+### 55.18. Tilt Control (Rotated)
+
+**Tilt Control Container:**
+```css
+padding: 14px 20px; /* 3.5 × 5 */
+transform: rotate(-90deg);
+transform-origin: top left;
+background: var(--Surface-01);
+border-radius: 24px; /* 3xl */
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Left Arrow Icon:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Arrow Shape (vertical line rotated) */
+width: 0;
+height: 8px;
+left: 3.86px;
+top: 2.53px;
+position: absolute;
+transform: rotate(-90deg);
+transform-origin: top left;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Scale Ticks Group:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 10px; /* 2.5 */
+```
+
+**Tick Mark - Small (opacity 30%):**
+```css
+width: 6px;
+height: 0;
+opacity: 0.3;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Tick Mark - Large (active):**
+```css
+width: 12px;
+height: 0;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Right Arrow Icon:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Arrow Shape (vertical line rotated) */
+width: 0;
+height: 8px;
+left: 12.19px;
+top: 2.53px;
+position: absolute;
+transform: rotate(90deg);
+transform-origin: top left;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Rotated -90deg для vertical orientation
+- Multiple box-shadows для subtle elevation
+- Tick pattern: small (6px) - large (12px) - small - small - small - large - small
+- Active ticks opacity 100%, inactive 30%
+
+### 55.19. Summary Tables
+
+**Panel Header Components:**
+| Component | Width | Height | Background | Border/Outline | Notable Details |
+|-----------|-------|--------|------------|----------------|-----------------|
+| Avatar | 32px | 32px | - | 2px Surface-01 | Overlap -8px margin |
+| Share Button | auto | 40px | gradient neutral-200 | 3 shadows | padding 10px 24px |
+
+**Section Components:**
+| Component | Width | Height | Background | State Indicator |
+|-----------|-------|--------|------------|-----------------|
+| Section Header | 240px | 48px | - | border-top Stroke-01 |
+| Toggle ON | 40px | 20px | Shade-9-70/70 | justify-end |
+| Toggle OFF | 40px | 20px | Shade-4-100 | justify-start |
+
+**Scene Item States:**
+| State | Background | Icon BG | Outline | Shadow | Actions Visible |
+|-------|------------|---------|---------|--------|-----------------|
+| Default | Surface-01 | Surface-03 | - | - | ❌ |
+| Hover | Surface-03 | Surface-01 | - | - | ✅ |
+| Active | Surface-03 | Surface-01 | Stroke-02 | 0px 0px 4px rgba(18,18,18,0.10) | ✅ |
+
+**Slider Components:**
+| Element | Width | Height | Background | Shadows |
+|---------|-------|--------|------------|---------|
+| Track | 112px | 36px | Surface-03 | - |
+| Fill | variable | 36px | Shade-6-30/30 | - |
+| Thumb | 24px | 36px | Surface-02 | 3 layers |
+
+**Timeline Components:**
+| Element | Width | Height | Background | Blur |
+|---------|-------|--------|------------|------|
+| Timeline | full | 56px | - | outline Stroke-01 |
+| Frame | flex-1 | 56px | image | - |
+| Playhead | 48px | 56px | neutral-900/30 | backdrop-blur 2px |
+| Marker | 8px | 5px | Shade1-100 | - |
+
+### 55.20. Usage Guidelines
+
+**Panel Structure:**
+```
+Panel Container (240×876px)
+├─ Panel Header (avatars + Share button)
+├─ Tab Control (Design/Animation или Scene/Assets)
+├─ Section 1 (border-top)
+│  ├─ Section Header (title + collapse icon)
+│  └─ Section Content
+├─ Section 2 (border-top)
+│  ├─ Section Header
+│  └─ Section Content
+└─ Bottom Section (например Search)
+```
+
+**Scene Item Hierarchy:**
+1. **Default State:** Surface-01 bg, Surface-03 icon bg, NO action icons
+2. **Hover State:** Surface-03 bg, Surface-01 icon bg, action icons VISIBLE
+3. **Active State:** Surface-03 bg + outline Stroke-02, Surface-01 icon bg + shadow, action icons VISIBLE
+
+**Slider Implementation:**
+- Track всегда 112×36px, Surface-03
+- Fill width = (value / max) × 112px
+- Fill background Shade-6-30/30
+- Thumb всегда 24px wide, позиция = fill width
+
+**Timeline Loop:**
+- Frames распределяются равномерно (flex: 1)
+- Playhead width 48px с backdrop-blur
+- Vertical line слева от playhead (offset 4px)
+- Markers сверху (1px) и снизу (54px)
+
+**Toggle Switch States:**
+- **ON:** Shade-9-70/70 background, justify-end (knob справа)
+- **OFF:** Shade-4-100 background, justify-start (knob слева)
+- Knob одинаковый: 16×16px, Surface-02, 3 shadows
+
+**Lens/Dropdown Options:**
+- Default: Surface-01 + Stroke-01 outline
+- Selected/Background: Surface-03 + Stroke-01 outline
+- Icon opacity всегда 70%
+- Action buttons только на selected items
+
+**Color Picker:**
+- Swatch 28×28px слева
+- Hex value посередине
+- Opacity справа (число + %)
+- Border-right Shade-7-10/10 разделяет секции
+
+**Artboard Controls:**
+- Preset dropdown 176px с icon + name + dimensions
+- Dimensions opacity 50%
+- W/H inputs равной ширины (flex: 1)
+- Lock icon и Unit icon справа
+
+**Keyboard Shortcuts:**
+- Badge: Surface-03 bg, 4 layers shadows
+- Text: Text-Secondary, 12px medium
+- Placement: справа в search bar
+
+**Tilt Control:**
+- Rotation: -90deg для vertical display
+- Scale pattern: small-large-small-small-small-large-small
+- Active ticks: 12px wide, opacity 100%
+- Inactive ticks: 6px wide, opacity 30%
+
+**Effects Grid:**
+- Small thumbnails: 64×64px (h-16, min-w-16)
+- Padding: 4px внутри thumbnail
+- Gap: 8px между items
+- Flex-wrap для responsive layout
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
