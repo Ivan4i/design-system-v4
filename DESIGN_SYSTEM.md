@@ -12431,6 +12431,513 @@ outline-offset: -0.75px;
 
 ---
 
+## 54. Segmented Controls / Tab Buttons / Asset Grids / Thumbnails
+
+### 54.1 Tab Button - Active (Standalone)
+
+Активная кнопка-таб без контейнера.
+
+```css
+/* Button - Active */
+width: 96px; /* w-24 */
+padding: 8px 12px; /* px-3 py-2 */
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Tab Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+### 54.2 Tab Button - Default (Standalone)
+
+Неактивная кнопка-таб без фона.
+
+```css
+/* Button - Default */
+width: 112px; /* w-28 */
+padding: 8px 12px; /* px-3 py-2 */
+border-radius: 8px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Tab Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Отличия:** нет фона, нет shadow, текст Text-Secondary.
+
+### 54.3 Segmented Control - Container (Style 1)
+
+Контейнер для segmented control с rounded-xl.
+
+```css
+/* Container */
+flex: 1;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 1.9px 0px rgba(50,50,50,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+overflow: hidden;
+
+/* Active Item */
+flex: 1;
+padding: 8px 12px; /* px-3 py-2 */
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Active Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Inactive Item */
+flex: 1;
+padding: 8px 12px; /* px-3 py-2 */
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Inactive Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Пример:** "Scene" / "Assets"
+
+### 54.4 Segmented Control - Standalone (Style 1)
+
+Segmented control без внешнего контейнера (padding).
+
+```css
+/* Container */
+width: 208px; /* w-52 */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow: inset 0px 1px 1.9px 0px rgba(50,50,50,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+overflow: hidden;
+
+/* Items styling - Same as 54.3 */
+```
+
+### 54.5 Segmented Control - Style 2 (Rounded-md)
+
+Segmented control с меньшим border-radius (10px вместо 12px).
+
+```css
+/* Container */
+width: 208px; /* w-52 */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+box-shadow: inset 0px 1px 1.9px 0px rgba(50,50,50,0.10);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+overflow: hidden;
+
+/* Active Item */
+flex: 1;
+padding: 6px 12px; /* px-3 py-1.5 */
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.14);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Active Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Inactive Item */
+flex: 1;
+padding: 6px 12px; /* px-3 py-1.5 */
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Inactive Text */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Отличия:**
+- Container: radius 10px, outline Stroke-01
+- Active: radius 6px, padding 6px 12px, shadow 0px 1px 4px
+- Inactive: radius 8px, font weight 500
+
+**Пример:** "Isometric" / "Perspective"
+
+### 54.6 Asset Thumbnail - 3D Object (Default)
+
+Превью 3D объекта в grid.
+
+```css
+/* Thumbnail Container */
+flex: 1;
+height: 96px; /* h-24 */
+min-width: 96px; /* min-w-24 */
+background: var(--Surface-03);
+border-radius: 16px;
+position: relative;
+overflow: hidden;
+
+/* Preview Image (Large - 88×88) */
+width: 88px; /* w-20 = 80px, но в коде 88 */
+height: 88px;
+position: absolute;
+left: 6px;
+top: 6px;
+object-fit: cover;
+```
+
+**Image size:** 88×88px с отступом 6px от краев контейнера 96px.
+
+### 54.7 Asset Thumbnail - 3D Object (Selected/Hover)
+
+Превью с border и inset shadow.
+
+```css
+/* Thumbnail Container - Selected */
+flex: 1;
+height: 96px; /* h-24 */
+min-width: 96px; /* min-w-24 */
+background: var(--Surface-03);
+border-radius: 16px;
+box-shadow: inset 0px 0px 0px 4px rgba(252,252,252,1.00);
+outline: 1.5px solid rgba(var(--Shade-6-50), 0.5);
+outline-offset: -1.5px;
+position: relative;
+overflow: hidden;
+
+/* Preview Image */
+width: 88px;
+height: 88px;
+position: absolute;
+left: 6px;
+top: 6px;
+object-fit: cover;
+```
+
+**Selection indicator:**
+- inset shadow: 4px white
+- outline: 1.5px Shade-6-50/50
+
+### 54.8 Asset Thumbnail - Material (Default)
+
+Превью материала с меньшим изображением.
+
+```css
+/* Thumbnail Container */
+flex: 1;
+height: 96px; /* h-24 */
+min-width: 96px; /* min-w-24 */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 16px;
+position: relative;
+display: flex;
+flex-wrap: wrap;
+align-content: center;
+overflow: hidden;
+
+/* Preview Image (Medium - 64×64) */
+width: 64px; /* w-16 */
+height: 64px;
+position: absolute;
+left: 18px; /* centered: (96 - 64) / 2 = 16, но в коде 18 */
+top: 18px;
+object-fit: cover;
+```
+
+**Image size:** 64×64px центрировано в контейнере 96px.
+
+### 54.9 Asset Grid Section (3D Objects)
+
+Секция с заголовком и grid из thumbnails.
+
+```css
+/* Section Container */
+display: inline-flex;
+flex-direction: column;
+overflow: hidden;
+
+/* Section Header */
+width: 240px; /* w-60 */
+height: 48px; /* h-12 */
+padding: 12px 16px; /* px-4 py-3 */
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Header Title */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Chevron Icon Button */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape (down) */
+width: 6px;
+height: 2.99px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Grid Container */
+width: 240px; /* w-60 */
+padding: 0 16px 16px 16px; /* px-4 pb-4 */
+display: inline-flex;
+flex-wrap: wrap;
+align-content: flex-start;
+gap: 8px;
+```
+
+**Grid pattern:** flex-wrap с gap 8px, thumbnails flex: 1 min-width 96px.
+
+### 54.10 Asset Grid Section (Materials) - Blurred
+
+Секция материалов с blur effect на grid.
+
+```css
+/* Grid Container - Blurred */
+width: 240px; /* w-60 */
+height: 320px; /* h-80 */
+padding: 0 16px 16px 16px; /* px-4 pb-4 */
+filter: blur(8px); /* blur-lg */
+display: inline-flex;
+flex-wrap: wrap;
+align-content: flex-start;
+gap: 8px;
+```
+
+**Special:** blur-lg (8px) применен для демонстрации.
+
+### 54.11 Image Thumbnail - Small (64×64)
+
+Маленький thumbnail изображения.
+
+```css
+/* Thumbnail - Default */
+width: 64px; /* w-16 */
+height: 64px; /* h-16 */
+min-width: 64px; /* min-w-16 */
+padding: 4px;
+border-radius: 12px;
+object-fit: cover;
+
+/* Thumbnail - Hover/Selected */
+width: 64px;
+height: 64px;
+min-width: 64px;
+padding: 4px;
+border-radius: 12px;
+box-shadow: inset 0px 0px 0px 3px rgba(252,252,252,1.00);
+border: 1.5px solid var(--Shade-6-100);
+object-fit: cover;
+```
+
+**Selection indicator:**
+- inset shadow: 3px white
+- border: 1.5px Shade-6-100 (solid, не outline)
+
+### 54.12 Image Thumbnail - Large (96×96)
+
+Большой thumbnail изображения.
+
+```css
+/* Thumbnail - Default */
+width: 96px; /* w-24 */
+height: 96px; /* h-24 */
+min-width: 64px; /* min-w-16 */
+min-height: 64px; /* min-h-16 */
+padding: 4px;
+border-radius: 16px;
+object-fit: cover;
+
+/* Thumbnail - Hover/Selected */
+width: 96px;
+height: 96px;
+min-width: 64px;
+min-height: 64px;
+padding: 4px;
+border-radius: 16px;
+box-shadow: inset 0px 0px 0px 3px rgba(252,252,252,1.00);
+border: 1.5px solid var(--Shade-6-100);
+object-fit: cover;
+```
+
+**Selection indicator:** аналогичен small, но с radius 16px.
+
+### 54.13 Summary: Tab Buttons & Segmented Controls
+
+| Type | Container Bg | Padding | Border Radius | Outline | Shadow | Special |
+|------|--------------|---------|---------------|---------|--------|---------|
+| **Tab Active** | Surface-01 | 8px 12px | 8px | - | 2 shadows | 12px/600 Primary |
+| **Tab Default** | - | 8px 12px | 8px | - | - | 12px/600 Secondary |
+| **Segmented Container 1** | Surface-03 | 4px | 12px | Stroke-02 | inset shadow | rounded-xl |
+| **Segmented Active 1** | Surface-01 | 8px 12px | 8px | - | 2 shadows | 12px/600 Primary |
+| **Segmented Inactive 1** | - | 8px 12px | 8px | - | - | 12px/600 Secondary |
+| **Segmented Container 2** | Surface-03 | 4px | 10px | Stroke-01 | inset shadow | rounded-md |
+| **Segmented Active 2** | Surface-01 | 6px 12px | 6px | - | 1 shadow | 12px/600 Primary |
+| **Segmented Inactive 2** | - | 6px 12px | 8px | - | - | 12px/500 Secondary |
+
+**Key differences:**
+- Style 1: rounded-xl (12px), outline Stroke-02, padding 8px 12px
+- Style 2: rounded-md (10px), outline Stroke-01, padding 6px 12px, inactive weight 500
+
+### 54.14 Summary: Asset Thumbnails
+
+| Type | Size | Image Size | Image Position | Border Radius | Selection Style |
+|------|------|------------|----------------|---------------|-----------------|
+| 3D Object Default | 96×96px | 88×88px | left: 6px, top: 6px | 16px | - |
+| 3D Object Selected | 96×96px | 88×88px | left: 6px, top: 6px | 16px | inset 4px white + outline 1.5px Shade-6-50/50 |
+| Material Default | 96×96px | 64×64px | left: 18px, top: 18px (centered) | 16px | - |
+| Image Small Default | 64×64px | full | padding: 4px | 12px | - |
+| Image Small Selected | 64×64px | full | padding: 4px | 12px | inset 3px white + border 1.5px Shade-6-100 |
+| Image Large Default | 96×96px | full | padding: 4px | 16px | - |
+| Image Large Selected | 96×96px | full | padding: 4px | 16px | inset 3px white + border 1.5px Shade-6-100 |
+
+**Container:** всегда Surface-03 background
+
+**Selection pattern:**
+- inset shadow: 3px или 4px white
+- outline/border: 1.5px Shade-6-50/50 или Shade-6-100
+
+### 54.15 Summary: Grid Sections
+
+| Element | Width | Padding | Border | Layout | Special |
+|---------|-------|---------|--------|--------|---------|
+| Section Header | 240px | 12px 16px | border-top Stroke-01 | justify-between | 12px/600 title + chevron |
+| Grid Container | 240px | 0 16px 16px | - | flex-wrap, gap: 8px | align-content: flex-start |
+| Grid Container Blurred | 240px×320px | 0 16px 16px | - | flex-wrap, gap: 8px | blur-lg (8px) |
+| Thumbnail | flex: 1 | - | - | min-width: 96px | height: 96px |
+
+### 54.16 Usage Guidelines
+
+**Tab Buttons (Standalone):**
+- Используйте без контейнера для простых табов
+- Active: Surface-01 + 2 shadows + Text-Primary 600
+- Default: transparent + Text-Secondary 600
+- Padding: 8px 12px, radius: 8px
+- Подходит для 2-3 табов без группировки
+
+**Segmented Controls:**
+- Используйте для переключения между 2-3 опциями
+- Style 1 (rounded-xl): для основных UI элементов
+- Style 2 (rounded-md): для компактных UI элементов
+- Container всегда Surface-03 + inset shadow + outline
+- Active item всегда Surface-01 + shadow + Text-Primary
+- Inactive item transparent + Text-Secondary
+- Items всегда flex: 1 для равной ширины
+
+**Style 1 vs Style 2:**
+- Style 1: radius 12/8px, Stroke-02, padding 8px 12px, inactive weight 600
+- Style 2: radius 10/6px, Stroke-01, padding 6px 12px, inactive weight 500
+- Style 2 более компактный и легкий
+
+**Asset Thumbnails:**
+- 3D Objects: изображение 88×88px с отступом 6px
+- Materials: изображение 64×64px центрировано
+- Всегда Surface-03 background
+- Border-radius: 16px для 96px thumbnails, 12px для 64px
+- Flex: 1 для адаптивности в grid
+- Min-width: 96px для предотвращения сжатия
+
+**Selection State:**
+- 3D Objects: inset 4px white + outline 1.5px Shade-6-50/50
+- Images: inset 3px white + border 1.5px Shade-6-100
+- inset shadow создает "вырезанный" эффект
+- outline/border для цветового акцента
+
+**Grid Sections:**
+- Width: 240px (w-60) стандарт для side panels
+- Padding: 0 16px 16px для grid content
+- Flex-wrap с gap: 8px для responsive layout
+- Thumbnails автоматически переносятся на новую строку
+- Section header: border-top + 12px/600 title + chevron icon
+
+**Chevron Icons:**
+- Down chevron: 6×2.99px для collapsed sections
+- Up chevron: для expanded sections
+- Всегда Text-Secondary, outline 1.5px
+
+**Blur Effect:**
+- blur-lg (8px) для демонстрации locked/disabled content
+- Применяется к grid container, не к отдельным items
+
+**Grid Layout Math:**
+- 240px container - 32px padding (16px × 2) = 208px content
+- 208px ÷ 2 items per row = 104px per item
+- 104px - 8px gap = 96px thumbnail size
+- Perfect fit для 2 columns с gap
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
