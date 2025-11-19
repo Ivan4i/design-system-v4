@@ -8879,6 +8879,1336 @@ color: var(--Text-Primary);
 
 ---
 
+## Section 58: Editor Toolbars / Export Panel / Zoom Controls / Timeline Scrubbers
+
+### 58.1. Editor Toolbar (Full)
+
+**Toolbar Container:**
+```css
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.12),
+  0px 1px 4px -4px rgba(0,0,0,0.08);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+```
+
+**Tool Section (Icon Buttons Group):**
+```css
+padding: 8px;
+border-right: 1px solid var(--Stroke-01);
+gap: 8px;
+```
+
+**Icon Button - Default:**
+```css
+width: 40px;
+height: 40px;
+padding: 10px; /* Icon 20×20px */
+border-radius: 10px;
+
+/* Icon Shape */
+width: 20px;
+height: 20px;
+/* Icon path varies - outline 1.5px Text-Primary */
+```
+
+**Icon Button - Active:**
+```css
+width: 40px;
+padding: 12px 10px; /* px-3 py-2.5 */
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow:
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00),
+  inset 0px -1px 3px 0px rgba(18,18,18,0.15);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+/* Icon shape (14×14px) */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Icon Button - Disabled:**
+```css
+width: 40px;
+height: 40px;
+opacity: 0.4;
+border-radius: 10px;
+
+/* Icon */
+outline: 1.5px solid var(--Text-Secondary);
+```
+
+**Zoom Selector - Default:**
+```css
+width: 96px;
+padding: 4px 12px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 500; /* medium */
+line-height: 20px;
+color: var(--Text-Primary);
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+/* Chevron shape 6×2.99px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Zoom Selector - Open:**
+```css
+width: 96px;
+padding: 4px 12px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow:
+  inset 0px 0px 2px 2px rgba(255,255,255,1.00);
+outline: 1px solid rgba(var(--Shade-9-10), 0.1);
+outline-offset: -1px;
+
+/* Label + Chevron rotated */
+```
+
+**Export Section:**
+```css
+padding: 8px;
+```
+
+**Export Button:**
+```css
+padding: 10px 24px;
+background: linear-gradient(to bottom, #D4D4D4, #D4D4D4); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600; /* semibold */
+line-height: 20px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+---
+
+### 58.2. Editor Toolbar (Simplified)
+
+**Tool Section (2 Icons Only):**
+```css
+padding: 8px;
+border-right: 1px solid var(--Stroke-01);
+display: flex;
+gap: 8px;
+
+/* Contains 2 icon buttons (40×40px each) */
+```
+
+**Zoom Section (Single Zoom Control):**
+```css
+padding: 8px;
+border-right: 1px solid var(--Stroke-01);
+
+/* Contains zoom selector (96px) only */
+/* No navigation arrows */
+```
+
+---
+
+### 58.3. Export Panel
+
+**Panel Wrapper:**
+```css
+width: 549px;
+height: 56px; /* Collapsed - only toolbar */
+display: inline-flex;
+flex-direction: column;
+gap: 4px;
+```
+
+**Export Panel (Expanded):**
+```css
+width: 549px;
+height: 320px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+```
+
+**Sidebar:**
+```css
+width: 144px;
+padding: 8px;
+border-right: 1px solid var(--Stroke-01);
+display: inline-flex;
+flex-direction: column;
+justify-content: space-between;
+```
+
+**Tab Item - Default:**
+```css
+height: 40px;
+padding: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Icon Container */
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 8px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+color: var(--Text-Primary);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+**Tab Item - Hover:**
+```css
+height: 40px;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+
+/* Icon Container */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+/* NO shadow on hover */
+
+/* Icon */
+outline: 1.5px solid var(--Text-Primary);
+
+/* Label */
+color: var(--Text-Primary);
+```
+
+**Tab Item - Active:**
+```css
+height: 40px;
+padding: 4px 8px 4px 4px; /* pl-1 pr-2 py-1 */
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+
+/* Icon Container */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+
+/* Icon */
+outline: 1.5px solid var(--Text-Primary);
+
+/* Label + Chevron */
+display: inline-flex;
+justify-content: space-between;
+
+/* Chevron */
+padding: 4px;
+border-radius: 6px;
+
+/* Chevron icon */
+width: 16px;
+height: 16px;
+/* Shape: 4×8px vertical line */
+background: var(--Text-Secondary);
+```
+
+**Preview Thumbnail:**
+```css
+width: 128px;
+height: 96px;
+padding: 6px;
+border-radius: 12px;
+outline: 1px solid rgba(var(--Shade-7-10), 0.1);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-end;
+align-items: flex-start;
+gap: 8px;
+```
+
+**Close Button (on Thumbnail):**
+```css
+width: 24px;
+height: 24px;
+padding: 12px 8px;
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* X shape 12×12px */
+background: var(--Text-Secondary);
+```
+
+**Main Content:**
+```css
+width: 384px;
+height: 320px;
+display: inline-flex;
+flex-direction: column;
+```
+
+**Content Header:**
+```css
+height: 56px;
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Title */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Close Button */
+padding: 4px;
+border-radius: 6px;
+
+/* Close Icon */
+width: 16px;
+height: 16px;
+/* X shape 8×8px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Settings Row:**
+```css
+padding: 0px 16px 16px 16px; /* px-4 pb-4 */
+display: flex;
+flex-direction: column;
+gap: 6px;
+```
+
+**Settings Controls Row:**
+```css
+display: inline-flex;
+gap: 12px;
+align-items: center;
+```
+
+**Scale Dropdown:**
+```css
+width: 80px;
+padding: 8px 10px 10px 8px; /* pl-2 pr-2.5 py-2.5 */
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+gap: 8px;
+
+/* Icon + Label Container */
+flex: 1;
+display: flex;
+gap: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+/* Shape 10×10px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Chevron */
+width: 16px;
+height: 16px;
+/* Shape 6×2.39px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Color Profile Dropdown:**
+```css
+flex: 1;
+padding: 10px;
+background: var(--Surface-01);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+gap: 8px;
+
+/* Icon + Label Container */
+flex: 1;
+display: flex;
+gap: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+outline: 1.5px solid var(--Text-Secondary);
+
+/* Label */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+/* Chevron (same as scale) */
+```
+
+**Format Toggle (PNG/JPG):**
+```css
+width: 112px;
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+```
+
+**Toggle Tab - Active:**
+```css
+flex: 1;
+padding: 6px 12px;
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.14);
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+color: var(--Text-Primary);
+text-align: center;
+```
+
+**Toggle Tab - Inactive:**
+```css
+flex: 1;
+padding: 6px 12px;
+border-radius: 8px;
+
+/* Label */
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**Collapse/Expand Button:**
+```css
+padding: 4px;
+border-radius: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Dash shape 8×0px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Compression Section:**
+```css
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+gap: 8px;
+```
+
+**Compression Header:**
+```css
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Dimensions */
+opacity: 0.8;
+font-size: 10px;
+font-weight: 400; /* normal */
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**Compression Slider Row:**
+```css
+display: inline-flex;
+gap: 6px;
+align-items: center;
+```
+
+**Slider Track:**
+```css
+flex: 1;
+height: 36px;
+position: relative;
+
+/* Track Background */
+width: 288px; /* Full width of content - padding */
+height: 36px;
+background: var(--Surface-03);
+border-radius: 10px;
+overflow: hidden;
+```
+
+**Slider Fill:**
+```css
+width: 224px; /* Dynamic - example ~78% */
+height: 36px;
+background: rgba(var(--Shade-6-30), 0.3);
+position: absolute;
+left: 0;
+top: 0;
+```
+
+**Slider Thumb:**
+```css
+width: 24px;
+height: 36px;
+position: absolute;
+left: 220px; /* Dynamic based on value */
+top: 0;
+background: var(--Surface-02);
+border-radius: 8px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px -1px rgba(0,0,0,0.17),
+  inset 0px -1px 4px -2px rgba(0,0,0,0.20);
+```
+
+**Compression Value Display:**
+```css
+padding: 8px 10px 10px 8px; /* pl-2 pr-2.5 py-2.5 */
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+gap: 6px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+/* Arrow shape 8×6px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Value */
+width: 32px;
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Primary);
+```
+
+**Export Button (Dark):**
+```css
+padding: 8px 20px;
+background: linear-gradient(to bottom, var(--Shade-7-100), var(--Shade-8-100));
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 14px;
+font-weight: 600; /* semibold */
+line-height: 20px;
+color: #FAFAFA; /* neutral-50 */
+text-align: center;
+```
+
+---
+
+### 58.4. Zoom Dropdown Menu
+
+**Menu Container:**
+```css
+width: 208px;
+background: var(--Shade1-100);
+border-radius: 16px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+```
+
+**Zoom Input (Header):**
+```css
+padding: 8px;
+border-bottom: 1px solid var(--Stroke-01);
+```
+
+**Input Field:**
+```css
+width: 192px;
+height: 36px;
+padding: 6px 8px;
+background: var(--Surface-02);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+gap: 4px;
+
+/* Icon */
+padding: 4px;
+border-radius: 6px;
+
+/* Search Icon */
+width: 16px;
+height: 16px;
+/* Shape 10×10px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Value Display */
+background: rgba(59, 130, 246, 0.3); /* blue-500/30 */
+border-radius: 2px;
+
+/* Value Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+color: var(--Text-Primary);
+text-align: right;
+```
+
+**Menu Items Section:**
+```css
+padding: 8px;
+position: relative;
+display: flex;
+flex-direction: column;
+```
+
+**Menu Item - Default:**
+```css
+width: 192px;
+height: 36px;
+padding: 6px 8px;
+border-radius: 10px;
+display: inline-flex;
+gap: 8px;
+
+/* Content */
+flex: 1;
+display: flex;
+gap: 4px;
+
+/* Icon (Hidden) */
+padding: 4px;
+opacity: 0;
+border-radius: 6px;
+
+/* Label */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+color: var(--Text-Primary);
+
+/* Keyboard Shortcut */
+width: 32px;
+padding: 2px 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.08),
+  inset 0px -0.75px 0.5px 0px rgba(0,0,0,0.25),
+  inset 0px 0.75px 0px 0px rgba(252,252,252,1.00);
+
+/* Shortcut Text */
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+color: var(--Text-Secondary);
+text-align: center;
+```
+
+**Menu Item - Hover:**
+```css
+background: var(--Surface-03);
+border-radius: 10px;
+/* Other properties same as default */
+```
+
+**Menu Item - Active (Zoom to 100%):**
+```css
+/* Icon visible */
+opacity: 1;
+
+/* Icon shape */
+width: 16px;
+height: 16px;
+/* Magnifier 10×8px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Cursor Indicator:**
+```css
+width: 32px;
+height: 32px;
+position: absolute;
+left: 117px;
+top: 51px;
+
+/* Cursor shape */
+width: 14px;
+height: 16px;
+/* 3 lines representing text cursor */
+outline: 0.75px solid black;
+outline-offset: -0.38px;
+```
+
+**Menu Separator:**
+```css
+padding: 8px;
+border-top: 1px solid var(--Stroke-01);
+```
+
+---
+
+### 58.5. Orbit/Tilt Control (Horizontal)
+
+**Container:**
+```css
+padding: 14px 20px;
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+gap: 12px;
+```
+
+**Left Arrow:**
+```css
+width: 16px;
+height: 16px;
+
+/* Arrow shape */
+width: 0;
+height: 10px;
+transform: rotate(-90deg);
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Tick Pattern Container:**
+```css
+display: flex;
+gap: 10px;
+align-items: center;
+```
+
+**Tick - Small (Inactive):**
+```css
+width: 0;
+height: 6px;
+opacity: 0.3;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Tick - Large (Active):**
+```css
+width: 0;
+height: 12px;
+opacity: 1;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Pattern Sequence:**
+- Position 1: 6px (small, inactive)
+- Position 2: 12px (large, active)
+- Position 3: 6px (small, inactive)
+- Position 4: 6px (small, inactive)
+- Position 5: 6px (small, inactive)
+- Position 6: 12px (large, active)
+- Position 7: 6px (small, inactive)
+
+**Right Arrow:**
+```css
+width: 16px;
+height: 16px;
+
+/* Arrow shape */
+width: 0;
+height: 10px;
+transform: rotate(90deg);
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+---
+
+### 58.6. Tilt Control (Vertical)
+
+**Container:**
+```css
+padding: 14px 20px;
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+gap: 12px;
+transform: rotate(-90deg);
+transform-origin: top left;
+```
+
+**Top Arrow:**
+```css
+width: 16px;
+height: 16px;
+
+/* Arrow shape */
+width: 0;
+height: 8px;
+transform: rotate(-90deg);
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Tick Pattern (Rotated):**
+```css
+display: flex;
+gap: 10px;
+align-items: center;
+```
+
+**Tick - Small (Inactive):**
+```css
+width: 6px; /* Becomes height when rotated */
+height: 0;
+opacity: 0.3;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Tick - Large (Active):**
+```css
+width: 12px; /* Becomes height when rotated */
+height: 0;
+opacity: 1;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Bottom Arrow:**
+```css
+width: 16px;
+height: 16px;
+
+/* Arrow shape */
+width: 0;
+height: 8px;
+transform: rotate(90deg);
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+---
+
+### 58.7. Timeline Scrubber (Default)
+
+**Container:**
+```css
+min-width: 288px;
+padding: 14px 24px 14px 14px; /* pl-3.5 pr-6 py-3.5 */
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+gap: 16px;
+align-items: center;
+```
+
+**Play Button - Hover:**
+```css
+border-radius: 4px;
+
+/* Button Container */
+padding: 2px;
+
+/* Icon Container */
+width: 12px;
+height: 12px;
+
+/* Play Icon */
+width: 8px;
+height: 10px;
+background: var(--Text-Primary);
+```
+
+**Progress Bar:**
+```css
+flex: 1;
+height: 0;
+position: relative;
+```
+
+**Progress Track (Total):**
+```css
+width: 176px; /* Dynamic based on container */
+height: 0;
+opacity: 0.2;
+outline: 3px solid var(--Text-Secondary);
+outline-offset: -1.5px;
+position: absolute;
+left: 0;
+top: 0;
+```
+
+**Progress Elapsed:**
+```css
+width: 64px; /* Dynamic - example 36% */
+height: 0;
+opacity: 0.3;
+outline: 3px solid var(--Text-Secondary);
+outline-offset: -1.5px;
+position: absolute;
+left: 0;
+top: 0;
+```
+
+**Playhead:**
+```css
+width: 2px;
+height: 0;
+outline: 3px solid var(--Text-Primary);
+outline-offset: -1.5px;
+position: absolute;
+left: 64px; /* Same as elapsed width */
+top: 0;
+```
+
+**Time Display:**
+```css
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+---
+
+### 58.8. Timeline Scrubber (With Settings)
+
+**Container:**
+```css
+min-width: 320px;
+padding: 6px 14px 6px 6px; /* pl-1.5 pr-3.5 py-1.5 */
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+gap: 16px;
+```
+
+**Play/Pause Button:**
+```css
+padding: 2px;
+
+/* Icon */
+width: 12px;
+height: 12px;
+/* Play/Pause shapes */
+background: var(--Text-Secondary);
+```
+
+**Progress Bar:**
+```css
+width: 192px;
+height: 0;
+position: relative;
+```
+
+**Progress Track:**
+```css
+width: 192px;
+height: 0;
+opacity: 0.2;
+outline: 3px solid var(--Text-Secondary);
+outline-offset: -1.5px;
+```
+
+**Progress Elapsed:**
+```css
+width: 80px; /* Dynamic */
+height: 0;
+opacity: 0.3;
+outline: 3px solid var(--Text-Secondary);
+outline-offset: -1.5px;
+```
+
+**Playhead:**
+```css
+width: 2px;
+height: 0;
+outline: 3px solid var(--Text-Primary);
+outline-offset: -1.5px;
+left: 74px;
+```
+
+**Time Display:**
+```css
+flex: 1;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Text-Secondary);
+```
+
+**Settings Button:**
+```css
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 32px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Gear shape 12×12px */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+---
+
+### 58.9. Timeline Scrubber (Dark Variant)
+
+**Container:**
+```css
+min-width: 576px;
+padding: 8px;
+border-radius: 24px;
+display: inline-flex;
+gap: 16px;
+align-items: center;
+/* NO background, NO outline, NO shadow */
+/* Designed for dark backgrounds */
+```
+
+**Pause Button - Hover:**
+```css
+padding: 4px;
+border-radius: 4px;
+
+/* Icon */
+width: 12px;
+height: 12px;
+/* Pause bars 8×8px */
+background: var(--Surface-01);
+```
+
+**Progress Bar:**
+```css
+flex: 1;
+height: 0;
+position: relative;
+```
+
+**Progress Track:**
+```css
+width: 384px; /* Dynamic */
+height: 0;
+opacity: 0.2;
+outline: 3px solid var(--Surface-01);
+outline-offset: -1.5px;
+```
+
+**Progress Elapsed:**
+```css
+width: 224px; /* Dynamic */
+height: 0;
+position: relative;
+
+/* Elapsed Line */
+width: 224px;
+height: 0;
+opacity: 0.3;
+outline: 3px solid var(--Surface-01);
+outline-offset: -1.5px;
+
+/* Playhead */
+width: 2px;
+height: 0;
+outline: 3px solid var(--Surface-01);
+outline-offset: -1.5px;
+left: 219px;
+```
+
+**Time Display:**
+```css
+width: 24px;
+height: 24px;
+
+/* Text */
+font-family: 'Inter', sans-serif;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+color: var(--Surface-01);
+text-align: center;
+```
+
+**Settings Button (Dark):**
+```css
+padding: 4px;
+border-radius: 32px;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Gear 12×12px */
+outline: 1.5px solid var(--Surface-01);
+outline-offset: -0.75px;
+```
+
+---
+
+### 58.10. Summary Tables
+
+#### Toolbar Components
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Toolbar Container** | Auto width | Surface-01 | 1px Stroke-01 | 2 layers | rounded-20px |
+| **Icon Button - Default** | 40×40px | transparent | none | none | rounded-10px |
+| **Icon Button - Active** | 40px × variable | Surface-03 | 1px Stroke-02 | 2 inset | rounded-12px |
+| **Icon Button - Disabled** | 40×40px | transparent | none | none | opacity 40% |
+| **Zoom Selector - Default** | 96×40px | Surface-03 | 1px Stroke-01 | none | rounded-12px |
+| **Zoom Selector - Open** | 96×40px | Surface-03 | 1px Shade-9-10/10 | inset 2px white | rounded-12px |
+| **Export Button** | auto | neutral-200 gradient | none | 3 layers | px-6 py-2.5 |
+
+#### Export Panel Elements
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Panel Container** | 549×320px | Shade1-100 | 1px Stroke-01 | 5 layers | backdrop-blur 6px |
+| **Sidebar** | 144px width | transparent | border-right Stroke-01 | none | padding 8px |
+| **Tab - Default** | height 40px | Surface-01 | none | none | icon bg Surface-03 |
+| **Tab - Hover** | height 40px | Surface-03 | none | none | icon bg Surface-01 |
+| **Tab - Active** | height 40px | Surface-03 | 1px Stroke-02 | icon shadow 4px | icon bg Surface-01 |
+| **Scale Dropdown** | 80px width | Surface-03 | 1px Stroke-01 | none | icon opacity 70% |
+| **Format Toggle** | 112px width | Surface-03 | 1px Stroke-01 | none | 2 tabs |
+| **Slider Thumb** | 24×36px | Surface-02 | none | 3 layers | rounded-8px |
+| **Export Button Dark** | auto | Shade-7 to Shade-8 | none | 4 layers | px-5 py-2 |
+
+#### Zoom Dropdown
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Menu Container** | 208px width | Shade1-100 | 1px Stroke-01 | 5 layers | backdrop-blur 6px |
+| **Zoom Input** | 192×36px | Surface-02 | 1px Stroke-02 | none | rounded-10px |
+| **Menu Item - Default** | 192×36px | transparent | none | none | rounded-10px |
+| **Menu Item - Hover** | 192×36px | Surface-03 | none | none | rounded-10px |
+| **Keyboard Shortcut** | 32px width | Surface-03 | none | 4 layers | padding 2px 6px |
+
+#### Timeline Controls
+
+| Component | Size | Background | Outline | Shadows | Notes |
+|-----------|------|------------|---------|---------|-------|
+| **Container - Default** | min-width 288px | Surface-01 | 1px Stroke-01 | 5 layers | rounded-24px |
+| **Container - With Settings** | min-width 320px | Surface-01 | 1px Stroke-01 | 5 layers | rounded-24px |
+| **Container - Dark** | min-width 576px | transparent | none | none | For dark backgrounds |
+| **Play/Pause Button** | 12×12px | transparent | none | none | padding 2px |
+| **Progress Track** | dynamic × 0 | transparent | 3px outline | none | opacity 20% |
+| **Progress Elapsed** | dynamic × 0 | transparent | 3px outline | none | opacity 30% |
+| **Playhead** | 2×0px | transparent | 3px outline | none | opacity 100% |
+| **Settings Button** | 32×32px | Surface-03 | none | none | rounded-32px, padding 8px |
+
+---
+
+### 58.11. Usage Guidelines
+
+**Toolbar Layouts:**
+- Use **Full Toolbar** for primary editor interfaces with complete editing capabilities
+- Use **Simplified Toolbar** for focused tasks (2-3 tools only)
+- Group related tools within bordered sections (border-right)
+- Active tool buttons have Surface-03 background + Stroke-02 outline + 2 inset shadows
+- Disabled tools use 40% opacity
+- Export button always at the end, separated by border
+
+**Export Panel:**
+- Expands below toolbar with 4px gap
+- Sidebar width fixed at 144px for consistent tab layout
+- Active tabs show icon elevation (Surface-01 bg + shadow)
+- Preview thumbnail (128×96px) anchored at bottom of sidebar
+- Main content width 384px with consistent 16px padding
+- Settings rows separated by border-top
+- Compression slider provides visual feedback with fill and thumb
+- Dark export button for primary action
+
+**Zoom Controls:**
+- Dropdown menu 208px width for comfortable interaction
+- Input field at top shows current zoom value with search icon
+- Menu items 36px height for easy clicking
+- Keyboard shortcuts aligned right, consistent 4-layer shadow styling
+- Active item shows icon (others have hidden icon with opacity: 0)
+- Separators (border-top) group related zoom actions
+
+**Orbit/Tilt Controls:**
+- Horizontal layout for orbit (left-right rotation)
+- Vertical layout (rotated -90deg) for tilt (up-down rotation)
+- Tick pattern: 6-12-6-6-6-12-6 (small-large-small-small-small-large-small)
+- Active ticks: 12px height, 100% opacity
+- Inactive ticks: 6px height, 30% opacity
+- Left arrow: Text-Secondary (less emphasis)
+- Right arrow: Text-Primary (current direction)
+- 5-layer shadows for subtle elevation
+
+**Timeline Controls:**
+- **Default variant** (288px min): Basic playback control
+  - Play/Pause button + progress bar + time
+  - Outline-based progress visualization (3px thick)
+  - Playhead marks current position with Primary color
+- **With Settings variant** (320px min): Additional controls
+  - Settings button (Surface-03, rounded-32px) on right
+  - Slightly more compact padding
+- **Dark variant** (576px min): For dark backgrounds
+  - No background, outline, or shadow on container
+  - All progress elements use Surface-01 color
+  - Larger width for cinematic interfaces
+- Progress bar always shows:
+  - Total track (opacity 20%)
+  - Elapsed portion (opacity 30%)
+  - Playhead (opacity 100%, 2px width)
+
+**Interactive States:**
+- Toolbar icons: default → hover → active states
+- Zoom selector: default → open (with inset white shadow)
+- Tab items: default → hover (Surface-03) → active (+ outline + icon shadow)
+- Menu items: default → hover (Surface-03)
+- Timeline buttons: default → hover (visible background)
+- Format toggles: instant switch between PNG/JPG
+- Slider thumb: draggable with 3-layer shadow for depth
+
+**Accessibility:**
+- All controls minimum 40px touch target (toolbar buttons)
+- Menu items 36px height for comfortable interaction
+- Keyboard shortcuts visible for power users
+- Time display semibold weight for readability
+- Clear visual feedback for active/selected states
+- Icon opacity variations (70%, 100%) aid recognition
+- Outline thickness 1.5px for clarity
+
+---
+
 ## Паттерны
 
 ### Dashboard Layouts
