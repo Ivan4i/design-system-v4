@@ -11577,6 +11577,860 @@ Right:  TL=8,  TR=24, BL=8,  BR=24
 
 ---
 
+## 53. Editor UI Elements / Layer Panel / Timeline / Sliders
+
+### 53.1 Icon Button - Small (16×16 Icon)
+
+Маленькая иконка-кнопка для тулбаров.
+
+```css
+/* Button Container - Default */
+padding: 4px;
+border-radius: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Container - Active */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Total size:** 24×24px (16px icon + 4px padding × 2)
+
+### 53.2 Icon Button - Medium (20×20 Icon)
+
+Средняя иконка-кнопка с большей зоной клика.
+
+```css
+/* Button Container - Default */
+padding: 6px;
+border-radius: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Container - Active */
+padding: 6px;
+background: var(--Surface-03);
+border-radius: 6px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Icon Container */
+width: 20px;
+height: 20px;
+opacity: 0.8;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 14px;
+height: 14px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Total size:** 32×32px (20px icon + 6px padding × 2)
+
+### 53.3 Breadcrumb / Navigation Item - Default
+
+Навигационный элемент без фона.
+
+```css
+/* Container */
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+
+/* Text Container */
+padding: 0 6px; /* px-1.5 */
+display: flex;
+overflow: hidden;
+
+/* Text */
+max-width: 176px; /* max-w-44 */
+color: var(--Text-Primary);
+font-size: 16px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 24px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Chevron Container */
+padding: 4px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+### 53.4 Breadcrumb / Navigation Item - Active
+
+Навигационный элемент с фоном Surface-03.
+
+```css
+/* Container - Active */
+background: var(--Surface-03);
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+
+/* Text Container */
+padding: 0 6px; /* px-1.5 */
+display: flex;
+overflow: hidden;
+
+/* Text */
+max-width: 176px; /* max-w-44 */
+color: var(--Text-Primary);
+font-size: 16px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 24px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Chevron Container - With Background */
+padding: 4px;
+background: rgba(var(--Shade-7-5), 0.05);
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Отличия:** Chevron container имеет фон Shade-7-5/5.
+
+### 53.5 Breadcrumb / Label - Small
+
+Маленький текстовый лейбл для навигации.
+
+```css
+/* Container - Default */
+padding: 2px 6px; /* px-1.5 py-0.5 */
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text */
+max-width: 208px; /* max-w-52 */
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Container - Active */
+padding: 2px 6px; /* px-1.5 py-0.5 */
+background: var(--Surface-03);
+border-radius: 6px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Text - Active */
+opacity: 0.7;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Пример:** "3D Design Project"
+
+### 53.6 Toolbar Icon Button Group
+
+Группа иконок-кнопок для тулбара (3 варианта состояний).
+
+```css
+/* Icon Button - Default (Surface-03) */
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Button - Active (Surface-01 + Shadow) */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Button - Hover (Surface-01, No Shadow) */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon */
+width: 16px;
+height: 16px;
+
+/* Icon Shape */
+width: 10px;
+height: 12px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Total size:** 32×32px (16px icon + 8px padding × 2)
+
+### 53.7 Layer Panel Item - Active
+
+Элемент панели слоев в активном состоянии с дополнительными иконками.
+
+```css
+/* Container - Active */
+width: 208px; /* w-52 */
+padding-left: 4px;
+padding-right: 12px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Content Row */
+flex: 1;
+display: flex;
+gap: 12px;
+align-items: center;
+
+/* Icon Container - Active */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Layer Icon */
+width: 16px;
+height: 16px;
+
+/* Icon Shape */
+width: 10px;
+height: 12px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Layer Name */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Actions Icons Group */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+
+/* Action Icon (lock/hide/variation) */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies) */
+/* Lock: 10×12px */
+/* Eye: 14×10px */
+/* Variations: 12×12px */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Actions Icons:** lock, hide, variations (всегда Text-Secondary)
+
+### 53.8 Layer Panel Item - Default
+
+Элемент панели слоев в обычном состоянии.
+
+```css
+/* Container - Default */
+width: 208px; /* w-52 */
+padding-left: 4px;
+padding-right: 12px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Icon Container - Default */
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Layer Icon */
+width: 16px;
+height: 16px;
+
+/* Icon Shape */
+width: 10px;
+height: 12px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Layer Name */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Отличия:** Surface-01 background, icon container Surface-03, нет outline, нет action icons.
+
+### 53.9 Layer Panel Item - Hover
+
+Элемент панели слоев в hover состоянии.
+
+```css
+/* Container - Hover */
+width: 208px; /* w-52 */
+padding-left: 4px;
+padding-right: 12px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Icon Container - Hover */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+/* No shadow in hover state */
+```
+
+**Отличия:** Surface-03 background, icon container Surface-01 БЕЗ shadow, нет outline.
+
+### 53.10 Layer Panel Item - Compact
+
+Компактный элемент с chevron (без action icons).
+
+```css
+/* Container - Active Compact */
+width: 128px; /* w-32 */
+height: 40px;
+padding-left: 4px;
+padding-right: 8px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Chevron Container */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 4px;
+height: 8px;
+background: var(--Text-Secondary);
+```
+
+**Используется:** для свернутых/развернутых элементов в layer panel.
+
+### 53.11 Toggle Switch - ON State
+
+Переключатель во включенном состоянии.
+
+```css
+/* Toggle Container - ON */
+width: 40px;
+padding: 2px;
+background: rgba(var(--Shade-9-70), 0.7);
+border-radius: 24px;
+box-shadow: inset 0px 1px 0.6px 0px rgba(18,18,18,0.30);
+display: inline-flex;
+justify-content: flex-end; /* Knob on right */
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Toggle Knob */
+width: 16px;
+height: 16px;
+background: var(--Surface-02);
+border-radius: 24px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px 0px rgba(0,0,0,0.25),
+  inset 0px 1px 0.5px 0px rgba(255,255,255,0.82);
+```
+
+### 53.12 Toggle Switch - OFF State
+
+Переключатель в выключенном состоянии.
+
+```css
+/* Toggle Container - OFF */
+width: 40px;
+padding: 2px;
+background: var(--Shade-4-100);
+border-radius: 24px;
+box-shadow: inset 0px 0px 1px 0.5px rgba(18,18,18,0.10);
+display: inline-flex;
+justify-content: flex-start; /* Knob on left */
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Toggle Knob */
+width: 16px;
+height: 16px;
+background: var(--Surface-02);
+border-radius: 24px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px 0px rgba(0,0,0,0.25),
+  inset 0px 1px 0.5px 0px rgba(255,255,255,0.82);
+```
+
+### 53.13 Slider - Style 1 (Light Fill)
+
+Слайдер с легкой заливкой.
+
+```css
+/* Slider Container */
+width: 112px; /* w-28 */
+height: 36px;
+position: relative;
+
+/* Track Background */
+width: 112px;
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: var(--Surface-03);
+border-radius: 8px;
+
+/* Fill (Progress) */
+width: 56px; /* flex: 1, пример 50% */
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: rgba(var(--Shade-6-30), 0.3);
+border-radius: 8px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+
+/* Thumb */
+width: 24px;
+height: 36px;
+background: var(--Surface-02);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px -1px rgba(0,0,0,0.17),
+  inset 0px -1px 4px -2px rgba(0,0,0,0.20);
+```
+
+**Примечание:** Fill и thumb двигаются вместе.
+
+### 53.14 Slider - Style 2 (Dark Fill with Border)
+
+Слайдер с темной заливкой и border.
+
+```css
+/* Slider Container */
+width: 112px; /* w-28 */
+height: 36px;
+position: relative;
+
+/* Track Background */
+width: 112px;
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: var(--Surface-03);
+border-radius: 8px;
+border: 1px solid var(--Stroke-01);
+
+/* Fill (Progress) */
+width: 56px; /* flex: 1, пример 50% */
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: rgba(var(--Shade-6-50), 0.5);
+border-radius: 8px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+
+/* Thumb */
+width: 24px;
+height: 36px;
+background: var(--Surface-02);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px -1px rgba(0,0,0,0.40),
+  inset 0px -1px 4px -2px rgba(0,0,0,0.20);
+```
+
+**Отличия:** border Stroke-01, fill Shade-6-50/50, thumb shadow более интенсивная.
+
+### 53.15 Timeline / Film Strip Container
+
+Временная шкала с превью кадров.
+
+```css
+/* Timeline Container */
+width: 208px; /* w-52 */
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+overflow: hidden;
+
+/* Frame Thumbnail */
+flex: 1;
+height: 56px; /* h-14 */
+object-fit: cover;
+```
+
+**Thumbnails:** 6 изображений с flex: 1 (равная ширина).
+
+### 53.16 Timeline Scrubber (Playhead)
+
+Курсор воспроизведения на timeline.
+
+```css
+/* Scrubber Container */
+width: 48px;
+height: 56px;
+position: absolute;
+left: 0; /* или 156px для правого */
+top: 0;
+
+/* Backdrop Overlay */
+width: 48px;
+height: 56px;
+position: absolute;
+left: 0; /* или 4px для правого */
+top: 0;
+background: rgba(23, 23, 23, 0.3); /* neutral-900/30 */
+backdrop-filter: blur(2px);
+
+/* Vertical Line */
+width: 0;
+height: 56px;
+position: absolute;
+left: 48px; /* или 4px для левого */
+top: 3px; /* отступ от края */
+outline: 1.5px solid var(--Shade1-100);
+outline-offset: -0.75px;
+
+/* Top Marker */
+width: 8px;
+height: 5px;
+position: absolute;
+left: 44px; /* или 0 для левого */
+top: 1px;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+
+/* Bottom Marker */
+width: 8px;
+height: 5px;
+position: absolute;
+left: 44px; /* или 0 для левого */
+top: 54px;
+background: var(--Shade1-100);
+border-radius: 0.75px;
+```
+
+**Позиции:** left: 0 (start) или left: 156px (end, для timeline 208px с 6 frames).
+
+### 53.17 Section Header with Collapse Icon
+
+Заголовок секции со сворачиванием.
+
+```css
+/* Header Container */
+width: 240px; /* w-60 */
+padding: 12px 16px; /* px-4 py-3 */
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Header Title */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Collapse Icon Button */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (dot/cross) */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Пример:** "Effects"
+
+### 53.18 Summary: Icon Buttons & Navigation
+
+| Элемент | Icon Size | Padding | Total Size | Background | Особенности |
+|---------|-----------|---------|------------|------------|-------------|
+| Small Icon Button | 16×16px | 4px | 24×24px | Surface-03 active | radius: 6px |
+| Medium Icon Button | 20×20px | 6px | 32×32px | Surface-03 active | opacity: 0.8, radius: 6px |
+| Toolbar Icon (Surface-03) | 16×16px | 8px | 32×32px | Surface-03 | radius: 8px |
+| Toolbar Icon (Active) | 16×16px | 8px | 32×32px | Surface-01 | shadow elevation, radius: 8px |
+| Toolbar Icon (Hover) | 16×16px | 8px | 32×32px | Surface-01 | no shadow, radius: 8px |
+| Breadcrumb Default | - | 0 6px | auto | - | 16px/600/24px |
+| Breadcrumb Active | - | 0 6px | auto | Surface-03 | chevron bg Shade-7-5/5 |
+| Label Small Default | - | 2px 6px | auto | - | 12px/500, opacity 80% |
+| Label Small Active | - | 2px 6px | auto | Surface-03 | 12px/500, opacity 70% |
+
+### 53.19 Summary: Layer Panel Items
+
+| State | Container Bg | Icon Container Bg | Outline | Shadow | Actions Icons |
+|-------|--------------|-------------------|---------|--------|---------------|
+| Active | Surface-03 | Surface-01 | Stroke-02 | Yes | Yes (3 icons) |
+| Hover | Surface-03 | Surface-01 | No | No | Yes (3 icons) |
+| Default | Surface-01 | Surface-03 | No | No | No |
+| Compact Active | Surface-03 | Surface-01 | Stroke-02 | Yes | Chevron only |
+| Compact Hover | Surface-03 | Surface-01 | No | No | No |
+| Compact Default | Surface-01 | Surface-03 | No | No | No |
+
+**Layer name:** 12px/500, Text-Primary, line-clamp: 1
+**Action icons:** lock, hide, variations (всегда Text-Secondary)
+
+### 53.20 Summary: Toggle & Sliders
+
+| Element | Width | Background | Knob Position | Shadow/Border | Special |
+|---------|-------|------------|---------------|---------------|---------|
+| Toggle ON | 40px | Shade-9-70 70% | justify-end (right) | inset shadow | radius: 24px |
+| Toggle OFF | 40px | Shade-4-100 | justify-start (left) | inset shadow | radius: 24px |
+| Knob | 16×16px | Surface-02 | - | 3 shadows | radius: 24px |
+| Slider 1 Track | 112×36px | Surface-03 | - | - | radius: 8px |
+| Slider 1 Fill | flex: 1 | Shade-6-30 30% | - | - | radius: 8px |
+| Slider 1 Thumb | 24×36px | Surface-02 | - | 3 shadows | radius: 6px |
+| Slider 2 Track | 112×36px | Surface-03 | - | border Stroke-01 | radius: 8px |
+| Slider 2 Fill | flex: 1 | Shade-6-50 50% | - | - | radius: 8px |
+| Slider 2 Thumb | 24×36px | Surface-02 | - | 3 shadows (darker) | radius: 6px |
+
+### 53.21 Summary: Timeline Components
+
+| Element | Size | Background | Position | Special |
+|---------|------|------------|----------|---------|
+| Timeline Container | 208px | - | - | outline Stroke-01, radius: 12px |
+| Frame Thumbnail | flex: 1×56px | - | - | 6 frames total |
+| Scrubber Overlay | 48×56px | neutral-900/30 | absolute | backdrop-blur: 2px |
+| Vertical Line | 0×56px | - | left: 4px or 48px | outline 1.5px Shade1-100 |
+| Top Marker | 8×5px | Shade1-100 | top: 1px | radius: 0.75px |
+| Bottom Marker | 8×5px | Shade1-100 | top: 54px | radius: 0.75px |
+
+### 53.22 Usage Guidelines
+
+**Icon Buttons:**
+- Small (24×24px): для компактных UI и тулбаров с ограниченным пространством
+- Medium (32×32px): для основных тулбаров и панелей
+- Toolbar icons (32×32px): всегда padding 8px для большей зоны клика
+- Active state: Surface-03 background или Surface-01 + shadow
+
+**Breadcrumbs/Navigation:**
+- Default: без фона, только текст
+- Active: Surface-03 background
+- Chevron в active state имеет фон Shade-7-5/5
+- Max-width для текста: 176px (breadcrumb) или 208px (label)
+- Всегда line-clamp: 1 для truncation
+
+**Layer Panel Items:**
+- Width всегда 208px (w-52) для full или 128px (w-32) для compact
+- Active: Surface-03 + outline Stroke-02 + icon shadow
+- Hover: Surface-03 + NO outline + NO icon shadow
+- Default: Surface-01 + NO outline + NO icon shadow
+- Icon container: Surface-01 в active/hover, Surface-03 в default
+- Action icons (lock/hide/variations) появляются только в active/hover
+- Compact version с chevron вместо action icons
+
+**Toggle Switches:**
+- Width всегда 40px, height auto (зависит от knob 16px + padding 4px)
+- ON: Shade-9-70 70%, knob справа (justify-end)
+- OFF: Shade-4-100, knob слева (justify-start)
+- Knob всегда Surface-02 с 3 слоями теней
+- inset shadow на контейнере для глубины
+
+**Sliders:**
+- Width обычно 112px, height 36px
+- Style 1: light fill (Shade-6-30 30%), без border
+- Style 2: dark fill (Shade-6-50 50%), с border Stroke-01
+- Thumb всегда 24×36px Surface-02 с 3 тенями
+- Fill и thumb двигаются вместе
+
+**Timeline / Film Strip:**
+- Container с outline Stroke-01, radius 12px
+- Frames: flex: 1 для равной ширины, height 56px
+- Scrubber с backdrop-blur 2px для читаемости
+- Vertical line 1.5px Shade1-100 для четкости
+- Markers сверху и снизу (8×5px) для точности позиционирования
+- Два scrubber показывают in/out points
+
+**Section Headers:**
+- Border-top Stroke-01 для разделения секций
+- Title 12px/600, Text-Primary
+- Collapse icon 16×16px, Text-Secondary
+- Padding 12px 16px для визуального баланса
+
+**Icon Shapes in Layer Panel:**
+- Lock: 10×12px (vertical)
+- Eye: 14×10px (horizontal)
+- Variations: 12×12px (square)
+- Chevron: 4×8px (small vertical)
+- All: 1.5px outline, Text-Secondary или Text-Primary
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
