@@ -10937,6 +10937,646 @@ text-align: center;
 
 ---
 
+## 52. Comment Card / Profile Card / Action Icons
+
+### 52.1 Comment Card Container
+
+Карточка с превью объекта и комментариями.
+
+```css
+/* Card Container */
+width: 384px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+gap: 8px;
+overflow: hidden;
+```
+
+### 52.2 Object Header (Comment Card)
+
+Заголовок с иконкой, названием и категорией объекта.
+
+```css
+/* Header Container */
+width: 100%;
+padding: 12px;
+display: inline-flex;
+gap: 12px;
+align-items: center;
+
+/* Icon Button */
+width: 36px;
+height: 36px;
+padding: 8px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Container */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Text Column */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+
+/* Object Title */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Object Category */
+width: 100%;
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Пример:** "Shop House Icon" / "3D Objects"
+
+### 52.3 Object Preview Area (Comment Card)
+
+Область превью объекта с центрированным изображением.
+
+```css
+/* Preview Container */
+width: 100%;
+height: 256px;
+min-width: 96px;
+min-height: 80px;
+background: var(--Surface-03);
+border-radius: 16px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+position: relative;
+overflow: hidden;
+
+/* Preview Image */
+width: 265px;
+height: 265px;
+position: absolute;
+left: 44.12px; /* Центрирование */
+top: -0.38px;
+object-fit: cover;
+```
+
+**Примечание:** Изображение 265×265px центрируется в контейнере 384px (с учетом padding 16px).
+
+### 52.4 Comments Section Container
+
+Секция со списком комментариев и input для ответа.
+
+```css
+/* Comments Container */
+width: 100%;
+padding: 12px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+```
+
+### 52.5 Comment Item
+
+Отдельный комментарий пользователя.
+
+```css
+/* Comment Container */
+width: 100%;
+display: inline-flex;
+gap: 12px;
+
+/* Avatar */
+width: 36px;
+height: 36px;
+border-radius: 32px;
+object-fit: cover;
+
+/* Comment Content Column */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+gap: 8px;
+
+/* Comment Text Block */
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+/* Comment Header Row */
+width: 100%;
+height: 16px;
+display: inline-flex;
+gap: 4px;
+align-items: center;
+
+/* Author Name */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Timestamp */
+opacity: 0.5;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Comment Text */
+width: 100%;
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 20px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3; /* макс 3 строки */
+-webkit-box-orient: vertical;
+```
+
+**Пример timestamp:** "1h", "2m", "3d"
+
+### 52.6 Reaction Badge (Emoji Counter)
+
+Бадж с emoji реакцией и счетчиком.
+
+```css
+/* Reaction Badge */
+padding: 6px 8px; /* px-2 py-1.5 */
+border-radius: 8px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Emoji */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Counter */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Пример:** 👍 2
+
+### 52.7 Reply Comment Item
+
+Комментарий-ответ с упоминанием пользователя.
+
+```css
+/* Reply Container */
+width: 100%;
+display: inline-flex;
+gap: 12px;
+
+/* Avatar */
+width: 36px;
+height: 36px;
+border-radius: 32px;
+object-fit: cover;
+
+/* Reply Content Column */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+gap: 4px;
+
+/* Author Name */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Reply Text with Mention */
+width: 100%;
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 20px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
+**Пример:** "Reply to @randomfash"
+
+### 52.8 Comment Action Icons Row
+
+Строка с иконками действий и кнопкой Send.
+
+```css
+/* Actions Row Container */
+width: 100%;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Icons Group */
+display: flex;
+gap: 4px;
+
+/* Action Icon Button */
+padding: 8px;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Container */
+width: 20px;
+height: 20px;
+opacity: 0.7;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies) */
+width: 16px;
+height: 16px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Send Button */
+height: 36px;
+padding: 10px 20px; /* px-5 py-2.5 */
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5); /* neutral-200 */
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Send Button Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+**Icons:** 4 action icons (emoji, attach, mention, etc.)
+
+### 52.9 Profile Card Container
+
+Карточка профиля пользователя с галереей и информацией.
+
+```css
+/* Profile Card Container */
+width: 384px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 32px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+gap: 8px;
+overflow: hidden;
+```
+
+### 52.10 Image Gallery Grid (Profile Card)
+
+Галерея из трех изображений с разными border-radius.
+
+```css
+/* Gallery Container */
+width: 100%;
+height: 144px;
+display: inline-flex;
+gap: 4px;
+
+/* Image - Left */
+flex: 1;
+height: 100%;
+border-top-left-radius: 24px; /* rounded-tl-3xl */
+border-top-right-radius: 8px; /* rounded-tr-lg */
+border-bottom-left-radius: 24px; /* rounded-bl-3xl */
+border-bottom-right-radius: 8px; /* rounded-br-lg */
+object-fit: cover;
+
+/* Image - Center */
+flex: 1;
+height: 100%;
+border-radius: 8px; /* rounded-lg */
+object-fit: cover;
+
+/* Image - Right */
+flex: 1;
+height: 100%;
+border-top-left-radius: 8px; /* rounded-tl-lg */
+border-top-right-radius: 24px; /* rounded-tr-3xl */
+border-bottom-left-radius: 8px; /* rounded-bl-lg */
+border-bottom-right-radius: 24px; /* rounded-br-3xl */
+object-fit: cover;
+```
+
+**Примечание:** Крайние изображения имеют скругление 24px с внешней стороны, центральное изображение полностью 8px.
+
+### 52.11 Profile Info Section
+
+Секция с аватаром, именем и статистикой.
+
+```css
+/* Info Container */
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+
+/* Profile Avatar */
+width: 80px;
+height: 80px;
+border-radius: 80px;
+outline: 4px solid var(--Surface-01);
+object-fit: cover;
+
+/* Text Block */
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+
+/* User Name */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 18px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 28px;
+text-align: center;
+
+/* Stats Row */
+display: inline-flex;
+gap: 20px; /* gap-5 */
+
+/* Stat Label */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Пример:** "Sophie Bennett ®" / "159 scenes"
+
+### 52.12 Profile Actions Section
+
+Секция с социальными действиями (иконки + кнопка).
+
+```css
+/* Actions Container */
+width: 100%;
+padding: 16px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+
+/* Icons Row */
+display: inline-flex;
+gap: 8px;
+
+/* Icon Button */
+width: 40px;
+height: 40px;
+padding: 8px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Icon Container */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Fill (varies by type) */
+width: 16px;
+height: 16px;
+background: #000000;
+
+/* Share Button */
+padding: 10px 24px; /* px-6 py-2.5 */
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+**Button:** "Copy link"
+
+### 52.13 Summary: Comment Card Structure
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Card Container | 384px | 8px | 20px | Surface-01 | backdrop-blur: 6px, 5 теней |
+| Object Header | 100% | 12px | - | - | gap: 12px |
+| Icon Button | 36×36px | 8px | 10px | - | outline Stroke-02 |
+| Object Title | 100% | - | - | Text-Primary | 14px/600, line-clamp: 1 |
+| Object Category | 100% | - | - | Text-Secondary | 12px/500, opacity 80% |
+| Preview Area | 100%×256px | - | 16px | Surface-03 | outline Stroke-02 |
+| Preview Image | 265×265px | - | - | - | centered (left: 44.12px) |
+| Comments Section | 100% | 12px | - | - | gap: 16px |
+| Comment Item | 100% | - | - | - | gap: 12px |
+| Avatar | 36×36px | - | 32px | - | rounded-full |
+| Author Name | - | - | - | Text-Primary | 12px/600 |
+| Timestamp | - | - | - | Text-Secondary | 12px/500, opacity 50% |
+| Comment Text | 100% | - | - | Text-Secondary | 12px/400/20px, line-clamp: 3 |
+| Reaction Badge | auto | 6px 8px | 8px | - | outline Stroke-02 |
+| Action Icons Row | 100% | - | - | - | justify-between |
+| Icon Button | - | 8px | 10px | - | opacity 70% |
+| Send Button | h: 36px | 10px 20px | 10px | neutral-200 | 3 тени |
+
+### 52.14 Summary: Profile Card Structure
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Card Container | 384px | 8px | 32px | Surface-01 | backdrop-blur: 6px, 5 теней |
+| Image Gallery | 100%×144px | - | - | - | gap: 4px, 3 изображения |
+| Gallery Image Left | flex: 1 | - | 24/8/24/8px | - | outer corners 24px |
+| Gallery Image Center | flex: 1 | - | 8px | - | all corners 8px |
+| Gallery Image Right | flex: 1 | - | 8/24/8/24px | - | outer corners 24px |
+| Profile Avatar | 80×80px | - | 80px | - | outline: 4px Surface-01 |
+| User Name | 100% | - | - | Text-Primary | 18px/400/28px, text-center |
+| Stats Label | - | - | - | Text-Secondary | 12px/600 |
+| Actions Section | 100% | 16px | - | - | gap: 24px |
+| Icon Button | 40×40px | 8px | 10px | - | outline Stroke-02 |
+| Icon Fill | 16×16px | - | - | #000000 | varies by type |
+| Copy Link Button | auto | 10px 24px | 12px | neutral-200 | 3 тени |
+
+### 52.15 Summary: Text Styles
+
+| Element | Font Size | Weight | Line Height | Color | Special |
+|---------|-----------|--------|-------------|-------|---------|
+| Object Title | 14px | 600 | 20px | Text-Primary | line-clamp: 1 |
+| Object Category | 12px | 500 | 16px | Text-Secondary | opacity: 0.8 |
+| Author Name | 12px | 600 | 16px | Text-Primary | - |
+| Timestamp | 12px | 500 | 16px | Text-Secondary | opacity: 0.5 |
+| Comment Text | 12px | 400 | 20px | Text-Secondary | opacity: 0.8, line-clamp: 3 |
+| Reply Text | 12px | 400 | 20px | Text-Secondary | opacity: 0.8, line-clamp: 2 |
+| Reaction Emoji | 12px | 600 | 16px | Text-Primary | - |
+| Reaction Count | 12px | 600 | 16px | Text-Primary | - |
+| Profile Name | 18px | 400 | 28px | Text-Primary | text-center |
+| Profile Stats | 12px | 600 | 16px | Text-Secondary | - |
+| Button Text | 14px | 600 | 20px | Text-Primary | text-center |
+
+### 52.16 Usage Guidelines
+
+**Comment Card:**
+- Используйте для отображения объекта с комментариями
+- Preview area всегда 256px высотой с outline Stroke-02
+- Изображение центрируется математически (left: 44.12px для 265px изображения)
+- Object header с иконкой, названием и категорией
+- Comments section с неограниченным количеством комментариев
+
+**Comment Items:**
+- Avatar всегда 36×36px rounded-full
+- Author name + timestamp в одной строке (gap: 4px)
+- Timestamp с opacity 50% для визуальной иерархии
+- Comment text обрезается после 3 строк (line-clamp: 3)
+- Reply text обрезается после 2 строк (line-clamp: 2)
+
+**Reaction Badges:**
+- Emoji + counter в одном badge
+- Outline Stroke-02 для четких границ
+- Padding 6px 8px, border-radius 8px
+- Font weight 600 для emoji и counter
+
+**Action Icons Row:**
+- Justify-between для разделения иконок и кнопки
+- Icons group слева с gap 4px
+- Send button справа с neutral-200 gradient
+- Icons с opacity 70% в default состоянии
+
+**Profile Card:**
+- Используйте для отображения профиля пользователя
+- Image gallery из 3 изображений с равной шириной (flex: 1)
+- Крайние изображения: outer corners 24px, inner corners 8px
+- Центральное изображение: все углы 8px
+- Profile avatar 80×80px с outline 4px Surface-01
+
+**Profile Info:**
+- Avatar всегда по центру с outline (не shadow!)
+- User name 18px centered
+- Stats labels в одной строке с gap 20px
+- Можно добавить несколько stats (followers, scenes, likes)
+
+**Profile Actions:**
+- 3 icon buttons + 1 main button
+- Icon buttons 40×40px с outline Stroke-02
+- Icons заполненные (#000000) для social actions
+- Copy link button справа от иконок
+
+**Image Gallery Border Radius Pattern:**
+```
+Left:   TL=24, TR=8,  BL=24, BR=8
+Center: TL=8,  TR=8,  BL=8,  BR=8
+Right:  TL=8,  TR=24, BL=8,  BR=24
+```
+
+**Avatars:**
+- Comment avatars: 36×36px
+- Profile avatar: 80×80px с outline 4px
+- Всегда rounded-full
+- object-fit: cover
+
+**Text Truncation:**
+- Object title: line-clamp 1
+- Comment text: line-clamp 3
+- Reply text: line-clamp 2
+- User name: не обрезается (но может быть центрирован)
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
