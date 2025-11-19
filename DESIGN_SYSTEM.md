@@ -15231,6 +15231,1053 @@ Sidebar Container (224px)
 
 ---
 
+## Section 57: Prompt Input Card / Suggestions Panel / Category Chips / Dropdowns / Text Cursor
+
+**Описание:**
+Комплексная система ввода промптов для AI-генерации включает: карточку ввода 542px с backdrop-blur и multi-layer shadows, панель предложенных промптов с hover состояниями, горизонтальную прокрутку category chips с градиентным fade-out эффектом (96px width), attachment и inspiration кнопки с dropdown меню, model selector с описаниями, text cursor с orange outline (3px) и selection highlight (white/25 backdrop-blur), disabled состояния (opacity 30%/50%), collapsed/expanded варианты, и Orbit/Tilt контрол с tick pattern. Все карточки имеют rounded-3xl (24px) с inset white highlight shadow.
+
+### 57.1. Prompt Input Card Container
+
+**Prompt Input Card - Default:**
+```css
+width: 542px;
+padding: 12px;
+background: var(--Surface-01);
+border-radius: 24px; /* 3xl */
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 24px; /* 6 */
+overflow: hidden;
+```
+
+**Prompt Input Card - With Outline Stroke-02:**
+```css
+/* Same as above, но outline цвет */
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+```
+
+**Usage:**
+- Width фиксированная 542px
+- Rounded-3xl (24px) для soft appearance
+- 3 box-shadows: два внешних + один inset для highlight
+- Backdrop-blur 6px для glassmorphism
+- Gap 24px между textarea и action buttons
+- Inset shadow белый (2px сверху) для depth
+
+### 57.2. Textarea Container
+
+**Textarea Container:**
+```css
+width: 100%; /* full width */
+padding: 8px; /* 2 */
+display: inline-flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 8px;
+```
+
+**Placeholder Text:**
+```css
+flex: 1;
+color: var(--Text-Secondary);
+font-size: 16px;
+font-weight: 400; /* normal */
+line-height: 24px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 8; /* maximum 8 lines */
+-webkit-box-orient: vertical;
+```
+
+**Typed Text (Mixed Colors):**
+```css
+/* Primary text (typed) */
+color: var(--Text-Primary);
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+
+/* Secondary text (suggestion continuation) */
+color: var(--Text-Secondary);
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+```
+
+**Usage:**
+- Line-clamp 8 для ограничения высоты
+- Flex: 1 для заполнения пространства
+- Mixed text colors для autocomplete suggestions
+
+### 57.3. Text Cursor & Selection
+
+**Text Cursor (Orange):**
+```css
+width: 0;
+height: 16px;
+left: 295px; /* position varies */
+top: 12px;
+position: absolute;
+outline: 3px solid var(--Colors-Orange);
+outline-offset: -1.5px;
+```
+
+**Cursor Dot:**
+```css
+width: 8px;
+height: 8px;
+background: linear-gradient(to bottom, #F97316, #EA580C); /* orange-500 to orange-600 */
+border-radius: 50%;
+
+/* Outer ring (opacity 10%) */
+width: 16px;
+height: 16px;
+left: -4px;
+top: -4px;
+position: absolute;
+opacity: 0.1;
+border-radius: 50%;
+border: 1px solid #F97316; /* orange-500 */
+```
+
+**Text Selection Highlight:**
+```css
+width: 176px; /* 44 × 4, varies by selection length */
+height: 20px;
+left: 297px; /* position varies */
+top: 10px;
+position: absolute;
+background: rgba(255, 255, 255, 0.25);
+backdrop-filter: blur(1.5px);
+```
+
+**Usage:**
+- Cursor: orange (Colors-Orange), outline 3px
+- Cursor dot: gradient orange-500 to orange-600
+- Outer ring: opacity 10%, orange border
+- Selection: white 25% с backdrop-blur 1.5px
+- Позиция cursor динамическая
+
+### 57.4. Action Buttons Row
+
+**Action Buttons Row:**
+```css
+width: 100%;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+```
+
+**Left Actions Group:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+```
+
+**Right Actions Group:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+```
+
+**Usage:**
+- Justify-between для распределения по краям
+- Left: attach, inspiration buttons
+- Right: model selector, settings, send button
+
+### 57.5. Icon Button (Attach, Settings)
+
+**Icon Button - Default:**
+```css
+height: 40px;
+padding: 4px 10px; /* 1 × 2.5 */
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+```
+
+**Icon Button - Active:**
+```css
+height: 40px;
+padding: 4px 10px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+```
+
+**Icon Button - Disabled:**
+```css
+height: 40px;
+padding: 4px 10px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+opacity: 0.5; /* или opacity: 0.3 для label */
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+```
+
+**Icon Container:**
+```css
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies) */
+/* Example: attachment clip */
+width: 14px;
+height: 14px;
+left: 3.12px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Height 40px фиксированная
+- Outline Stroke-02 для consistency
+- Active: Surface-03 background
+- Disabled: opacity 50% для icon, 30% для button с label
+- Icon 20×20px container, shapes 14-16px
+
+### 57.6. Inspiration Button (with Label & Chevron)
+
+**Inspiration Button - Default:**
+```css
+height: 40px;
+padding: 4px 10px;
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+```
+
+**Inspiration Button - Active:**
+```css
+height: 40px;
+padding: 4px 10px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+overflow: hidden;
+```
+
+**Icon & Label Group:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+
+/* Icon Wrapper */
+padding: 2px; /* 0.5 */
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+
+/* Green Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Green Icon Shape */
+width: 12px;
+height: 14px; /* 3.5 */
+left: 2.17px;
+top: 0.5px;
+position: absolute;
+border-radius: 0.5px;
+outline: 1.5px solid var(--Colors-Green);
+outline-offset: -0.75px;
+
+/* Label */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 500; /* medium */
+line-height: 20px;
+```
+
+**Chevron Icon Wrapper:**
+```css
+padding: 2px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+
+/* Chevron Shape */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Down Chevron */
+width: 6px;
+height: 2.99px;
+left: 4.67px;
+top: 6.33px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Chevron - Active (Up):**
+```css
+/* Up chevron */
+left: 4.67px;
+top: 6.68px; /* slightly different */
+outline: 1.5px solid var(--Text-Primary); /* Primary instead of Secondary */
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Green icon (Colors-Green) для inspiration indicator
+- Label "Inspiration" между icon и chevron
+- Chevron меняет цвет на Text-Primary в active/clicked
+- Gap 8px между icon и label
+
+### 57.7. Model Selector Button
+
+**Model Selector - Default:**
+```css
+padding: 12px 10px; /* 3 × 2.5 */
+border-radius: 12px;
+outline: 1px solid transparent; /* или outline-offset */
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+
+/* Label */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+
+/* Chevron (same as Inspiration button) */
+```
+
+**Model Selector - Click On (Active):**
+```css
+/* Chevron цвет меняется на Text-Primary */
+outline: 1.5px solid var(--Text-Primary);
+```
+
+**Usage:**
+- Label "Brainwave 2.5" или другие модели
+- Chevron справа
+- Click on state: chevron Text-Primary
+
+### 57.8. Send Button (Gradient)
+
+**Send Button:**
+```css
+width: 40px;
+height: 40px;
+padding: 12px 32px; /* 3 × 8 */
+background: linear-gradient(to bottom, #D4D4D4, #D4D4D4); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Send Icon:**
+```css
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Arrow Shape */
+width: 10px;
+height: 14px;
+left: 4.79px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Square button 40×40px
+- Gradient neutral-200
+- 3 shadows для depth
+- Icon arrow 10×14px
+
+### 57.9. Attachment Dropdown Menu
+
+**Attachment Menu Container:**
+```css
+width: 208px; /* 52 × 4 */
+padding: 8px; /* 2 */
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 4px 10px 0px rgba(0,0,0,0.06),
+  0px 18px 18px 0px rgba(0,0,0,0.05),
+  0px 39px 24px 0px rgba(0,0,0,0.03),
+  0px 70px 28px 0px rgba(0,0,0,0.01),
+  0px 110px 31px 0px rgba(0,0,0,0.00),
+  inset 0px 0px 0px 2px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+overflow: hidden;
+```
+
+**Menu Item - Default:**
+```css
+width: 192px; /* 48 × 4 */
+height: 40px;
+padding: 8px; /* 2 */
+border-radius: 12px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 10px; /* 2.5 */
+```
+
+**Icon Container:**
+```css
+padding: 2px; /* 0.5 */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Icon */
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies) */
+/* Example: photo/video icon */
+width: 14px;
+height: 14px;
+left: 3.12px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Menu Item Label:**
+```css
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Usage:**
+- 5 layers box-shadows для elevation
+- Inset white outline (2px) для highlight
+- 3 menu items: "Add photos or videos", "Add 3D objects", "Add files (docs, txt...)"
+- NO hover state в коде (можно добавить)
+
+### 57.10. Model Selector Dropdown
+
+**Model Dropdown Container:**
+```css
+width: 208px;
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 20px;
+box-shadow:
+  0px 4px 10px 0px rgba(0,0,0,0.06),
+  0px 18px 18px 0px rgba(0,0,0,0.05),
+  0px 39px 24px 0px rgba(0,0,0,0.03),
+  0px 70px 28px 0px rgba(0,0,0,0.01),
+  0px 110px 31px 0px rgba(0,0,0,0.00),
+  inset 0px 0px 0px 2px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+overflow: hidden;
+```
+
+**Model Item - Default:**
+```css
+width: 100%; /* full width */
+padding: 12px 10px; /* 3 × 2.5 */
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 4px; /* 1 */
+```
+
+**Model Item - Hover:**
+```css
+width: 100%;
+padding: 12px 10px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 4px;
+```
+
+**Model Name:**
+```css
+width: 100%;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Model Description:**
+```css
+width: 100%;
+opacity: 0.7;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Usage:**
+- 4 models: "Brainwave 2.5" (3D modeling), "Sora 4" (video), "Kling AI" (video), "Spline AI" (scenes)
+- Description opacity 70%
+- Hover: Surface-03 background
+- Line-clamp 1 для descriptions
+
+### 57.11. Prompt Suggestions Panel
+
+**Suggestions Panel Container:**
+```css
+width: 542px;
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+overflow: hidden;
+```
+
+**Suggestions List Container:**
+```css
+width: 100%; /* full width */
+padding: 12px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 2px; /* 0.5 */
+```
+
+**Suggestion Item - Default:**
+```css
+width: 518px;
+height: 40px;
+padding: 12px; /* 3 */
+border-radius: 10px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Suggestion Item - Hover:**
+```css
+width: 518px;
+height: 40px;
+padding: 12px;
+background: var(--Surface-02);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Suggestion Text:**
+```css
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 400; /* normal */
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Usage:**
+- 5 box-shadows (subtle elevation)
+- Gap 2px между suggestions
+- Hover: Surface-02 + outline Stroke-01
+- Height 40px фиксированная
+- Examples: "Create a 3D model of a sleek, futuristic car...", "Design a 3D medieval sword..."
+
+### 57.12. Category Chips Row
+
+**Category Chips Container:**
+```css
+width: 100%; /* full width */
+padding: 12px;
+position: relative;
+background: var(--Surface-02);
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 6px; /* 1.5 */
+```
+
+**Category Chip - Default:**
+```css
+height: 36px;
+padding: 10px 20px; /* 2.5 × 5 */
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Chip Label:**
+```css
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**"Surprise Me" Chip (Special):**
+```css
+padding: 10px 20px;
+background: var(--Surface-03);
+border-radius: 12px;
+box-shadow:
+  0px 1px 3.2px -2px rgba(0,0,0,0.99),
+  inset 0px 2px 0px 0px rgba(255,255,255,0.80);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Label */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+
+/* Icon (sparkle) */
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 10px;
+height: 12px;
+left: 2.5px;
+top: 1.83px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Fade Gradient Overlay:**
+```css
+width: 96px; /* 24 × 4 */
+height: 56px; /* 14 × 4 */
+left: 449px; /* right edge - 96px */
+top: 0;
+position: absolute;
+background: linear-gradient(to left, #F5F5F5, rgba(245,245,245,0)); /* stone-50 to transparent */
+/* Или: from-stone-50 to-stone-50/0 */
+```
+
+**Usage:**
+- Horizontal scroll row (overflow скрыт визуально)
+- Gap 6px между chips
+- "Surprise me" имеет Surface-03 bg + 2 shadows + icon
+- Regular chips: outline Stroke-02 only
+- Fade gradient: 96px width, на правом краю для scroll indicator
+- Categories: "Surprise me", "Characters", "Objects", "Backgrounds", "Cute"
+
+### 57.13. Collapsed Input State
+
+**Collapsed Input Card:**
+```css
+width: 100%; /* full width */
+padding: 12px;
+background: var(--Surface-01);
+border-radius: 24px;
+box-shadow:
+  0px 8px 16px -12px rgba(0,0,0,0.08),
+  0px 18px 24px -20px rgba(0,0,0,0.12),
+  inset 0px 2px 0px 0px rgba(255,255,255,1.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 24px;
+overflow: hidden;
+```
+
+**Usage:**
+- NO textarea (только action buttons row)
+- Height автоматически меньше
+- Используется для compact view
+- Все остальные стили идентичны expanded state
+
+### 57.14. Orbit/Tilt Control
+
+**Orbit Control Container:**
+```css
+padding: 14px 20px; /* 3.5 × 5 */
+background: var(--Surface-01);
+border-radius: 24px; /* 3xl */
+box-shadow:
+  0px 1px 1px 0px rgba(0,0,0,0.02),
+  0px 3px 3px 0px rgba(0,0,0,0.02),
+  0px 6px 3px 0px rgba(0,0,0,0.01),
+  0px 10px 4px 0px rgba(0,0,0,0.00),
+  0px 16px 4px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Left Arrow:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Arrow Shape (rotated line) */
+width: 0;
+height: 10px;
+left: 2.53px;
+top: 3.86px;
+position: absolute;
+transform: rotate(-90deg);
+transform-origin: top left;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Tick Marks Group:**
+```css
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 10px; /* 2.5 */
+```
+
+**Tick Mark - Small (Inactive, Opacity 30%):**
+```css
+width: 0;
+height: 6px; /* 1.5 */
+opacity: 0.3;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Tick Mark - Large (Active):**
+```css
+width: 0;
+height: 12px; /* 3 */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Right Arrow:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+
+/* Arrow Shape */
+width: 0;
+height: 10px;
+left: 13.47px;
+top: 3.86px;
+position: absolute;
+transform: rotate(90deg);
+transform-origin: top left;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Horizontal control (NOT rotated как Tilt)
+- Tick pattern: small-large-small-small-small-large-small
+- Active ticks: 12px height, opacity 100%
+- Inactive ticks: 6px height, opacity 30%
+- Left arrow: Text-Secondary, Right arrow: Text-Primary
+- 5 box-shadows для subtle elevation
+
+### 57.15. Summary Tables
+
+**Prompt Input Card:**
+| Element | Width | Height | Border Radius | Shadows | Backdrop |
+|---------|-------|--------|---------------|---------|----------|
+| Card | 542px | auto | 24px | 3 layers | blur 6px |
+| Textarea | 100% | auto | - | - | - |
+| Action Row | 100% | auto | - | - | - |
+
+**Buttons:**
+| Button Type | Height | Padding | Background | Outline | Icon Size |
+|-------------|--------|---------|------------|---------|-----------|
+| Icon Button | 40px | 4px 10px | - | Stroke-02 | 20×20px |
+| Icon Active | 40px | 4px 10px | Surface-03 | Stroke-02 | 20×20px |
+| Inspiration | 40px | 4px 10px | - | Stroke-02 | 16×16px Green |
+| Model Selector | auto | 12px 10px | - | transparent | - |
+| Send Button | 40px | 12px 32px | gradient neutral-200 | 3 shadows | 20×20px |
+
+**Dropdowns:**
+| Dropdown | Width | Padding | Shadows | Inset Outline |
+|----------|-------|---------|---------|---------------|
+| Attachment Menu | 208px | 8px | 5 layers | 2px white |
+| Model Selector | 208px | 8px | 5 layers | 2px white |
+
+**Text Elements:**
+| Element | Font Size | Weight | Line Height | Color | Line Clamp |
+|---------|-----------|--------|-------------|-------|------------|
+| Placeholder | 16px | 400 | 24px | Text-Secondary | 8 |
+| Typed Text | 16px | 400 | 24px | Text-Primary | 8 |
+| Suggestion | 12px | 400 | 16px | Text-Primary | 1 |
+| Chip Label | 12px | 500 | 16px | Text-Primary | - |
+| Model Name | 12px | 500 | 16px | Text-Primary | - |
+| Model Desc | 12px | 500 | 16px | Text-Secondary (70%) | 1 |
+
+**Special Effects:**
+| Effect | Width | Color | Blur |
+|--------|-------|-------|------|
+| Text Cursor | 0 | Colors-Orange (outline 3px) | - |
+| Cursor Dot | 8px | gradient orange-500/600 | - |
+| Selection | varies | white/25 | 1.5px |
+| Fade Gradient | 96px | stone-50 to transparent | - |
+
+### 57.16. Usage Guidelines
+
+**Prompt Input Card Structure:**
+```
+Card Container (542px, rounded-3xl, backdrop-blur 6px)
+├─ Textarea Container (padding 8px)
+│  └─ Placeholder/Text (16px, line-clamp 8)
+└─ Action Buttons Row (justify-between)
+   ├─ Left Group
+   │  ├─ Attach Button (icon only)
+   │  └─ Inspiration Button (icon + label + chevron)
+   └─ Right Group
+      ├─ Model Selector (label + chevron)
+      ├─ Settings Button (icon only)
+      └─ Send Button (gradient, icon)
+```
+
+**State Management:**
+1. **Default State:** Transparent backgrounds, outline Stroke-02, icons Text-Secondary
+2. **Active State:** Surface-03 bg для button, chevron Text-Primary
+3. **Disabled State:** Opacity 50% для icons, 30% для buttons с labels
+4. **Typing State:** Text cursor orange, selection white/25 backdrop-blur
+
+**Text Cursor Implementation:**
+- Position: absolute, width 0, height 16px
+- Outline: 3px Colors-Orange, offset -1.5px
+- Dot: 8×8px gradient orange-500 to orange-600
+- Outer ring: 16×16px, opacity 10%, orange border
+- Cursor blinking animation (не указана в коде, добавить)
+
+**Selection Highlight:**
+- Width: динамическая (зависит от длины selection)
+- Height: 20px
+- Background: white 25% opacity
+- Backdrop-filter: blur 1.5px
+- Position: absolute, над текстом
+
+**Dropdown Menus:**
+- Width: 208px фиксированная
+- Border-radius: 20px
+- 5 layers box-shadows для elevation
+- Inset outline: 2px white для highlight
+- Outline: 1px Stroke-02
+- Item hover: Surface-03 background
+
+**Suggestions Panel:**
+- Container: 542px width, rounded-3xl
+- 5 box-shadows (subtle elevation)
+- Gap: 2px между suggestions
+- Item height: 40px
+- Hover: Surface-02 + outline Stroke-01
+- Font: 12px normal для text
+
+**Category Chips:**
+- Height: 36px фиксированная
+- Padding: 10px 20px
+- Gap: 6px между chips
+- Regular chips: outline Stroke-02 only
+- "Surprise me": Surface-03 + 2 shadows + sparkle icon
+- Fade gradient: 96px width на правом краю
+
+**"Surprise Me" Chip:**
+- Background: Surface-03 (отличается от regular)
+- 2 shadows: outer + inset white highlight
+- Icon: sparkle 10×12px, Text-Primary
+- Label + icon gap: 8px
+
+**Disabled States:**
+- Icon buttons: opacity 50% для icon
+- Buttons с labels: opacity 30% для всего button
+- Inspiration button disabled: opacity 30%
+- Model selector disabled: opacity 30%
+
+**Collapsed State:**
+- Убирается textarea container
+- Остаются только action buttons
+- Height автоматически уменьшается
+- Все остальные стили сохраняются
+
+**Orbit/Tilt Control:**
+- Horizontal layout (НЕ rotated)
+- Tick pattern: 6px-12px-6px-6px-6px-12px-6px
+- Active: height 12px, opacity 100%
+- Inactive: height 6px, opacity 30%
+- Arrows: left Secondary, right Primary
+- Gap: 10px между ticks
+
+**Typography Hierarchy:**
+- **Placeholder:** 16px normal, Text-Secondary, для guidance
+- **Typed Text:** 16px normal, Text-Primary, для user input
+- **Mixed Text:** Primary + Secondary для autocomplete
+- **Labels:** 14px medium для button labels
+- **Chips:** 12px medium для categories
+- **Suggestions:** 12px normal для prompts
+
+**Spacing System:**
+- Card padding: 12px
+- Textarea padding: 8px
+- Gap между textarea и actions: 24px
+- Gap между buttons: 8px
+- Gap между chips: 6px
+- Gap между suggestions: 2px
+
+**Shadow Layers:**
+- **Input Card:** 3 layers (2 outer + 1 inset white)
+- **Suggestions Panel:** 5 layers (subtle elevation)
+- **Dropdowns:** 5 layers + inset white outline
+- **Orbit Control:** 5 layers (subtle elevation)
+- **Send Button:** 3 layers (outer + inset white)
+
+**Glassmorphism Effects:**
+- Input card: backdrop-blur 6px
+- Text selection: backdrop-blur 1.5px
+- Fade gradient: linear gradient для scroll indication
+
+**Icon Guidelines:**
+- Container: 20×20px для action buttons
+- Shapes: 12-16px в зависимости от типа
+- Green icon (inspiration): 12×14px, Colors-Green
+- Sparkle icon: 10×12px, Text-Primary
+- All icons: outline 1.5px, offset -0.75px
+
+---
+
+**Версия:** 2.0.0
+**Последнее обновление:** 2025-11-18
+**Мейнтейнеры:** Design & Engineering Team
+
+---
+
 ## Changelog
 
 ### Version 2.0.0 (2025-11-18)
