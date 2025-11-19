@@ -9393,6 +9393,754 @@ object-fit: cover;
 
 ---
 
+## 50. Export Panel / Media Type Tabs / Export Settings
+
+### 50.1 Export Panel Container
+
+Панель экспорта с боковой навигацией и настройками для разных типов медиа.
+
+```css
+/* Panel Container */
+width: 549px;
+height: 320px;
+background: var(--Shade1-100);
+border-radius: 20px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+overflow: hidden;
+```
+
+### 50.2 Sidebar Navigation
+
+Боковая навигация с табами типов медиа (Images, Video, 3D Object).
+
+```css
+/* Sidebar Container */
+width: 144px; /* w-36 */
+height: 100%; /* self-stretch */
+padding: 8px;
+border-right: 1px solid var(--Stroke-01);
+display: inline-flex;
+flex-direction: column;
+justify-content: space-between;
+```
+
+### 50.3 Sidebar Tab Item - Active State
+
+Активный таб с поднятой иконкой и индикатором chevron.
+
+```css
+/* Tab Container - Active */
+width: 100%;
+height: 40px;
+padding-left: 4px;
+padding-right: 8px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Content Row */
+flex: 1;
+display: flex;
+gap: 12px;
+align-items: center;
+
+/* Icon Container - Active (elevated) */
+padding: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Icon */
+width: 16px;
+height: 16px;
+/* Иконка в зависимости от типа медиа */
+
+/* Icon Stroke - Active */
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Tab Label */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Chevron Indicator (только на active) */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 4px;
+height: 8px;
+background: var(--Text-Secondary);
+```
+
+**Примечание:** Chevron indicator появляется только в активном состоянии таба.
+
+### 50.4 Sidebar Tab Item - Default State
+
+Неактивный таб без elevation и без chevron.
+
+```css
+/* Tab Container - Default */
+width: 100%;
+height: 40px;
+padding: 4px;
+background: var(--Surface-01);
+border-radius: 12px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Content Row */
+flex: 1;
+display: flex;
+gap: 12px;
+align-items: center;
+
+/* Icon Container - Default (без elevation) */
+padding: 8px;
+background: var(--Surface-03);
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Icon Stroke - Default */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Tab Label */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Примечание:** В default состоянии chevron indicator отсутствует.
+
+### 50.5 Sidebar Close Button
+
+Кнопка закрытия панели внизу sidebar.
+
+```css
+/* Close Button Container */
+width: 128px;
+height: 96px;
+padding: 6px;
+border-radius: 12px;
+outline: 1px solid rgba(var(--Shade-7-10), 0.1);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-end;
+align-items: flex-start;
+
+/* Close Icon Button */
+width: 24px;
+height: 24px;
+padding: 12px 8px;
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow:
+  0px 1.25px 3px 0px rgba(50,50,50,0.10),
+  inset 0px 1.25px 1px 0px rgba(255,255,255,1.00);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Close Icon */
+width: 16px;
+height: 16px;
+/* или 12×12px в зависимости от варианта */
+
+/* Icon Fill */
+background: var(--Text-Secondary);
+```
+
+### 50.6 Content Area
+
+Основная область с настройками экспорта (384px).
+
+```css
+/* Content Area */
+width: 384px; /* w-96 */
+height: 100%;
+display: inline-flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+### 50.7 Section Header (Collapsible)
+
+Заголовок секции с иконкой сворачивания.
+
+```css
+/* Header Container */
+width: 100%;
+height: 56px;
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Header Title */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Collapse Icon Button */
+padding: 4px;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Collapse Icon */
+width: 16px;
+height: 16px;
+
+/* Icon Shape (dot/cross) */
+width: 8px;
+height: 8px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+### 50.8 Dropdown Control (with Icon)
+
+Выпадающий список с иконкой и chevron.
+
+```css
+/* Dropdown Container */
+width: 160px; /* w-40 */
+padding: 10px;
+background: var(--Surface-01);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+gap: 8px;
+overflow: hidden;
+
+/* Content Row */
+flex: 1;
+display: flex;
+gap: 6px;
+
+/* Icon Container */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+overflow: hidden;
+
+/* Icon Stroke */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Dropdown Text */
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+### 50.9 Toggle Switch Control (2 Options)
+
+Переключатель между двумя опциями (PNG/JPG, MP4/GIF, etc).
+
+```css
+/* Toggle Container */
+width: 112px; /* w-28 */
+padding: 4px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: flex;
+overflow: hidden;
+
+/* Option - Active */
+flex: 1;
+padding: 6px 12px;
+background: var(--Surface-01);
+border-radius: 6px;
+box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.14);
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Option Text - Active */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Option - Inactive */
+flex: 1;
+padding: 6px 12px;
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Option Text - Inactive */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+### 50.10 Settings Row (Label + Control)
+
+Строка с лейблом и контролом справа.
+
+```css
+/* Settings Row Container */
+width: 100%;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Control (dropdown/toggle) - see 50.8 or 50.9 */
+width: 160px; /* varies */
+```
+
+### 50.11 Compression Slider
+
+Слайдер компрессии с процентом.
+
+```css
+/* Slider Row Container */
+width: 100%;
+display: inline-flex;
+gap: 6px;
+
+/* Slider Track Container */
+flex: 1;
+height: 36px;
+position: relative;
+
+/* Slider Track Background */
+width: 288px; /* w-72 */
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: var(--Surface-03);
+border-radius: 10px;
+overflow: hidden;
+
+/* Slider Fill (progress) */
+width: 224px; /* w-56 - example at 80% */
+height: 36px;
+position: absolute;
+left: 0;
+top: 0;
+background: rgba(var(--Shade-6-30), 0.3);
+
+/* Slider Thumb */
+width: 24px;
+height: 36px;
+position: absolute;
+left: 220px; /* positioned at fill end */
+top: 0;
+background: var(--Surface-02);
+border-radius: 8px;
+box-shadow:
+  0px 1px 4px 0px rgba(0,0,0,0.14),
+  0px 0px 2.6px -1px rgba(0,0,0,0.17),
+  inset 0px -1px 4px -2px rgba(0,0,0,0.20);
+
+/* Percentage Display Container */
+padding: 10px 8px 10px 10px;
+border-radius: 10px;
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+gap: 6px;
+overflow: hidden;
+
+/* Percentage Icon */
+width: 16px;
+height: 16px;
+opacity: 0.7;
+
+/* Icon Shape */
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Percentage Text */
+width: 32px;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+### 50.12 Resolution Display Text
+
+Текст отображения разрешения (вспомогательный).
+
+```css
+/* Resolution Text */
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 10px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 16px;
+text-align: center;
+```
+
+**Пример:** "3840px × 2160px"
+
+### 50.13 Estimation Text (Video Export)
+
+Текст с оценкой времени и размера экспорта.
+
+```css
+/* Estimation Text */
+width: 100%;
+opacity: 0.8;
+color: var(--Text-Secondary);
+font-size: 10px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 16px;
+text-align: center;
+```
+
+**Пример:** "Estimation — Export time 30 seconds — Output size 35MB"
+
+### 50.14 Export Button
+
+Основная кнопка экспорта с темным градиентом.
+
+```css
+/* Export Button - Default */
+width: 100%;
+padding: 8px 20px;
+background: linear-gradient(to bottom, var(--Shade-7-100), var(--Shade-8-100));
+border-radius: 10px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+color: #FAFAF9; /* neutral-50 */
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+**Текст:** "Export Robot 2.0"
+
+### 50.15 Settings Section Container (Images Export)
+
+Контейнер настроек для экспорта изображений.
+
+```css
+/* Settings Section */
+width: 100%;
+padding: 16px;
+display: flex;
+flex-direction: column;
+gap: 6px;
+```
+
+### 50.16 Export Row (Multi-Control)
+
+Строка с несколькими контролами (Scale + Color Space + Format).
+
+```css
+/* Export Row Container */
+width: 100%;
+display: inline-flex;
+gap: 12px;
+
+/* Controls Group */
+flex: 1;
+display: flex;
+gap: 6px;
+
+/* Scale Dropdown */
+width: 80px; /* w-20 */
+padding-left: 8px;
+padding-right: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+background: var(--Surface-03);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+/* Structure: Icon (opacity 70%) + Text + Chevron */
+
+/* Color Space Dropdown */
+flex: 1;
+padding: 10px;
+background: var(--Surface-01);
+border-radius: 10px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+/* Structure: Icon (opacity 70%) + Text + Chevron */
+
+/* Format Toggle */
+width: 112px; /* w-28 */
+/* См. 50.9 Toggle Switch Control */
+
+/* Collapse Button (minus icon) */
+padding: 4px;
+border-radius: 6px;
+/* Icon: horizontal line (minus) */
+```
+
+### 50.17 Compression Section
+
+Секция с заголовком, resolution display и слайдером компрессии.
+
+```css
+/* Compression Section Container */
+width: 100%;
+padding: 16px;
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+gap: 8px;
+
+/* Header Row */
+width: 100%;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* Label */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Resolution Display */
+/* См. 50.12 */
+
+/* Slider Row */
+/* См. 50.11 */
+```
+
+### 50.18 Export Footer
+
+Нижняя часть панели с кнопкой экспорта.
+
+```css
+/* Footer Container */
+width: 100%;
+padding: 16px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+
+/* Estimation Text (опционально для Video) */
+/* См. 50.13 */
+
+/* Export Button */
+/* См. 50.14 */
+```
+
+### 50.19 Summary: Export Panel Structure
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Panel Container | 549×320px | - | 20px | Shade1-100 | backdrop-blur: 6px, 5 теней, outline Stroke-01 |
+| Sidebar | 144px×100% | 8px | - | - | border-right: Stroke-01 |
+| Tab Active | 100%×40px | 4px 8px 4px 4px | 12px | Surface-03 | outline Stroke-02, chevron visible |
+| Tab Default | 100%×40px | 4px | 12px | Surface-01 | chevron hidden |
+| Icon Container Active | - | 8px | 8px | Surface-01 | box-shadow elevation |
+| Icon Container Default | - | 8px | 8px | Surface-03 | no shadow |
+| Content Area | 384px×100% | - | - | - | - |
+| Section Header | 100%×56px | 16px | - | - | border-top: Stroke-01 |
+| Dropdown | 160px | 10px | 10px | Surface-01 | outline Stroke-01, icon opacity 70% |
+| Toggle Switch | 112px | 4px | 10px | Surface-03 | outline Stroke-01 |
+| Toggle Option Active | flex: 1 | 6px 12px | 6px | Surface-01 | shadow, 12px/600 |
+| Toggle Option Inactive | flex: 1 | 6px 12px | 8px | - | 12px/500 Secondary |
+
+### 50.20 Summary: Slider & Text Specifications
+
+| Элемент | Размер | Цвет | Font | Особенности |
+|---------|--------|------|------|-------------|
+| Slider Track | 288px×36px | Surface-03 | - | border-radius: 10px |
+| Slider Fill | varies | Shade-6-30 30% | - | positioned left: 0 |
+| Slider Thumb | 24×36px | Surface-02 | - | 3 shadows, radius: 8px |
+| Percentage Display | auto | - | 12px/500 | outline Stroke-02, icon 70% opacity |
+| Resolution Text | auto | Text-Secondary 80% | 10px/400 | text-align: center |
+| Estimation Text | 100% | Text-Secondary 80% | 10px/400 | text-align: center |
+
+### 50.21 Summary: Export Configurations
+
+| Type | Settings Available | Toggle Switches | Dropdowns | Special Controls |
+|------|-------------------|----------------|-----------|------------------|
+| **Images** | Scale, Color Space, Format, Compression | PNG/JPG | 1x/2x, sRGB/Adobe Color | Compression slider (0-100%) |
+| **Video** | Camera, Format, Frame Rate, Resolution | MP4/GIF, 1080p/4K | Camera 1, 60 FPS | Estimation text |
+| **3D Object** | Format, Camera, Material | Yes/No (Material) | OBJ, Camera 1 | - |
+
+### 50.22 Media Type Icons
+
+Три типа иконок для табов навигации:
+
+```css
+/* Images Icon */
+width: 12px;
+height: 10px;
+outline: 1.5px solid [color];
+outline-offset: -0.75px;
+
+/* Video Icon */
+width: 12px;
+height: 10px;
+outline: 1.5px solid [color];
+outline-offset: -0.75px;
+
+/* 3D Object Icon */
+width: 10px;
+height: 12px;
+outline: 1.5px solid [color];
+outline-offset: -0.75px;
+```
+
+**Цвет иконки:**
+- Active tab: `var(--Text-Primary)`
+- Default tab: `var(--Text-Secondary)`
+
+### 50.23 Usage Guidelines
+
+**Export Panel:**
+- Используйте для экспорта различных типов медиа (изображения, видео, 3D объекты)
+- Sidebar всегда 144px, content area всегда 384px
+- Активный таб имеет elevation на иконке и chevron indicator справа
+- Неактивные табы без elevation и без chevron
+
+**Tab Navigation:**
+- Только один таб может быть активным одновременно
+- Active состояние: Surface-03 background + outline Stroke-02
+- Icon container в active: Surface-01 + shadow elevation
+- Default состояние: Surface-01 background, icon без elevation
+
+**Dropdowns:**
+- Всегда с иконкой слева (opacity 70%) и chevron справа
+- Width обычно 160px (w-40)
+- Outline Stroke-01, background Surface-01 или Surface-03
+
+**Toggle Switches:**
+- Используйте для бинарного выбора (PNG/JPG, MP4/GIF, Yes/No)
+- Active опция: Surface-01 + shadow, текст 600 weight, Text-Primary
+- Inactive опция: transparent, текст 500 weight, Text-Secondary
+
+**Compression Slider:**
+- Slider fill показывает процент компрессии (0-100%)
+- Thumb позиционируется на конце fill области
+- Процент отображается справа в отдельном контейнере
+
+**Export Button:**
+- Всегда темный градиент (Shade-7 → Shade-8)
+- Текст neutral-50 (светлый)
+- 4 слоя теней для объема
+- Текст "Export Robot 2.0" или аналогичный
+
+**Estimation Text:**
+- Используйте для Video и других длительных операций
+- Opacity 80%, Text-Secondary, 10px font size
+- Формат: "Estimation — Export time X — Output size Y"
+
+**Resolution Display:**
+- Вспомогательный текст 10px, opacity 80%
+- Формат: "ШШШШpx × ВВВВpx"
+- Обычно под toggle switch разрешения
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
