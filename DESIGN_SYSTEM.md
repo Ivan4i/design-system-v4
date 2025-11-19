@@ -10141,6 +10141,802 @@ outline-offset: -0.75px;
 
 ---
 
+## 51. Sharing Panel / Delete Confirmation Modal / Swipe Actions
+
+### 51.1 Sharing Panel Container
+
+Панель управления доступом к файлу с приглашением пользователей.
+
+```css
+/* Panel Container */
+width: 384px;
+background: var(--Shade1-100);
+border-radius: 24px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid #E5E7EB; /* gray-200 */
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: inline-flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+### 51.2 Invite Input Section
+
+Секция с input для email и кнопкой приглашения.
+
+```css
+/* Section Container */
+width: 100%;
+padding: 16px;
+display: inline-flex;
+gap: 6px;
+
+/* Input Container */
+width: 320px; /* w-80 */
+padding-left: 16px;
+padding-right: 4px;
+padding-top: 4px;
+padding-bottom: 4px;
+background: var(--Surface-02);
+border-radius: 12px;
+box-shadow: inset 0px 1px 3px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Input Content Row */
+flex: 1;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+/* Cursor (Text Cursor Indicator) */
+width: 0;
+height: 12px;
+outline: 1.5px solid var(--Colors-Blue-Blue-100);
+outline-offset: -0.75px;
+
+/* Placeholder Text */
+opacity: 0.5;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+```
+
+**Placeholder:** "Email, name..."
+
+### 51.3 Permission Dropdown (Inside Input)
+
+Выпадающий список прав доступа внутри input.
+
+```css
+/* Dropdown Container */
+width: 96px; /* w-24 */
+padding-left: 12px;
+padding-right: 8px;
+padding-top: 8px;
+padding-bottom: 8px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Dropdown Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Опции:** "can view", "can edit"
+
+### 51.4 Invite Button
+
+Кнопка отправки приглашения.
+
+```css
+/* Invite Button - Default */
+padding: 8px 20px;
+background: linear-gradient(to bottom, var(--Shade-7-100), var(--Shade-8-100));
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(51,51,51,1.00),
+  0px 2px 4px -1px rgba(13,13,13,0.50),
+  inset 0px -1px 1.2px 0.35px rgba(18,18,18,1.00),
+  inset 0px 0.5px 1px 0px rgba(255,255,255,0.15);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Button Text */
+color: #FAFAF9; /* neutral-50 */
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+### 51.5 Access Section Container
+
+Контейнер для секций General Access и People with Access.
+
+```css
+/* Section Container */
+width: 100%;
+padding: 16px 16px 10px 16px; /* px-4 py-2.5 */
+border-top: 1px solid var(--Stroke-01);
+display: flex;
+flex-direction: column;
+
+/* Section Header */
+width: 100%;
+padding-top: 8px;
+padding-bottom: 8px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Section Title */
+flex: 1;
+opacity: 0.7;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+### 51.6 Radio Button Item (General Access)
+
+Radio-style кнопка для выбора типа доступа.
+
+```css
+/* Radio Item Container */
+width: 384px; /* w-96 */
+height: 48px;
+padding-top: 10px;
+padding-bottom: 10px;
+display: inline-flex;
+gap: 12px;
+align-items: center;
+
+/* Icon Container - Active */
+padding: 8px;
+background: var(--Surface-02);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Radio Icon */
+width: 16px;
+height: 16px;
+
+/* Radio Icon Shape (varies by type) */
+/* "Only those invited": 14×10px */
+width: 14px;
+height: 10px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* "Link access": 12×12px */
+width: 12px;
+height: 12px;
+outline: 1.5px solid var(--Text-Primary);
+outline-offset: -0.75px;
+
+/* Text Column */
+flex: 1;
+display: inline-flex;
+flex-direction: column;
+
+/* Primary Text */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Secondary Text */
+width: 100%;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Опции:**
+- "Only those invited" → "4 people"
+- "Link access" → "Only users have shared the link"
+
+### 51.7 User List Item
+
+Элемент списка пользователей с доступом к файлу.
+
+```css
+/* User Item Container */
+width: 384px; /* w-96 */
+height: 48px;
+padding-top: 10px;
+padding-bottom: 10px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+
+/* User Info Group */
+display: flex;
+gap: 12px;
+align-items: center;
+
+/* Avatar */
+width: 32px;
+height: 32px;
+border-radius: 32px;
+object-fit: cover;
+
+/* User Info Column */
+width: 160px; /* w-40 */
+display: inline-flex;
+flex-direction: column;
+
+/* User Name */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* User Email */
+width: 100%;
+opacity: 0.7;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+
+/* Permission Dropdown */
+width: 96px; /* w-24 */
+padding: 8px;
+border-radius: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Permission Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Chevron Icon */
+width: 16px;
+height: 16px;
+
+/* Chevron Shape */
+width: 6px;
+height: 2.39px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Permission Options:** "can edit", "Owner" (с иконкой замка зеленого цвета)
+
+### 51.8 Owner Badge (Special)
+
+Специальный бадж для владельца файла.
+
+```css
+/* Owner Dropdown Container */
+width: 96px; /* w-24 */
+padding: 8px;
+border-radius: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+
+/* Owner Text */
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+
+/* Lock Icon Container */
+width: 16px;
+height: 16px;
+position: relative;
+
+/* Lock Icon Inner */
+width: 12px;
+height: 12px;
+
+/* Lock Icon Shape */
+width: 8px;
+height: 10px;
+outline: 1.5px solid var(--Colors-Green);
+outline-offset: -0.75px;
+```
+
+### 51.9 Swipe Delete Action
+
+Действие удаления при свайпе влево.
+
+```css
+/* Delete Strip Container */
+width: 20px; /* w-5 */
+height: 48px;
+position: absolute;
+left: 400px; /* за краем панели 384px */
+top: 94px; /* позиция второго юзера */
+
+/* Red Background Strip */
+width: 20px;
+height: 48px;
+position: absolute;
+left: 0;
+top: 0;
+background: var(--Colors-Red);
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px;
+
+/* Delete Icon Container */
+width: 12px;
+height: 12px;
+position: absolute;
+left: 4px;
+top: 20px; /* вертикальное центрирование */
+overflow: hidden;
+
+/* Delete Icon (X shape) */
+width: 4px;
+height: 4px;
+outline: 1.5px solid var(--Shade1-100); /* white */
+outline-offset: -0.75px;
+```
+
+**Анимация:** При свайпе влево панель сдвигается, открывая красную полосу с иконкой удаления.
+
+### 51.10 Delete Tooltip
+
+Всплывающая подсказка для действия удаления.
+
+```css
+/* Tooltip Container */
+padding-left: 4px;
+padding-right: 2px;
+padding-top: 2px;
+padding-bottom: 2px;
+background: var(--Text-Primary);
+border-radius: 6px;
+box-shadow: 0px 4px 4px -2px rgba(0,0,0,0.40);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 4px;
+overflow: hidden;
+position: absolute;
+left: 428px; /* рядом с delete action */
+top: 336px;
+
+/* Tooltip Inner Padding */
+padding: 4px 4px 2px 4px; /* px-1 py-0.5 */
+display: flex;
+justify-content: center;
+align-items: center;
+
+/* Tooltip Text */
+color: var(--Shade-5-100);
+font-size: 12px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 16px;
+text-align: center;
+```
+
+**Текст:** "Remove"
+
+### 51.11 Link Footer
+
+Нижняя секция с ссылкой и кнопкой копирования.
+
+```css
+/* Footer Container */
+width: 100%;
+height: 64px;
+padding-left: 20px;
+padding-right: 16px;
+padding-top: 16px;
+padding-bottom: 16px;
+background: var(--Surface-02);
+border-top: 1px solid var(--Stroke-01);
+display: inline-flex;
+gap: 44px; /* gap-11 */
+align-items: center;
+
+/* Link Text */
+flex: 1;
+opacity: 0.5;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Пример ссылки:** "https://brainwave.co/file/k373nH"
+
+### 51.12 Copy Link Button
+
+Кнопка копирования ссылки в буфер обмена.
+
+```css
+/* Copy Button - Default */
+padding: 8px 16px;
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+
+/* Copy Icon */
+width: 20px;
+height: 20px;
+
+/* Icon Shape */
+width: 16px;
+height: 16px;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+
+/* Button Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+### 51.13 Delete Confirmation Modal Container
+
+Модальное окно подтверждения удаления файла с превью.
+
+```css
+/* Modal Wrapper */
+width: 384px; /* w-96 */
+height: 320px; /* h-80 */
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+
+/* Image Preview Container */
+width: 384px;
+height: 384px;
+position: relative;
+
+/* Gradient Overlay */
+width: 320px; /* w-80 */
+height: 320px; /* h-80 */
+position: absolute;
+left: 6px;
+top: 6px;
+background: linear-gradient(to bottom, #000000, rgba(0,0,0,0));
+
+/* Preview Image */
+width: 384px;
+height: 384px;
+position: absolute;
+left: 0;
+top: 0;
+object-fit: cover;
+```
+
+### 51.14 Delete Modal Content
+
+Контейнер модального окна с контентом и действиями.
+
+```css
+/* Modal Container */
+width: 100%;
+padding-top: 128px; /* pt-32 - для overlap с изображением */
+background: var(--Shade1-100);
+border-radius: 32px;
+box-shadow:
+  0px 10px 21px 0px rgba(0,0,0,0.07),
+  0px 38px 38px 0px rgba(0,0,0,0.06),
+  0px 86px 52px 0px rgba(0,0,0,0.04),
+  0px 153px 61px 0px rgba(0,0,0,0.01),
+  0px 239px 67px 0px rgba(0,0,0,0.00);
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+backdrop-filter: blur(6px);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+```
+
+### 51.15 Delete Modal Text Content
+
+Текстовая часть модального окна.
+
+```css
+/* Content Section */
+width: 100%;
+padding: 24px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+/* Modal Title */
+width: 100%;
+color: var(--Text-Primary);
+font-size: 24px;
+font-weight: 500;
+font-family: 'Inter';
+line-height: 32px;
+text-align: center;
+
+/* Modal Description */
+width: 256px; /* w-64 */
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 400;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+**Текст:**
+- Title: "Delete this file?"
+- Description: "This action cannot be undone. Blinky is a bit nervous about it too."
+
+### 51.16 Delete Modal Actions Footer
+
+Нижняя часть модального окна с кнопками действий.
+
+```css
+/* Footer Container */
+width: 100%;
+padding: 24px;
+background: var(--Surface-02);
+outline: 1px solid var(--Stroke-02);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+
+/* Cancel Button */
+flex: 1;
+padding: 10px 24px; /* px-6 py-2.5 */
+background: linear-gradient(to bottom, #E5E5E5, #E5E5E5); /* neutral-200 */
+border-radius: 12px;
+box-shadow:
+  0px 0px 0px 1px rgba(212,212,212,1.00),
+  0px 3px 4px -1px rgba(0,0,0,0.15),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Cancel Text */
+color: var(--Text-Primary);
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+
+/* Delete Button (Destructive) */
+flex: 1;
+padding: 10px 24px; /* px-6 py-2.5 */
+background: linear-gradient(to bottom, #EA580C, #EA580C); /* orange-600 */
+border-radius: 12px;
+box-shadow:
+  0px 3px 4px -1px rgba(252,96,16,0.95),
+  0px 0px 0px 1px rgba(191,74,15,1.00),
+  inset 0px 1px 0px 0px rgba(255,255,255,0.33);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
+/* Delete Text */
+color: var(--Shade1-100); /* white text */
+font-size: 14px;
+font-weight: 600;
+font-family: 'Inter';
+line-height: 20px;
+text-align: center;
+```
+
+**Buttons:**
+- "Cancel" (neutral gray)
+- "Yes, delete it" (destructive orange)
+
+### 51.17 Summary: Sharing Panel Structure
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Panel Container | 384px | - | 24px | Shade1-100 | backdrop-blur: 6px, outline gray-200 |
+| Invite Input | 320px | 16px 4px 4px | 12px | Surface-02 | inset shadow, outline Stroke-02 |
+| Permission Dropdown | 96px | 12px 8px | 8px | Surface-01 | shadow elevation |
+| Invite Button | auto | 8px 20px | 12px | Shade-7→Shade-8 gradient | 4 тени, neutral-50 text |
+| Section Header | 100% | 8px | - | - | opacity 70%, Text-Secondary |
+| Radio Icon Container | - | 8px | 8px | Surface-02 | shadow, outline Stroke-02 |
+| User Avatar | 32×32px | - | 32px | - | rounded-full |
+| User Info Column | 160px | - | - | - | name + email |
+| Permission Button | 96px | 8px | 8px | - | can edit / Owner |
+| Delete Strip | 20×48px | - | 8px (left) | Colors-Red | left: 400px (offscreen) |
+| Footer | 100%×64px | 20px 16px | - | Surface-02 | border-top Stroke-01 |
+| Copy Button | auto | 8px 16px | 12px | neutral-200 | 3 тени |
+
+### 51.18 Summary: Delete Modal Structure
+
+| Элемент | Размер | Padding | Border Radius | Background | Особенности |
+|---------|--------|---------|---------------|------------|-------------|
+| Modal Wrapper | 384×320px | - | - | - | flex-end alignment |
+| Image Preview | 384×384px | - | - | - | absolute positioning |
+| Gradient Overlay | 320×320px | - | - | black→transparent | left: 6px, top: 6px |
+| Modal Container | 100% | top: 128px | 32px | Shade1-100 | backdrop-blur: 6px, 5 теней |
+| Content Section | 100% | 24px | - | - | gap: 8px |
+| Title | 100% | - | - | Text-Primary | 24px/500/32px, text-center |
+| Description | 256px | - | - | Text-Secondary | 12px/400/20px, text-center |
+| Footer | 100% | 24px | - | Surface-02 | outline Stroke-02 |
+| Cancel Button | flex: 1 | 10px 24px | 12px | neutral-200 | 3 тени |
+| Delete Button | flex: 1 | 10px 24px | 12px | orange-600 | 3 тени (оранжевые) |
+
+### 51.19 Summary: Interactive States
+
+| Элемент | Default | Hover | Active | Special |
+|---------|---------|-------|--------|---------|
+| Invite Input | Surface-02, inset shadow | - | Blue cursor visible | Placeholder opacity 50% |
+| Permission Dropdown | 96px, rounded-lg | - | - | Chevron icon right |
+| Radio Item | Surface-02, outline Stroke-02 | - | Icon Text-Primary | Shadow elevation |
+| User Item | - | - | - | Swipe reveals delete |
+| Delete Strip | left: 400px (hidden) | - | - | Swipe animation |
+| Delete Tooltip | Text-Primary bg | - | - | Shadow, Shade-5-100 text |
+| Copy Button | neutral-200 | - | - | Icon + text |
+| Modal Cancel | neutral-200 | - | - | 3 тени |
+| Modal Delete | orange-600 | - | - | Destructive, white text |
+
+### 51.20 Usage Guidelines
+
+**Sharing Panel:**
+- Используйте для управления доступом к файлам, документам, проектам
+- Input всегда с dropdown разрешений внутри
+- Invite button темный градиент для главного действия
+- Section headers с opacity 70% для визуальной иерархии
+- General Access для глобальных настроек (invited only / link access)
+- People with Access для списка конкретных пользователей
+
+**Radio Items (General Access):**
+- Иконка в контейнере с elevation (Surface-02 + shadow)
+- Primary text (название) + secondary text (описание/количество)
+- Только один вариант может быть активным
+
+**User List Items:**
+- Avatar 32×32px округлый
+- Name (Text-Primary) + Email (Text-Secondary, opacity 70%)
+- Permission dropdown справа (can edit / Owner)
+- Owner имеет специальную иконку замка зеленого цвета
+
+**Swipe Delete Action:**
+- Красная полоса 20px шириной скрыта за краем панели (left: 400px)
+- При свайпе влево открывается delete action
+- Иконка удаления белая на красном фоне
+- Tooltip "Remove" появляется при свайпе
+
+**Delete Confirmation Modal:**
+- Превью изображения 384×384px с gradient overlay (black→transparent)
+- Modal контейнер с padding-top 128px для overlap с превью
+- Title 24px centered, description 12px secondary
+- Footer с двумя равными кнопками (Cancel + Delete)
+- Delete button всегда оранжевый (orange-600) для destructive действия
+
+**Color Usage:**
+- Invite button: темный градиент (Shade-7→Shade-8)
+- Copy button: светлый градиент (neutral-200)
+- Delete action strip: Colors-Red
+- Delete button: orange-600 (destructive)
+- Owner lock icon: Colors-Green
+
+**Typography:**
+- Section headers: 12px/500, opacity 70%
+- User names: 12px/500, Text-Primary
+- User emails: 12px/500, Text-Secondary, opacity 70%
+- Permissions: 12px/500
+- Modal title: 24px/500
+- Modal description: 12px/400
+- Buttons: 14px/600
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
