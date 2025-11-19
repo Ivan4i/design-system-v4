@@ -14657,6 +14657,574 @@ Panel Container (240×876px)
 
 ---
 
+## Section 56: Sidebar Navigation / Nested Items / Category Headers / Counter Badges
+
+**Описание:**
+Боковая панель навигации (224px ширина) для приложений с логотипом бренда, категорийными заголовками, навигационными элементами и поддержкой вложенной структуры. Включает состояния default, hover и active для навигационных элементов, иконки 20×20px, chevron индикаторы для expandable items, counter badges с 4-layer shadows, вертикальные соединительные линии для nested items, и цветные иконки папок (Orange, Green). Категорийные заголовки имеют opacity 70% для визуальной иерархии. Active state включает Surface-03 background, outline Stroke-01, и elevated icon container с shadow.
+
+### 56.1. Sidebar Container
+
+**Sidebar Container:**
+```css
+width: 224px; /* 56 × 4 = w-56 */
+height: auto; /* 900px или 1684px в примерах */
+padding: 20px; /* 5 */
+background: var(--Surface-01);
+border-right: 1px solid var(--Stroke-01);
+display: inline-flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 20px;
+```
+
+**Usage:**
+- Фиксированная ширина 224px для consistency
+- Border только справа (border-right)
+- Gap 20px между секциями (logo, navigation groups)
+
+### 56.2. Brand Logo
+
+**Brand Logo Container:**
+```css
+width: 176px; /* 44 × 4 */
+height: 40px;
+padding: 4px; /* 1 */
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px; /* 3 */
+```
+
+**Logo Icon Container:**
+```css
+width: 32px;
+height: 32px;
+position: relative;
+overflow: hidden;
+```
+
+**Logo Icon Fill:**
+```css
+width: 28px;
+height: 28px;
+left: 1px;
+top: 1px;
+position: absolute;
+background: var(--Text-Primary);
+outline: 0.25px solid var(--Text-Primary);
+```
+
+**Brand Name Text:**
+```css
+color: var(--Text-Primary);
+font-family: 'Sora', sans-serif;
+font-size: 20px;
+font-weight: 800; /* extrabold */
+line-height: 16px; /* tight leading */
+```
+
+**Usage:**
+- Icon 32×32px с fill 28×28px (отступ 1px со всех сторон)
+- Font family Sora для бренда (отличается от Inter для UI)
+- Line-height 16px создает tight spacing
+
+### 56.3. Category Header
+
+**Category Header:**
+```css
+width: 100%; /* full width */
+padding: 10px; /* 2.5 */
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+```
+
+**Category Title:**
+```css
+opacity: 0.7;
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Usage:**
+- Opacity 70% для subtle appearance
+- Text-Secondary цвет
+- Padding 10px для spacing от предыдущих элементов
+- Примеры: "My scenes", "Foundations", "Components"
+
+### 56.4. Navigation Item - Default
+
+**Navigation Item Container - Default:**
+```css
+width: 100%; /* full width */
+height: 40px;
+padding: 4px 12px 4px 4px; /* 1 × 3 × 1 */
+border-radius: 12px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px; /* 3 */
+```
+
+**Content Wrapper:**
+```css
+flex: 1;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Icon Container - Default:**
+```css
+padding: 6px; /* 1.5 */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+```
+
+**Icon:**
+```css
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape (varies per item) */
+/* Example: Settings icon */
+width: 14px;
+height: 14px;
+left: 3.12px;
+top: 3.12px;
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Label Text:**
+```css
+flex: 1;
+color: var(--Text-Primary);
+font-size: 12px;
+font-weight: 600; /* semibold */
+line-height: 16px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+```
+
+**Usage:**
+- Height 40px фиксированная
+- Icon 20×20px container с padding 6px
+- Label line-clamp 1 для truncation
+- Gap 12px между icon и label
+
+### 56.5. Navigation Item - Hover
+
+**Navigation Item Container - Hover:**
+```css
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Icon Container - Hover:**
+```css
+padding: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+/* NO background change on hover */
+```
+
+**Usage:**
+- Добавляется Surface-03 background к container
+- Icon container остается без изменений (NO Surface-01 bg)
+- Label и icon цвета остаются прежними
+
+### 56.6. Navigation Item - Active
+
+**Navigation Item Container - Active:**
+```css
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+background: var(--Surface-03);
+border-radius: 12px;
+outline: 1px solid var(--Stroke-01);
+outline-offset: -1px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Icon Container - Active:**
+```css
+padding: 6px;
+background: var(--Surface-01);
+border-radius: 8px;
+box-shadow: 0px 0px 4px 0px rgba(18,18,18,0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Icon - Active:**
+```css
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+
+/* Icon Shape */
+width: 14px;
+height: 16px; /* varies */
+left: 3.12px;
+top: 2.51px;
+position: absolute;
+outline: 1.5px solid var(--Text-Primary); /* Changed to Text-Primary */
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Container: Surface-03 + outline Stroke-01
+- Icon container: Surface-01 bg + border-radius 8px + shadow
+- Icon color: Text-Primary (вместо Text-Secondary)
+
+### 56.7. Counter Badge
+
+**Counter Badge:**
+```css
+padding: 2px 6px; /* 0.5 × 1.5 */
+background: var(--Surface-03);
+border-radius: 6px;
+box-shadow:
+  0px 1px 4.2px -1px rgba(0,0,0,0.25),
+  0px 0px 0px 1px rgba(0,0,0,0.11),
+  inset 0px -1px 0.6px 0px rgba(0,0,0,0.20),
+  inset 0px 2px 0.8px 0px rgba(255,255,255,0.27);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+overflow: hidden;
+```
+
+**Counter Text:**
+```css
+color: var(--Text-Secondary);
+font-size: 12px;
+font-weight: 500; /* medium */
+line-height: 16px;
+```
+
+**Usage:**
+- 4 layers shadows для depth (как keyboard shortcut badge)
+- Padding 2px 6px для компактности
+- Text-Secondary цвет для subtle appearance
+- Примеры: "112"
+
+### 56.8. Chevron Icon (Expandable Indicator)
+
+**Chevron Icon Container:**
+```css
+width: 16px;
+height: 16px;
+position: relative;
+overflow: hidden;
+```
+
+**Chevron Shape (Down):**
+```css
+width: 6px;
+height: 2.39px;
+left: 5.33px;
+top: 6.67px; /* или 6.94px */
+position: absolute;
+outline: 1.5px solid var(--Text-Secondary);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Появляется справа от навигационного элемента
+- Указывает на expandable/collapsible items
+- Down chevron (6.67px top) для collapsed
+- Up chevron (другая позиция) для expanded
+
+### 56.9. Nested Navigation Items
+
+**Nested Item Container:**
+```css
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 2px; /* 0.5 */
+```
+
+**Nested Item:**
+```css
+width: 100%;
+height: 40px;
+padding: 4px 12px 4px 4px;
+border-radius: 12px;
+display: inline-flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+```
+
+**Vertical Connecting Line Container:**
+```css
+width: 32px;
+height: 32px;
+position: relative;
+```
+
+**Vertical Line - Top Position:**
+```css
+/* Для первого nested item (position="top") */
+width: 16px;
+height: 20px;
+left: 16px;
+top: -6px;
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+```
+
+**Vertical Line - Default Position:**
+```css
+/* Для последующих nested items */
+width: 16px;
+height: 48px; /* 12 × 4 */
+left: 16px;
+top: -35px; /* varies based on position */
+position: absolute;
+border-radius: 8px;
+outline: 1.5px solid var(--Shade-4-100);
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Вертикальная линия соединяет nested items с parent
+- Top position: height 20px, top -6px
+- Default position: height 48px, top -35px
+- Outline Shade-4-100 для subtle appearance
+- Всегда left: 16px для выравнивания
+
+### 56.10. Colored Folder Icons
+
+**Folder Icon Container:**
+```css
+width: 20px;
+height: 20px;
+position: relative;
+overflow: hidden;
+```
+
+**Folder Bottom Part (Colored, Opacity 20%):**
+```css
+width: 16px;
+height: 6px; /* 1.5 */
+left: 2px;
+top: 10px;
+position: absolute;
+opacity: 0.2;
+background: var(--Colors-Orange); /* или Colors-Green */
+```
+
+**Folder Outline (Colored):**
+```css
+width: 16px;
+height: 12px; /* 3 */
+left: 2.29px;
+top: 3.12px;
+position: absolute;
+border-radius: 2px; /* sm */
+outline: 1.5px solid var(--Colors-Orange); /* или Colors-Green */
+outline-offset: -0.75px;
+```
+
+**Usage:**
+- Orange folder: Colors-Orange
+- Green folder: Colors-Green
+- Bottom part opacity 20% для depth effect
+- Outline colored для accent
+
+### 56.11. Navigation Group Structure
+
+**Navigation Group Container:**
+```css
+width: 100%; /* full width */
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 2px; /* 0.5 between items */
+```
+
+**Multiple Groups Container:**
+```css
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 12px; /* 3 between groups */
+```
+
+**Usage:**
+- Gap 2px между items внутри группы
+- Gap 12px между разными группами
+- Category header перед каждой группой
+
+### 56.12. Icon Variations
+
+**Default Icons (Text-Secondary):**
+- Settings: 14×14px circle
+- Folder: 16×14px outline
+- Heart (Likes): 16×14px
+- File: 16×16px
+- Dashboard: 16×16px square
+
+**Colored Icons:**
+- Orange Folder: outline + bottom fill Colors-Orange
+- Green Folder: outline + bottom fill Colors-Green
+
+**Icon with Badge:**
+- Comment icon: 16×14px + 8×0.83px line (Text-Primary) at bottom
+
+**Usage:**
+- Все иконки 20×20px container
+- Icon shapes vary: 14×14 to 16×16
+- Centered в container (left/top positioning)
+
+### 56.13. Summary Tables
+
+**Sidebar Dimensions:**
+| Component | Width | Height | Padding | Border |
+|-----------|-------|--------|---------|--------|
+| Sidebar | 224px | auto | 20px | border-right Stroke-01 |
+| Logo Container | 176px | 40px | 4px | - |
+| Nav Item | 100% | 40px | 4px 12px 4px 4px | - |
+
+**Navigation Item States:**
+| State | Background | Icon BG | Icon Color | Outline | Shadow |
+|-------|------------|---------|------------|---------|--------|
+| Default | - | - | Text-Secondary | - | - |
+| Hover | Surface-03 | - | Text-Secondary | - | - |
+| Active | Surface-03 | Surface-01 | Text-Primary | Stroke-01 | 0px 0px 4px rgba(18,18,18,0.10) |
+
+**Typography:**
+| Element | Font | Size | Weight | Line Height | Color |
+|---------|------|------|--------|-------------|-------|
+| Brand Name | Sora | 20px | 800 | 16px | Text-Primary |
+| Category Header | Inter | 12px | 500 | 16px | Text-Secondary (70%) |
+| Nav Label | Inter | 12px | 600 | 16px | Text-Primary |
+| Counter Badge | Inter | 12px | 500 | 16px | Text-Secondary |
+
+**Icon Specifications:**
+| Element | Container | Icon Shape | Color | Stroke |
+|---------|-----------|------------|-------|--------|
+| Logo | 32×32px | 28×28px fill | Text-Primary | 0.25px |
+| Nav Icon | 20×20px | 14-16px varies | Text-Secondary/Primary | 1.5px |
+| Chevron | 16×16px | 6×2.39px | Text-Secondary | 1.5px |
+
+### 56.14. Usage Guidelines
+
+**Sidebar Structure:**
+```
+Sidebar Container (224px)
+├─ Brand Logo (icon + "Brainwave" text)
+├─ Navigation Group 1
+│  ├─ Parent Item (with chevron)
+│  │  ├─ Nested Item 1 (with connecting line)
+│  │  └─ Nested Item 2 (with connecting line)
+│  └─ Regular Item (with counter badge)
+├─ Navigation Group 2
+│  ├─ Category Header ("My scenes")
+│  ├─ Active Item (elevated icon, outline)
+│  ├─ Folder Item (colored icon)
+│  └─ Folder Item (colored icon)
+└─ ...more groups
+```
+
+**State Hierarchy:**
+1. **Default:** Transparent background, icon Text-Secondary, no elevation
+2. **Hover:** Surface-03 background, icon remains same, no elevation
+3. **Active:** Surface-03 + outline Stroke-01, icon Surface-01 bg + shadow, icon Text-Primary
+
+**Nested Items Implementation:**
+- Parent item должен иметь chevron справа
+- Nested items имеют vertical connecting line слева
+- Top nested item: line height 20px, top -6px
+- Subsequent nested items: line height 48px, top -35px
+- Gap 2px между nested items
+
+**Counter Badge:**
+- Используется для показа количества items
+- 4 layers shadows (как keyboard shortcuts)
+- Padding 2px 6px, border-radius 6px
+- Размещается между label и chevron
+
+**Colored Folder Icons:**
+- Orange: Colors-Orange для important folders
+- Green: Colors-Green для categorized folders
+- Bottom part opacity 20% для depth
+- Outline colored для visual distinction
+
+**Category Headers:**
+- Opacity 70% для visual hierarchy
+- Text-Secondary цвет
+- Padding 10px сверху для separation
+- Used для группировки items: "Foundations", "Components", "My scenes"
+
+**Typography:**
+- **Brand:** Sora extrabold 20px для uniqueness
+- **UI Elements:** Inter для consistency
+- **Nav Labels:** 12px semibold для readability
+- **Category Headers:** 12px medium, opacity 70%
+
+**Spacing:**
+- Gap 20px между logo и navigation groups
+- Gap 12px между navigation groups
+- Gap 2px между items внутри группы
+- Padding 20px вокруг sidebar content
+
+**Icon Guidelines:**
+- Container всегда 20×20px для consistency
+- Icon shapes 14-16px в зависимости от типа
+- Outline 1.5px для всех icons
+- Colored icons для special folders (Orange, Green)
+- Icon color меняется на Text-Primary только в active state
+
+**Border Usage:**
+- Border-right Stroke-01 для sidebar separation
+- NO borders на individual items
+- Outline Stroke-01 только на active items
+
+---
+
 **Версия:** 2.0.0
 **Последнее обновление:** 2025-11-18
 **Мейнтейнеры:** Design & Engineering Team
